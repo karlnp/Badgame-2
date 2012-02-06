@@ -3680,5 +3680,4 @@ function smf_seed_generator()
 	// Change the seed.
 	updateSettings(array('rand_seed' => mt_rand()));
 }
-
 ?>

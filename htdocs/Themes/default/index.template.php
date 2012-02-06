@@ -381,12 +381,13 @@ function template_menu()
 					<a href="', $scripturl, '">' , $txt[103] , '</a>
 				</td>' , $current_action == 'home' ? '<td class="maintab_active_' . $last . '">&nbsp;</td>' : '';
 
+	/*
 	// Show the [help] button.
 	echo ($current_action == 'help' || $context['browser']['is_ie4']) ? '<td class="maintab_active_' . $first . '">&nbsp;</td>' : '' , '
 				<td valign="top" class="maintab_' , $current_action == 'help' ? 'active_back' : 'back' , '">
 					<a href="', $scripturl, '?action=help">' , $txt[119] , '</a>
 				</td>' , $current_action == 'help' ? '<td class="maintab_active_' . $last . '">&nbsp;</td>' : '';
-
+	*/
 	// How about the [search] button?
 	if ($context['allow_search'])
 		echo ($current_action == 'search' || $context['browser']['is_ie4']) ? '<td class="maintab_active_' . $first . '">&nbsp;</td>' : '' , '

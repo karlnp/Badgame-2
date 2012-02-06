@@ -185,7 +185,7 @@ function template_main()
 	echo '
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 	<tr>
-		<td class="normaltext" valign="bottom" style="padding-bottom: 4px;">', $txt[139], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a href="#lastPost"><b>' . $txt['topbottom5'] . '</b></a>' : '', '</td>
+		<td class="normaltext" valign="bottom" style="padding-bottom: 6px;">', $txt[139], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a href="#lastPost"><b>' . $txt['topbottom5'] . '</b></a>' : '', '</td>
 		<td align="right" style="padding-right: 1ex;">
 				<div class="topic-search">', template_search_topic(), '</div>
 		</td>
@@ -198,11 +198,13 @@ function template_main()
 		<tr class="catbg3">
 				<td valign="middle" width="2%" style="padding-left: 6px;">
 						<img src="', $settings['images_url'], '/topic/', $context['class'], '.gif" align="bottom" alt="" />
+				</td>';
+				/*
+				<td class="thread-title" valign="middle" width="85%" style="padding-left: 6px;" id="top_subject">
+						', $txt[118], ': ', $context['subject'], '
 				</td>
-				<td width="13%"> ', $txt[29], '</td>
-				<td valign="middle" width="85%" style="padding-left: 6px;" id="top_subject">
-						', $txt[118], ': ', $context['subject'], ' &nbsp;(', $txt[641], ' ', $context['num_views'], ' ', $txt[642], ')
-				</td>
+				 */
+		echo '
 		</tr>';
 	if (!empty($settings['display_who_viewing']))
 	{
@@ -258,10 +260,11 @@ function template_main()
 		echo '
 				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
 					<tr>
-						<td valign="top" width="16%" rowspan="2" style="overflow: hidden;">
-							<b>', $message['member']['link'], '</b>
+						<td class="userinfo" valign="top" width="190px" rowspan="2" style="overflow: hidden;">
+							<b>', $message['member']['link'], '</b><br /><br />
 							<div class="smalltext">';
 
+/*
 		// Show the member's custom title, if they have one.
 		if (isset($message['member']['title']) && $message['member']['title'] != '')
 			echo '
@@ -271,10 +274,11 @@ function template_main()
 		if (isset($message['member']['group']) && $message['member']['group'] != '')
 			echo '
 								', $message['member']['group'], '<br />';
-
+*/
 		// Don't show these things for guests.
 		if (!$message['member']['is_guest'])
 		{
+			/*
 			// Show the post group if and only if they have no other group or the option is on, and they are in a post group.
 			if ((empty($settings['hide_post_group']) || $message['member']['group'] == '') && $message['member']['post_group'] != '')
 				echo '
@@ -312,7 +316,7 @@ function template_main()
 			echo '
 								', $txt[26], ': ', $message['member']['posts'], '<br />
 								<br />';
-
+			*/
 			// Show avatars, images, etc.?
 			if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
 				echo '
@@ -323,14 +327,15 @@ function template_main()
 				echo '
 								', $message['member']['blurb'], '<br />
 								<br />';
-
+			/*
 			// This shows the popular messaging icons.
 			echo '
 								', $message['member']['icq']['link'], '
 								', $message['member']['msn']['link'], '
 								', $message['member']['aim']['link'], '
 								', $message['member']['yim']['link'], '<br />';
-
+			*/
+			/*
 			// Show the profile, website, email address, and personal message buttons.
 			if ($settings['show_profile_buttons'])
 			{
@@ -354,6 +359,8 @@ function template_main()
 					echo '
 								<a href="', $scripturl, '?action=pm;sa=send;u=', $message['member']['id'], '" title="', $message['member']['online']['label'], '">', $settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/im_' . ($message['member']['online']['is_online'] ? 'on' : 'off') . '.gif" alt="' . $message['member']['online']['label'] . '" border="0" />' : $message['member']['online']['label'], '</a>';
 			}
+			 * 
+			 */
 		}
 		// Otherwise, show the guest's email.
 		elseif (empty($message['member']['hide_email']))
@@ -366,7 +373,8 @@ function template_main()
 		echo '
 							</div>
 						</td>
-						<td valign="top" width="85%" height="100%">
+						<td valign="top" width="85%" height="100%" style="padding: 10px">';
+						/*
 							<table width="100%" border="0"><tr>
 								<td valign="middle"><a href="', $message['href'], '"><img src="', $message['icon_url'] . '" alt="" border="0" /></a></td>
 								<td valign="middle">
@@ -379,6 +387,7 @@ function template_main()
 									<div class="smalltext">&#171; <b>', !empty($message['counter']) ? $txt[146] . ' #' . $message['counter'] : '', ' ', $txt[30], ':</b> ', $message['time'], ' &#187;</div></td>
 								<td align="', !$context['right_to_left'] ? 'right' : 'left', '" valign="bottom" height="20" style="font-size: smaller;">';
 
+		/*
 		// Can they reply? Have they turned on quick reply?
 		if ($context['can_reply'] && !empty($options['display_quick_reply']))
 			echo '
@@ -403,20 +412,21 @@ function template_main()
 		if ($context['can_split'])
 			echo '
 					<a href="', $scripturl, '?action=splittopics;topic=', $context['current_topic'], '.0;at=', $message['id'], '">', $split_button, '</a>';
-
+		*/
+		/*
 		// Show a checkbox for quick moderation?
 		if (!empty($options['display_quick_mod']) && $options['display_quick_mod'] == 1 && $message['can_remove'])
 			echo '
 									<input type="checkbox" name="msgs[]" value="', $message['id'], '" class="check" ', empty($settings['use_tabs']) ? 'onclick="document.getElementById(\'quickmodSubmit\').style.display = \'\';"' : '', ' />';
-
+		*/
 		// Show the post itself, finally!
+		/*
 		echo '
 								</td>
-							</tr></table>
-							<hr width="100%" size="1" class="hrcolor" />
-							<div class="post"', $message['can_modify'] ? ' id="msg_' . $message['id'] . '"' : '', '>', $message['body'], '</div>', $message['can_modify'] ? '
-							<img src="' . $settings['images_url'] . '/icons/modify_inline.gif" alt="" align="right" id="modify_button_' . $message['id'] . '" style="cursor: pointer; display: none;" onclick="modify_msg(\'' . $message['id'] . '\', \'' . $context['session_id'] . '\')" />' : '' , '
-						</td>
+							</tr></table>';
+		 *
+		 */
+		echo '<div class="post" id="msg_' . $message['id'] . '"">', $message['body'], '</div></td>
 					</tr>';
 
 		// Now for the attachments, signature, ip logged, etc...
@@ -457,14 +467,16 @@ function template_main()
 								<td valign="bottom" class="smalltext" id="modified_', $message['id'], '">';
 
 		// Show "� Last Edit: Time by Person �" if this post was edited.
+		/*
 		if ($settings['show_modify'] && !empty($message['modified']['name']))
 			echo '
 									&#171; <i>', $txt[211], ': ', $message['modified']['time'], ' ', $txt[525], ' ', $message['modified']['name'], '</i> &#187;';
-
+		*/
 		echo '
 								</td>
 								<td align="', !$context['right_to_left'] ? 'right' : 'left', '" valign="bottom" class="smalltext">';
 
+		/*
 		// Maybe they want to report this post to the moderator(s)?
 		if ($context['can_report_moderator'])
 			echo '
@@ -488,7 +500,7 @@ function template_main()
 		else
 			echo '
 									', $txt[511];
-
+		*/
 		echo '
 								</td>
 							</tr></table>';

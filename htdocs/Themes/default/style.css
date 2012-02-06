@@ -39,6 +39,16 @@ div.topic-search {
 	border-top-left-radius: 8px;
 	border-top-right-radius: 8px;
 }
+
+.userinfo {
+	border-right: 1px solid #555;
+	padding: 5px;
+}
+
+.thread-title {
+	font-size: 2em;
+	font-weight: bold;
+}
 /* Normal, standard links. */
 a:link
 {
@@ -241,7 +251,7 @@ a img
 	color: black;
 	font-style: normal;
 	background: url(images/titlebg.jpg) #E9F0F6 repeat-x;
-	border-bottom: solid 1px #9BAEBF;
+	border-bottom: solid 1px #B09EDD;
 	border-top: solid 1px #FFFFFF;
 	padding-left: 10px;
 	padding-right: 10px;
