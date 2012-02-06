@@ -173,171 +173,6 @@ function template_main_above()
 </head>
 <body>';
 
-	/*
-	echo '
-	<div class="tborder" ', $context['browser']['needs_size_fix'] && !$context['browser']['is_ie6'] ? ' style="width: 100%;"' : '', '>
-		<table width="100%" cellpadding="0" cellspacing="0" border="0">
-			<tr>
-				<td class="catbg" height="32">';
-
-	if (empty($settings['header_logo_url']))
-		echo '
-					<span style="font-family: Verdana, sans-serif; font-size: 140%; ">', $context['forum_name'], '</span>';
-	else
-		echo '
-					<img src="', $settings['header_logo_url'], '" style="margin: 4px;" alt="', $context['forum_name'], '" />';
-
-	echo '
-				</td>
-				<td align="right" class="catbg">
-					<img src="', $settings['images_url'], '/smflogo.gif" style="margin: 2px;" alt="" />
-				</td>
-			</tr>
-		</table>';
-
-
-	// display user name
-	echo '
-		<table width="100%" cellpadding="0" cellspacing="0" border="0" >
-			<tr>';
-
-	if($context['user']['is_logged'])
-		echo '
-				<td class="titlebg2" height="32">
-					<span style="font-size: 130%;"> ', $txt['hello_member_ndt'], ' <b>', $context['user']['name'] , '</b></span>
-				</td>';
-
-	// display the time
-	echo '
-				<td class="titlebg2" height="32" align="right">
-					<span class="smalltext">' , $context['current_time'], '</span>';
-
-	// this is the upshrink button for the user info section
-	echo '
-					<a href="#" onclick="shrinkHeader(!current_header); return false;"><img id="upshrink" src="', $settings['images_url'], '/', empty($options['collapse_header']) ? 'upshrink.gif' : 'upshrink2.gif', '" alt="*" title="', $txt['upshrink_description'], '" align="bottom" style="margin: 0 1ex;" /></a>
-				</td>
-			</tr>
-			<tr id="upshrinkHeader"', empty($options['collapse_header']) ? '' : ' style="display: none;"', '>
-				<td valign="top" colspan="2">
-					<table width="100%" class="bordercolor" cellpadding="8" cellspacing="1" border="0" style="margin-top: 1px;">
-						<tr>';
-
-	if (!empty($context['user']['avatar']))
-		echo '
-							<td class="windowbg" valign="middle">', $context['user']['avatar']['image'], '</td>';
-
-	echo '
-							<td colspan="2" width="100%" valign="top" class="windowbg2"><span class="middletext">';
-
-	// If the user is logged in, display stuff like their name, new messages, etc.
-	if ($context['user']['is_logged'])
-	{
-		echo '
-								<a href="', $scripturl, '?action=unread">', $txt['unread_since_visit'], '</a> <br />
-								<a href="', $scripturl, '?action=unreadreplies">', $txt['show_unread_replies'], '</a><br />';
-
-	}
-	// Otherwise they're a guest - send them a lovely greeting...
-	else
-		echo $txt['welcome_guest'];
-
-	// Now, onto our second set of info, are they logged in again?
-	if ($context['user']['is_logged'])
-	{
-		// Is the forum in maintenance mode?
-		if ($context['in_maintenance'] && $context['user']['is_admin'])
-			echo '
-								<b>', $txt[616], '</b><br />';
-
-		// Are there any members waiting for approval?
-		if (!empty($context['unapproved_members']))
-			echo '
-								', $context['unapproved_members'] == 1 ? $txt['approve_thereis'] : $txt['approve_thereare'], ' <a href="', $scripturl, '?action=viewmembers;sa=browse;type=approve">', $context['unapproved_members'] == 1 ? $txt['approve_member'] : $context['unapproved_members'] . ' ' . $txt['approve_members'], '</a> ', $txt['approve_members_waiting'], '<br />';
-
-		// Show the total time logged in?
-		if (!empty($context['user']['total_time_logged_in']))
-		{
-			echo '
-								', $txt['totalTimeLogged1'];
-
-			// If days is just zero, don't bother to show it.
-			if ($context['user']['total_time_logged_in']['days'] > 0)
-				echo $context['user']['total_time_logged_in']['days'] . $txt['totalTimeLogged2'];
-
-			// Same with hours - only show it if it's above zero.
-			if ($context['user']['total_time_logged_in']['hours'] > 0)
-				echo $context['user']['total_time_logged_in']['hours'] . $txt['totalTimeLogged3'];
-
-			// But, let's always show minutes - Time wasted here: 0 minutes ;).
-			echo $context['user']['total_time_logged_in']['minutes'], $txt['totalTimeLogged4'], '<br />';
-		}
-		echo '				</span>';
-	}
-	// Otherwise they're a guest - this time ask them to either register or login - lazy bums...
-	else
-	{
-		echo '				</span>
-								<script language="JavaScript" type="text/javascript" src="', $settings['default_theme_url'], '/sha1.js"></script>
-
-								<form action="', $scripturl, '?action=login2" method="post" accept-charset="', $context['character_set'], '" class="middletext" style="margin: 3px 1ex 1px 0;"', empty($context['disable_login_hashing']) ? ' onsubmit="hashLoginPassword(this, \'' . $context['session_id'] . '\');"' : '', '>
-									<input type="text" name="user" size="10" /> <input type="password" name="passwrd" size="10" />
-									<select name="cookielength">
-										<option value="60">', $txt['smf53'], '</option>
-										<option value="1440">', $txt['smf47'], '</option>
-										<option value="10080">', $txt['smf48'], '</option>
-										<option value="43200">', $txt['smf49'], '</option>
-										<option value="-1" selected="selected">', $txt['smf50'], '</option>
-									</select>
-									<input type="submit" value="', $txt[34], '" /><br />
-									<span class="middletext">', $txt['smf52'], '</span>
-									<input type="hidden" name="hash_passwrd" value="" />
-								</form>';
-	}
-
-	echo '
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>';
-
-	echo '
-		<table id="upshrinkHeader2"', empty($options['collapse_header']) ? '' : ' style="display: none;"', ' width="100%" cellpadding="4" cellspacing="0" border="0">
-			<tr>';
-
-	// Show a random news item? (or you could pick one from news_lines...)
-	if (!empty($settings['enable_news']))
-		echo '
-				<td width="90%" class="titlebg2">
-					<span class="smalltext"><b>', $txt[102], '</b>: ', $context['random_news_line'], '</span>
-				</td>';
-	echo '
-				<td class="titlebg2" align="right" nowrap="nowrap" valign="top">
-					<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '" style="margin: 0;">
-						<a href="', $scripturl, '?action=search;advanced"><img src="'.$settings['images_url'].'/filter.gif" align="middle" style="margin: 0 1ex;" alt="" /></a>
-						<input type="text" name="search" value="" style="width: 190px;" />&nbsp;
-						<input type="submit" name="submit" value="', $txt[182], '" style="width: 11ex;" />
-						<input type="hidden" name="advanced" value="0" />';
-
-	// Search within current topic?
-	if (!empty($context['current_topic']))
-		echo '
-						<input type="hidden" name="topic" value="', $context['current_topic'], '" />';
-
-		// If we're on a certain board, limit it to this board ;).
-	elseif (!empty($context['current_board']))
-		echo '
-						<input type="hidden" name="brd[', $context['current_board'], ']" value="', $context['current_board'], '" />';
-
-	echo '
-					</form>
-				</td>
-			</tr>
-		</table>
-	</div>';
-	*/	
-
 	// Show the banner section here
 	template_banner();
 	// Show the menu here, according to the menu sub template.
@@ -401,10 +236,11 @@ function template_main_below()
 			</tr>
 		</table>';
 
+	echo '<div class="smalltext">Using the Badgame 2 mod suite. <a href="https://github.com/tigerschwert/Badgame-2">Get the source on Github.</a></div>';
 		// Show the load time?
 	if ($context['show_load_time'])
 		echo '
-		<span class="smalltext">', $txt['smf301'], $context['load_time'], $txt['smf302'], $context['load_queries'], $txt['smf302b'], '</span>';
+		<div class="smalltext">', $txt['smf301'], $context['load_time'], $txt['smf302'], $context['load_queries'], $txt['smf302b'], '</div>';
 
 	// This is an interesting bug in Internet Explorer AND Safari. Rather annoying, it makes overflows just not tall enough.
 	if (($context['browser']['is_ie'] && !$context['browser']['is_ie4']) || $context['browser']['is_mac_ie'] || $context['browser']['is_safari'] || $context['browser']['is_firefox'])
