@@ -19,6 +19,24 @@ div#news-area {
 	text-align: center;
 	margin-top: 10px;
 }
+
+div.topic-search {
+	width: 310px;
+	background-color: #6A5999;
+	padding-right: 8px;
+	color: white;
+	font-weight: bold;
+	
+	border: 1px solid #3A1D84;
+	border-bottom: 0;
+	
+	-webkit-border-top-left-radius: 8px;
+	-webkit-border-top-right-radius: 8px;
+	-moz-border-radius-topleft: 8px;
+	-moz-border-radius-topright: 8px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+}
 /* Normal, standard links. */
 a:link
 {

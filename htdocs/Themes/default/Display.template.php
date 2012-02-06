@@ -187,12 +187,7 @@ function template_main()
 	<tr>
 		<td class="middletext" valign="bottom" style="padding-bottom: 4px;">', $txt[139], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a href="#lastPost"><b>' . $txt['topbottom5'] . '</b></a>' : '', '</td>
 		<td align="right" style="padding-right: 1ex;">
-			<div class="nav" style="margin-bottom: 2px;"> ', $context['previous_next'], '</div>
-			<table cellpadding="0" cellspacing="0">
-				<tr>
-					', template_button_strip($normal_buttons, 'bottom'), '
-				</tr>
-			</table>
+				<div class="topic-search">', template_search_topic(), '</div>
 		</td>
 	</tr>
 </table>';
@@ -461,7 +456,7 @@ function template_main()
 							</tr><tr>
 								<td valign="bottom" class="smalltext" id="modified_', $message['id'], '">';
 
-		// Show "« Last Edit: Time by Person »" if this post was edited.
+		// Show "ï¿½ Last Edit: Time by Person ï¿½" if this post was edited.
 		if ($settings['show_modify'] && !empty($message['modified']['name']))
 			echo '
 									&#171; <i>', $txt[211], ': ', $message['modified']['time'], ' ', $txt[525], ' ', $message['modified']['name'], '</i> &#187;';
@@ -668,4 +663,19 @@ echo '
 <form action="', $scripturl, '?action=spellcheck" method="post" accept-charset="', $context['character_set'], '" name="spell_form" id="spell_form" target="spellWindow"><input type="hidden" name="spellstring" value="" /></form>';
 }
 
+function template_search_topic() {
+	global $context, $scripturl, $settings, $txt;
+		
+	echo '<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '" style="margin: 0;">
+						Search this thread : 
+						<input type="text" name="search" value="" style="width: 100px;" />&nbsp;
+						<input type="submit" name="submit" value="', $txt[182], '" style="width: 11ex;" />
+						<input type="hidden" name="advanced" value="0" />';
+
+	// Search within current topic?
+	if (!empty($context['current_topic']))
+		echo '<input type="hidden" name="topic" value="', $context['current_topic'], '" />';
+
+	echo '</form>';
+}
 ?>
