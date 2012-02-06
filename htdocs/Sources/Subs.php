@@ -753,11 +753,19 @@ function constructPageIndex($base_url, &$start, $max_value, $num_per_page, $flex
 		// If they didn't enter an odd value, pretend they did.
 		$PageContiguous = (int) ($modSettings['compactTopicPagesContiguous'] - ($modSettings['compactTopicPagesContiguous'] % 2)) / 2;
 
+		if ($start - $num_per_page >= 0) {
+			$pageindex = sprintf($base_link, $start - $num_per_page, "< Prev");
+		} else {
+			$pageindex = "";
+		}
+		
+		$pageindex .= "&nbsp;";
+		
 		// Show the first page. (>1< ... 6 7 [8] 9 10 ... 15)
 		if ($start > $num_per_page * $PageContiguous)
-			$pageindex = sprintf($base_link, 0, '1');
+			$pageindex .= sprintf($base_link, 0, '1');
 		else
-			$pageindex = '';
+			$pageindex .= '';
 
 		// Show the ... after the first page.  (1 >...< 6 7 [8] 9 10 ... 15)
 		if ($start > $num_per_page * ($PageContiguous + 1))
@@ -793,6 +801,12 @@ function constructPageIndex($base_url, &$start, $max_value, $num_per_page, $flex
 		// Show the last number in the list. (1 ... 6 7 [8] 9 10 ... >15<)
 		if ($start + $num_per_page * $PageContiguous < $tmpMaxPages)
 			$pageindex .= sprintf($base_link, $tmpMaxPages, $tmpMaxPages / $num_per_page + 1);
+		
+		$pageindex .= "&nbsp;";
+		
+		if ($start + $num_per_page <= $tmpMaxPages) {
+			$pageindex .= sprintf($base_link, $start + $num_per_page, "Next >");
+		}
 	}
 
 	return $pageindex;
@@ -3512,9 +3526,9 @@ function getLegacyAttachmentFilename($filename, $attachment_id, $new = false)
 {
 	global $modSettings;
 
-	// Remove special accented characters - ie. sí.
-	$clean_name = strtr($filename, 'ŠŽšžŸÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÑÒÓÔÕÖØÙÚÛÜÝàáâãäåçèéêëìíîïñòóôõöøùúûüýÿ', 'SZszYAAAAAACEEEEIIIINOOOOOOUUUUYaaaaaaceeeeiiiinoooooouuuuyy');
-	$clean_name = strtr($clean_name, array('Þ' => 'TH', 'þ' => 'th', 'Ð' => 'DH', 'ð' => 'dh', 'ß' => 'ss', 'Œ' => 'OE', 'œ' => 'oe', 'Æ' => 'AE', 'æ' => 'ae', 'µ' => 'u'));
+	// Remove special accented characters - ie. sï¿½.
+	$clean_name = strtr($filename, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', 'SZszYAAAAAACEEEEIIIINOOOOOOUUUUYaaaaaaceeeeiiiinoooooouuuuyy');
+	$clean_name = strtr($clean_name, array('ï¿½' => 'TH', 'ï¿½' => 'th', 'ï¿½' => 'DH', 'ï¿½' => 'dh', 'ï¿½' => 'ss', 'ï¿½' => 'OE', 'ï¿½' => 'oe', 'ï¿½' => 'AE', 'ï¿½' => 'ae', 'ï¿½' => 'u'));
 
 	// Sorry, no spaces, dots, or anything else but letters allowed.
 	$clean_name = preg_replace(array('/\s/', '/[^\w_\.\-]/'), array('_', ''), $clean_name);

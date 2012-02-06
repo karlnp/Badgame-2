@@ -185,7 +185,7 @@ function template_main()
 	echo '
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 	<tr>
-		<td class="middletext" valign="bottom" style="padding-bottom: 4px;">', $txt[139], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a href="#lastPost"><b>' . $txt['topbottom5'] . '</b></a>' : '', '</td>
+		<td class="normaltext" valign="bottom" style="padding-bottom: 4px;">', $txt[139], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a href="#lastPost"><b>' . $txt['topbottom5'] . '</b></a>' : '', '</td>
 		<td align="right" style="padding-right: 1ex;">
 				<div class="topic-search">', template_search_topic(), '</div>
 		</td>
