@@ -173,6 +173,7 @@ function template_main_above()
 </head>
 <body>';
 
+	/*
 	echo '
 	<div class="tborder" ', $context['browser']['needs_size_fix'] && !$context['browser']['is_ie6'] ? ' style="width: 100%;"' : '', '>
 		<table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -335,15 +336,36 @@ function template_main_above()
 			</tr>
 		</table>
 	</div>';
+	*/	
 
-
+	// Show the banner section here
+	template_banner();
 	// Show the menu here, according to the menu sub template.
 	template_menu();
 
+	template_news();
 
 	// The main content should go here.
 	echo '
 	<div id="bodyarea" style="padding: 1ex 0px 2ex 0px;">';
+}
+
+function template_news()
+{
+	global $context;
+	
+	if ($context['random_news_line'] != "") {
+		echo '<div id="news-area">';
+		echo($context['random_news_line']);
+		echo '</div>';
+	}
+}
+
+function template_banner()
+{
+	echo '<div id="banner-area">';
+	echo '<img src="banner.png" alt="Eyes open" />';
+	echo '</div>';
 }
 
 function template_main_below()
@@ -513,7 +535,7 @@ function template_menu()
 
 	// Show the start of the tab section.
 	echo '
-			<table cellpadding="0" cellspacing="0" border="0" style="margin-left: 10px;">
+			<table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
 				<tr>
 					<td class="maintab_' , $first , '">&nbsp;</td>';
 
