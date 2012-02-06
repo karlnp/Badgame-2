@@ -135,17 +135,6 @@ a img
 {
 	border: 0;
 }
-/* A quote, perhaps from another post. */
-.quote
-{
-	color: #000000;
-	background-color: #D7DAEC;
-	border: 1px solid #000000;
-	margin: 1px;
-	padding: 1px;
-	font-size: x-small;
-	line-height: 1.4em;
-}
 
 /* A code block - maybe even PHP ;). */
 .code
@@ -170,13 +159,33 @@ a img
 /* The "Quote:" and "Code:" header parts... */
 .quoteheader, .codeheader
 {
-	color: #000000;
+	padding: 5px 8px;
+	background-image: url('images/cockhead.png');
+	background-repeat: no-repeat;
+	background-position: right;
 	text-decoration: none;
+	background-color: #C9BBEE;
+	border: 1px solid #8C82A6;
+	border-left: 3px solid #8C82A6;
+	border-bottom: 0;
 	font-style: normal;
 	font-weight: bold;
 	font-size: x-small;
 	line-height: 1.2em;
 }
+
+/* A quote, perhaps from another post. */
+.quote
+{
+	color: #555;
+	background-color: #D3C9EE;
+	border: 1px solid #8C82A6;
+	border-left: 3px solid #8C82A6;
+	padding: 12px;
+	font-family: Georgia, times new roman;
+	margin-bottom: 8px;
+}
+
 
 /* Generally, those [?] icons.  This makes your cursor a help icon. */
 .help
