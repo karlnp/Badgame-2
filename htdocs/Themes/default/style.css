@@ -37,7 +37,7 @@ div.topic-search {
 	padding: 5px;
 }
 
-.postinfo, .postresponses {
+.postinfo, .responses {
 	border-top: 1px solid #555;
 }
 
@@ -49,15 +49,107 @@ div.topic-search {
 	font-size: 2em;
 	font-weight: bold;
 }
+
+.thread-action-button, .action-button {
+	margin-left: 8px;
+	
+	height: 14px;
+	padding: 3px;
+	padding-left: 24px;
+	padding-right: 6px;
+	
+	background-color: #EAEAEA;
+	border: 1px solid #555;
+	border-top: 1px solid #AAA;
+	border-left: 1px solid #AAA;
+		
+	cursor: pointer;
+	font-size: 12px;
+	min-width: 36px;
+	text-align: right;
+	
+	background-repeat: no-repeat;
+	background-position: 4px 2px;
+}
+
+.thread-action-button {
+	float: right;
+	background-color: #4D338F;
+	border: 1px solid #3A1D84;
+	border-top: 1px solid #A085E5;
+	border-left: 1px solid #A085E5;
+}
+
+.member-actions .action-button {
+	float: left;
+	margin-left: 0;
+	margin-right: 8px; 
+}
+
+.post-actions .action-button {
+	float: right;
+}
+
+.thread-action-hide {
+	background-image: url('images/silkicons/bin.png');
+}
+
+.thread-action-reply {
+	background-image: url('images/silkicons/award_star_add.png');
+}
+
+.action-profile {
+	background-image: url('images/silkicons/emoticon_tongue.png');
+}
+
+.action-private {
+	background-image: url('images/silkicons/heart.png');
+}
+
+.action-history {
+	background-image: url('images/silkicons/hourglass.png');
+}
+
+.action-edit {
+	background-image: url('images/silkicons/pencil.png');
+}
+
+.action-quote {
+	background-image: url('images/silkicons/award_star_add.png');
+}
+
+.action-report {
+	background-image: url('images/silkicons/tux.png');
+}
+
+.action-split {
+	background-image: url('images/silkicons/cut_red.png');
+}
+
+.action-delete {
+	background-image: url('images/silkicons/cancel.png');
+}
+
+
+
+
+.member-actions {
+	float: left;
+}
+
+.post-actions {
+	float: right;
+}
+
 /* Normal, standard links. */
 a:link
 {
-	color: #476C8E;
+	color: #4D338F;
 	text-decoration: none;
 }
 a:visited
 {
-	color: #476C8E;
+	color: #4D338F;
 	text-decoration: none;
 }
 a:hover
@@ -226,13 +318,13 @@ a img
 /* Alternating backgrounds for posts, and several other sections of the forum. */
 .windowbg, #preview_body
 {
-	color: #000000;
-	background-color: #ECEDF3;
+	color: #232323;
+	background-color: #FAFAFA;
 }
 .windowbg2
 {
-	color: #000000;
-	background-color: #F6F6F6;
+	color: #232323;
+	background-color: #DFDFDF;
 }
 .windowbg3
 {

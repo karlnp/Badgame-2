@@ -204,6 +204,10 @@ function template_main()
 						', $txt[118], ': ', $context['subject'], '
 				</td>
 				 */
+		
+		echo '<td class="thread-actions" valign="middile" width="85%" id="top_subject">';
+		echo '<div class="thread-action-button thread-action-reply">Reply</div><div class="thread-action-button thread-action-hide">Hide Thread</div>';
+		echo '</td>';
 		echo '
 		</tr>';
 	if (!empty($settings['display_who_viewing']))
@@ -511,10 +515,34 @@ function template_main()
 							<hr width="100%" size="1" class="hrcolor" />
 							<div class="signature">', $message['member']['signature'], '</div>';
 
-		echo '</td></tr><tr><td class="postinfo" >asdfadsdsfdsafasddsds</td>';
+		echo '</td></tr><tr><td class="postinfo" ><span class="middletext">';
+		
+		echo '<a href="', $message['href'], '">#', '1234567', '</a> ';
+		echo '<a href="', $message['href'], '">?</a> ';
+
+		$timestr = date("M d Y, H:i", $message['timestamp']);
+		echo $timestr;
+		
+		echo '</span></td>';
 		
 		
-		echo '<td class="postresponses" style="border-top: 1px solid gray;">sdfadsfasd</td></tr>';
+		echo '<td class="responses">';
+		
+		echo '<div class="member-actions">';
+		echo '<div class="action-button action-profile">Profile</div>';
+		echo '<div class="action-button action-private">Private</div>';
+		echo '<div class="action-button action-history">History</div>';
+		echo '</div>';
+		
+		echo '<div class="post-actions">';
+		echo '<div class="action-button action-quote">Quote</div>';
+		echo '<div class="action-button action-edit">Edit</div>';
+		echo '<div class="action-button action-split">Split</div>';
+		echo '<div class="action-button action-delete">Delete</div>';
+		echo '<div class="action-button action-report">Report</div>';
+		echo '</div>';
+		
+		echo '</td></tr>';
 		
 		echo '
 						</td>

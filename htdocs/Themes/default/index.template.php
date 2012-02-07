@@ -381,6 +381,12 @@ function template_menu()
 					<a href="', $scripturl, '">' , $txt[103] , '</a>
 				</td>' , $current_action == 'home' ? '<td class="maintab_active_' . $last . '">&nbsp;</td>' : '';
 
+	// Show the [home] button.
+	echo ($current_action=='banners' || $context['browser']['is_ie4']) ? '<td class="maintab_active_' . $first . '">&nbsp;</td>' : '' , '
+				<td valign="top" class="maintab_' , $current_action == 'banners' ? 'active_back' : 'back' , '">
+					<a href="', $scripturl, '">' , 'Banners' , '</a>
+				</td>' , $current_action == 'banners' ? '<td class="maintab_active_' . $last . '">&nbsp;</td>' : '';
+				
 	/*
 	// Show the [help] button.
 	echo ($current_action == 'help' || $context['browser']['is_ie4']) ? '<td class="maintab_active_' . $first . '">&nbsp;</td>' : '' , '
@@ -413,7 +419,7 @@ function template_menu()
 	if ($context['user']['is_logged'] && $context['allow_pm'])
 		echo ($current_action == 'pm' || $context['browser']['is_ie4']) ? '<td class="maintab_active_' . $first . '">&nbsp;</td>' : '' , '
 				<td valign="top" class="maintab_' , $current_action == 'pm' ? 'active_back' : 'back' , '">
-					<a href="', $scripturl, '?action=pm">' , $txt['pm_short'] , ' ', $context['user']['unread_messages'] > 0 ? '[<strong>'. $context['user']['unread_messages'] . '</strong>]' : '' , '</a>
+					<a href="', $scripturl, '?action=pm">' , 'Messages' , ' ', $context['user']['unread_messages'] > 0 ? '[<strong>'. $context['user']['unread_messages'] . '</strong>]' : '' , '</a>
 				</td>' , $current_action == 'pm' ? '<td class="maintab_active_' . $last . '">&nbsp;</td>' : '';
 
 	// The [calendar]!
@@ -430,6 +436,11 @@ function template_menu()
 					<a href="', $scripturl, '?action=mlist">' , $txt[331] , '</a>
 				</td>' , $current_action == 'mlist' ? '<td class="maintab_active_' . $last . '">&nbsp;</td>' : '';
 
+	// Show the [banlist] button.
+	echo ($current_action=='banlist' || $context['browser']['is_ie4']) ? '<td class="maintab_active_' . $first . '">&nbsp;</td>' : '' , '
+				<td valign="top" class="maintab_' , $current_action == 'banlist' ? 'active_back' : 'back' , '">
+					<a href="', $scripturl, '">' , 'Bans' , '</a>
+				</td>' , $current_action == 'banlist' ? '<td class="maintab_active_' . $last . '">&nbsp;</td>' : '';
 
 	// If the user is a guest, show [login] button.
 	if ($context['user']['is_guest'])
