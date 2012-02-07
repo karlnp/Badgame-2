@@ -205,8 +205,11 @@ function template_main()
 				</td>
 				 */
 		
-		echo '<td class="thread-actions" valign="middile" width="85%" id="top_subject">';
-		echo '<div class="thread-action-button thread-action-reply">Reply</div><div class="thread-action-button thread-action-hide">Hide Thread</div>';
+		echo '<td valign="middile" width="85%" id="top_subject">';
+		echo '<div class="thread-actions" style="float: right">';
+		echo '<div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Post Reply</span></div>';
+		echo '<div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/bin.png" /> <span class="button-text">Hide Thread</span></div>';
+		echo '</div>';
 		echo '</td>';
 		echo '
 		</tr>';
@@ -324,7 +327,7 @@ function template_main()
 			// Show avatars, images, etc.?
 			if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
 				echo '
-								<div style="overflow: auto; width: 100%;">', $message['member']['avatar']['image'], '</div><br />';
+								<div style="overflow: auto; width: 100%; margin-bottom: 2px">', $message['member']['avatar']['image'], '</div>';
 
 			// Show their personal text?
 			if (!empty($settings['show_blurb']) && $message['member']['blurb'] != '')
@@ -529,17 +532,17 @@ function template_main()
 		echo '<td class="responses">';
 		
 		echo '<div class="member-actions">';
-		echo '<div class="action-button action-profile">Profile</div>';
-		echo '<div class="action-button action-private">Private</div>';
-		echo '<div class="action-button action-history">History</div>';
+		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/emoticon_tongue.png" /> <span class="button-text">Profile</span></div>';
+		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/heart.png" /> <span class="button-text">Private</span></div>';
+		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/hourglass.png" /> <span class="button-text">History</span></div>';
 		echo '</div>';
 		
 		echo '<div class="post-actions">';
-		echo '<div class="action-button action-quote">Quote</div>';
-		echo '<div class="action-button action-edit">Edit</div>';
-		echo '<div class="action-button action-split">Split</div>';
-		echo '<div class="action-button action-delete">Delete</div>';
-		echo '<div class="action-button action-report">Report</div>';
+		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Quote</span></div>';
+		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/pencil.png" /> <span class="button-text">Edit</span></div>';
+		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/cut_red.png" /> <span class="button-text">Split</span></div>';
+		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/cancel.png" /> <span class="button-text">Delete</span></div>';
+		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/tux.png" /> <span class="button-text">Report</span></div>';
 		echo '</div>';
 		
 		echo '</td></tr>';
@@ -712,7 +715,7 @@ echo '
 function template_search_topic() {
 	global $context, $scripturl, $settings, $txt;
 		
-	echo '<table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 0"><tr><td class="mirrortab_first"></td><td class="mirrortab_back">';
+	echo '<table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 0"><tr><td class="mirrortab_first"></td><td class="mirrortab_back" style="font-size: 11px">';
 	echo '<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '" style="margin: 0;">
 						Search thread : 
 						<input type="text" name="search" value="" style="width: 100px;" />&nbsp;
