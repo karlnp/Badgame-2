@@ -337,6 +337,10 @@ a img
 	background-color: #FFFFFF;
 }
 
+.signature img
+{
+	max-height: 150px;
+}
 /* These are used primarily for titles, but also for headers (the row that says what everything in the table is.) */
 .titlebg, tr.titlebg th, tr.titlebg td, .titlebg2, tr.titlebg2 th, tr.titlebg2 td
 {
@@ -459,9 +463,10 @@ a img
 .signature
 {
 	width: 100%;
-	overflow: auto;
+	overflow: hidden;
 	padding-bottom: 3px;
 	line-height: 1.3em;
+	max-height: 160px;
 }
 
 /* Sometimes there will be an error when you post */
