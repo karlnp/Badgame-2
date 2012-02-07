@@ -179,6 +179,10 @@ div.topic-search {
 	float: right;
 }
 
+.thread-list-pages {
+	margin-top: 2px;
+}
+
 /* Normal, standard links. */
 a:link
 {

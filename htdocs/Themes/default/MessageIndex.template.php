@@ -52,7 +52,7 @@ function template_main()
 					', $board['posts'], ' ', $txt[21], ' <br />
 					', $board['topics'],' ', $txt[330], '</small>
 				</td>
-				<td class="windowbg2" valign="middle" width="22%"><small>';
+				<td class="windowbg2" valign="middle" width="14%"><small>';
 
 			/* The board's and children's 'last_post's have:
 				time, timestamp (a number that represents the time.), id (of the post), topic (topic id.),
@@ -125,12 +125,12 @@ function template_main()
 		echo '
 		<table width="100%" cellpadding="0" cellspacing="0" border="0">
 			<tr>
-				<td class="middletext">', $txt[139], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . '&nbsp;&nbsp;<a href="#bot"><b>' . $txt['topbottom5'] . '</b></a>' : '', '</td>
+				<td>', $txt[139], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . '&nbsp;&nbsp;<a href="#bot"><b>' . $txt['topbottom5'] . '</b></a>' : '', '</td>
 				<td align="right" style="padding-right: 1ex;">
 					<table cellpadding="0" cellspacing="0">
 						<tr>
-							', template_button_strip($normal_buttons, 'bottom'), '
-						</tr>
+							'; //, template_button_strip($normal_buttons, 'bottom'), '
+		echo '			</tr>
 					</table>
 				</td>
 			</tr>
@@ -150,7 +150,7 @@ function template_main()
 		if (!empty($context['topics']))
 		{
 			echo '
-						<td width="9%" colspan="2" class="catbg3"></td>
+						<td width="50px" class="catbg3"></td>
 
 						<td class="catbg3"><a href="', $scripturl, '?board=', $context['current_board'], '.', $context['start'], ';sort=subject', $context['sort_by'] == 'subject' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt[70], $context['sort_by'] == 'subject' ? ' <img src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.gif" alt="" />' : '', '</a></td>
 
@@ -160,7 +160,7 @@ function template_main()
 
 						<td class="catbg3" width="4%" align="center"><a href="', $scripturl, '?board=', $context['current_board'], '.', $context['start'], ';sort=views', $context['sort_by'] == 'views' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt[301], $context['sort_by'] == 'views' ? ' <img src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.gif" alt="" />' : '', '</a></td>
 
-						<td class="catbg3" width="22%"><a href="', $scripturl, '?board=', $context['current_board'], '.', $context['start'], ';sort=last_post', $context['sort_by'] == 'last_post' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt[111], $context['sort_by'] == 'last_post' ? ' <img src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.gif" alt="" />' : '', '</a></td>';
+						<td class="catbg3" width="14%"><a href="', $scripturl, '?board=', $context['current_board'], '.', $context['start'], ';sort=last_post', $context['sort_by'] == 'last_post' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt[111], $context['sort_by'] == 'last_post' ? ' <img src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.gif" alt="" />' : '', '</a></td>';
 
 			// Show a "select all" box for quick moderation?
 			if (!empty($options['display_quick_mod']) && $options['display_quick_mod'] == 1)
@@ -204,10 +204,13 @@ function template_main()
 				$topic['class'] = substr($topic['class'], 0, strrpos($topic['class'], '_locked'));
 	
 			echo '
-					<tr>
+					<tr>';
+					/*
 						<td class="windowbg2" valign="middle" align="center" width="5%">
 							<img src="', $settings['images_url'], '/topic/', $topic['class'], '.gif" alt="" />
 						</td>
+					 */
+			echo '
 						<td class="windowbg2" valign="middle" align="center" width="4%">
 							<img src="', $topic['first_post']['icon_url'], '" alt="" />
 						</td>
@@ -221,28 +224,30 @@ function template_main()
 			echo '
 							', $topic['is_sticky'] ? '<b>' : '' , '<span id="msg_' . $topic['first_post']['id'] . '">', $topic['first_post']['link'], '</span>', $topic['is_sticky'] ? '</b>' : '';
 
+			/*
 			// Is this topic new? (assuming they are logged in!)
 			if ($topic['new'] && $context['user']['is_logged'])
 					echo '
 							<a href="', $topic['new_href'], '" id="newicon' . $topic['first_post']['id'] . '"><img src="', $settings['images_url'], '/', $context['user']['language'], '/new.gif" alt="', $txt[302], '" /></a>';
-
+			*/
 			echo '
-							<small id="pages' . $topic['first_post']['id'] . '">', $topic['pages'], '</small>
+							<div class="thread-list-pages"><small id="pages' . $topic['first_post']['id'] . '">', $topic['pages'], '</small></div>
 						</td>
 						<td class="windowbg2" valign="middle" width="14%">
 							', $topic['first_post']['member']['link'], '
 						</td>
-						<td class="windowbg' , $topic['is_sticky'] ? '3' : '' , '" valign="middle" width="4%" align="center">
-							', $topic['replies'], '
+						<td style="text-decoration: underline" class="windowbg' , $topic['is_sticky'] ? '3' : '' , '" valign="middle" width="4%" align="center">
+							<a href="#">', $topic['replies'], '</a>
 						</td>
 						<td class="windowbg' , $topic['is_sticky'] ? '3' : '' , '" valign="middle" width="4%" align="center">
 							', $topic['views'], '
 						</td>
-						<td class="windowbg2" valign="middle" width="22%">
-							<a href="', $topic['last_post']['href'], '"><img src="', $settings['images_url'], '/icons/last_post.gif" alt="', $txt[111], '" title="', $txt[111], '" style="float: right;" /></a>
-							<span class="smalltext">
-								', $topic['last_post']['time'], '<br />
-								', $txt[525], ' ', $topic['last_post']['member']['link'], '
+						<td class="windowbg2" valign="middle" width="14%" style="text-align: right">';
+			//				<a href="', $topic['last_post']['href'], '"><img src="', $settings['images_url'], '/icons/last_post.gif" alt="', $txt[111], '" title="', $txt[111], '" style="float: right;" /></a>
+			$timeStr = date("H:i M d Y", $topic['last_post']['timestamp']);
+			echo '			<span class="smalltext">
+								', $timeStr, '<br />
+								', '<a href="', $topic['last_post']['href'], '">', $topic['last_post']['member']['name'], '</a>
 							</span>
 						</td>';
 

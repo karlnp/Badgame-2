@@ -506,14 +506,14 @@ function MessageIndex()
 				}
 				// Show links to all the pages?
 				if (count($tmppages) <= 5)
-					$pages = '&#171; ' . implode(' ', $tmppages);
+					$pages = 'Pages : ' . implode('  ', $tmppages);
 				// Or skip a few?
 				else
-					$pages = '&#171; ' . $tmppages[0] . ' ' . $tmppages[1] . ' ... ' . $tmppages[count($tmppages) - 2] . ' ' . $tmppages[count($tmppages) - 1];
+					$pages = 'Pages : ' . $tmppages[0] . '  ' . $tmppages[1] . '  ...  ' . $tmppages[count($tmppages) - 2] . '  ' . $tmppages[count($tmppages) - 1];
 
 				if (!empty($modSettings['enableAllMessages']) && $topic_length < $modSettings['enableAllMessages'])
 					$pages .= ' &nbsp;<a href="' . $scripturl . '?topic=' . $row['ID_TOPIC'] . '.0;all">' . $txt[190] . '</a>';
-				$pages .= ' &#187;';
+				$pages .= ' ';
 			}
 			else
 				$pages = '';

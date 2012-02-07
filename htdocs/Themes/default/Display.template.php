@@ -520,7 +520,7 @@ function template_main()
 
 		echo '</td></tr><tr><td class="postinfo" ><span class="middletext">';
 		
-		echo '<a href="', $message['href'], '">#', '1234567', '</a> ';
+		echo '<a href="', $message['href'], '">#', $message['counter'], '</a> ';
 		echo '<a href="', $message['href'], '">?</a> ';
 
 		$timestr = date("M d Y, H:i", $message['timestamp']);
