@@ -187,7 +187,7 @@ function template_main()
 	<tr>
 		<td class="normaltext" valign="bottom" style="padding-bottom: 6px;">', $txt[139], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a href="#lastPost"><b>' . $txt['topbottom5'] . '</b></a>' : '', '</td>
 		<td align="right" style="padding-right: 1ex;">
-				<div class="topic-search">', template_search_topic(), '</div>
+				', template_search_topic(), '
 		</td>
 	</tr>
 </table>';
@@ -511,6 +511,11 @@ function template_main()
 							<hr width="100%" size="1" class="hrcolor" />
 							<div class="signature">', $message['member']['signature'], '</div>';
 
+		echo '</td></tr><tr><td class="postinfo" >asdfadsdsfdsafasddsds</td>';
+		
+		
+		echo '<td class="postresponses" style="border-top: 1px solid gray;">sdfadsfasd</td></tr>';
+		
 		echo '
 						</td>
 					</tr>
@@ -519,6 +524,7 @@ function template_main()
 		</table>
 	</td></tr>';
 	}
+	
 	echo '
 	<tr><td style="padding: 0 0 1px 0;"></td></tr>
 </table>
@@ -678,8 +684,9 @@ echo '
 function template_search_topic() {
 	global $context, $scripturl, $settings, $txt;
 		
+	echo '<table cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 0"><tr><td class="mirrortab_first"></td><td class="mirrortab_back">';
 	echo '<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '" style="margin: 0;">
-						Search this thread : 
+						Search thread : 
 						<input type="text" name="search" value="" style="width: 100px;" />&nbsp;
 						<input type="submit" name="submit" value="', $txt[182], '" style="width: 11ex;" />
 						<input type="hidden" name="advanced" value="0" />';
@@ -689,5 +696,6 @@ function template_search_topic() {
 		echo '<input type="hidden" name="topic" value="', $context['current_topic'], '" />';
 
 	echo '</form>';
+	echo '</td><td class="mirrortab_last"></td></tr></table>';
 }
 ?>

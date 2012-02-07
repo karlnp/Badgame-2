@@ -22,27 +22,27 @@ div#news-area {
 
 div.topic-search {
 	width: 310px;
-	background-color: #6A5999;
-	padding-top: 1px;
+	
+	background: url("images/mirrortab_back.gif") repeat-x;
+	
+	padding-top: 3px;
 	padding-right: 10px;
 	padding-left: 2px;
 	color: white;
 	font-weight: bold;
-	
-	border: 1px solid #3A1D84;
-	border-bottom: 0;
-	
-	-webkit-border-top-left-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
-	-moz-border-radius-topleft: 8px;
-	-moz-border-radius-topright: 8px;
-	border-top-left-radius: 8px;
-	border-top-right-radius: 8px;
 }
 
 .userinfo {
 	border-right: 1px solid #555;
 	padding: 5px;
+}
+
+.postinfo, .postresponses {
+	border-top: 1px solid #555;
+}
+
+.postinfo {
+	border-right: 1px solid #555;
 }
 
 .thread-title {
@@ -299,7 +299,7 @@ a img
 }
 .catbg, .catbg2, .catbg3
 {
-	border-bottom: solid 1px #375576;
+	border-bottom: solid 1px #4D338F;
 }
 .catbg, .catbg2
 {
