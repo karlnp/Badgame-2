@@ -69,6 +69,10 @@ function template_main_above()
 	<meta name="robots" content="noindex" />', '
 	<meta name="keywords" content="PHP, MySQL, bulletin, board, free, open, source, smf, simple, machines, forum" />
 	<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="http://cdn.jquerytools.org/1.2.6/tiny/jquery.tools.min.js"></script>
+	<script language="JavaScript" type="text/javascript" src="js/modernizr-2.5.1.js" ></script>
+	<script language="JavaScript" type="text/javascript" src="js/donation-nag.js"></script>
+	<script language="JavaScript" type="text/javascript" src="js/hidden-tags.js"></script>
 	<script language="JavaScript" type="text/javascript" src="', $settings['default_theme_url'], '/script.js?fin11"></script>
 	<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[
 		var smf_theme_url = "', $settings['theme_url'], '";

@@ -183,6 +183,98 @@ div.topic-search {
 	margin-top: 2px;
 }
 
+#nagbox {
+
+	/* overlay is hidden before loading */
+	display:none;
+
+	/* standard decorations */
+	width:600px;
+	
+	/* for modern browsers use semi-transparent color on the border. nice! */
+	border:5px solid #343434;
+
+	/* hot CSS3 features for mozilla and webkit-based browsers (rounded borders) */
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	
+	background-color: white;
+	background-image:url(images/nag-beandog.png);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	
+	min-height: 80px;
+	padding: 16px;
+}
+
+#nagbox h1 {
+	margin-top: 0;
+}
+
+#nagbox .nagbutton {
+	background: #eeeeee; /* Old browsers */
+	background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* IE10+ */
+	background: linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* W3C */
+	
+	border: 2px solid #333;
+	color: #222;
+	font-weight: bold;
+	
+	width: 280px;
+	
+	margin: 4px;
+	padding: 2px;
+	
+	cursor: pointer;
+}
+
+#nagbox .nagbutton:hover {
+	background: #d1d6cd; /* Old browsers */
+	background: -moz-linear-gradient(top, #d1d6cd 0%, #838c81 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d1d6cd), color-stop(100%,#838c81)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* IE10+ */
+	background: linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* W3C */
+}
+
+#nagbox .positive-nagbutton {
+	background: #fefcea; /* Old browsers */
+	background: -moz-linear-gradient(top, #fefcea 0%, #f1da36 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefcea), color-stop(100%,#f1da36)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* IE10+ */
+	background: linear-gradient(top, #fefcea 0%,#f1da36 100%); /* W3C */
+	
+	font-size: 1.1em;
+}
+
+#nagbox .positive-nagbutton:hover {
+	background: #ffc578; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffc578 0%, #fb9d23 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc578), color-stop(100%,#fb9d23)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* IE10+ */
+	background: linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* W3C */
+}
+
+/* close button positioned on upper right corner */
+#nagbox .close {
+	background-image:url(images/close.png);
+	position:absolute;
+	left:-18px;
+	top:-14px;
+	cursor:pointer;
+	height:28px;
+	width:28px;
+}
+
 /* Normal, standard links. */
 a:link
 {
@@ -300,7 +392,7 @@ a img
 }
 
 /* The "Quote:" and "Code:" header parts... */
-.quoteheader, .codeheader
+.quoteheader, .codeheader, .nwsheader, .spoilerheader, .tldrheader
 {
 	padding: 5px 8px;
 	background-image: url('images/cockhead.png');
@@ -324,6 +416,76 @@ a img
 	border: 1px solid #242424;
 	border-left: 3px solid #242424;
 	border-bottom: 0;
+}
+
+.hiddenheader 
+{
+	cursor: pointer;
+}
+
+.nwsheader
+{
+	background-image: url('images/lilies.png');
+	background-color: #EEE3E8;
+	border: 1px solid #AE8EAC;
+	border-left: 3px solid #AE8EAC;
+	color: #757575;
+}
+
+.nwsblock
+{
+	color: #757575;
+	background-color: #EEE3E8;
+	border: 1px solid #AE8EAC;
+	border-left: 3px solid #AE8EAC;
+	border-top: 0;
+}
+
+.spoilerheader
+{
+	background-image: url('images/aeris.png');
+	border: 1px solid black;
+	border-left: 3px solid black;
+	background-color: #454545;
+	color: #FFFFFF;
+	border-top: 0;
+}
+
+.spoilerblock
+{
+	background-color: #454545;
+	color: #FFFFFF;
+	border: 1px solid black;
+	border-left: 3px solid black;
+	border-top: 0;
+}
+
+.tldrheader
+{
+	background-image: url('images/tree.png');
+	font-family: "Garamond", "Georgia", "Times New Roman", serif;
+	border: 1px solid #242424;
+	font-size: 1.0em;
+	border-left: 3px solid #242424;
+	background-color: #F0EFE9;
+	color: #242424;
+}
+
+.tldrblock
+{
+	background-color: #F0EFE9;
+	font-family: "Georgia", "Century Schoolbook L", "Times New Roman", "Times", serif;
+	border: 1px solid #242424;
+	border-left: 3px solid #242424;
+	border-top: 0;
+	font-size: 1.1em;
+	line-height: 160%;
+}
+
+.hiddenblock
+{
+	padding: 12px;
+	display: none;
 }
 
 /* A quote, perhaps from another post. */

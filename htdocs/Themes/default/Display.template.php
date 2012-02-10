@@ -267,7 +267,7 @@ function template_main()
 		echo '
 				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
 					<tr>
-						<td class="userinfo" valign="top" width="190px" rowspan="2" style="overflow: hidden;">
+						<td class="userinfo" valign="top" width="190px" height="200px" rowspan="2" style="overflow: hidden;">
 							<b>', $message['member']['link'], '</b><br /><br />
 							<div class="smalltext">';
 

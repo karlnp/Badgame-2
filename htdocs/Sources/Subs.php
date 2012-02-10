@@ -1639,6 +1639,24 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'before' => '<span style="color: white;">',
 				'after' => '</span>',
 			),
+			array(
+				'tag' => 'nws',
+				'before' => '<div class="hiddenheader nwsheader">This is NOT suitable for work! Click to load images and display content.</div><div class="hiddenblock nwsblock"><textarea>',
+				'after' => '</textarea></div>',
+				'block_level' => true,
+			),
+			array(
+				'tag' => 'blockspoiler',
+				'before' => '<div class="hiddenheader spoilerheader">There are spoilers in this block! Click to view them.</div><div class="hiddenblock spoilerblock">',
+				'after' => '</div>',
+				'block_level' => true,
+			),
+			array(
+				'tag' => 'tldr',
+				'before' => '<div class="hiddenheader tldrheader">This block is a large wall of text. Click to read it.</div><div class="hiddenblock tldrblock">',
+				'after' => '</div>',
+				'block_level' => true,
+			),
 		);
 
 		// This is mainly for the bbc manager, so it's easy to add tags above.  Custom BBC should be added above this line.
