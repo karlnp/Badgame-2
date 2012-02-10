@@ -78,7 +78,6 @@ function template_main()
 					document.getElementById("preview_section").style.display = "";
 					setInnerHTML(document.getElementById("preview_subject"), txt_preview_title);
 					setInnerHTML(document.getElementById("preview_body"), txt_preview_fetch);
-
 					return false;
 				}
 				else
@@ -151,6 +150,8 @@ function template_main()
 
 				if (typeof(smf_codeFix) != "undefined")
 					smf_codeFix();
+				
+				Badgame.RefreshHiddenBlocks();
 			}';
 
 	// A function needed to discern HTML entities from non-western characters.

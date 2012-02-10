@@ -1,7 +1,9 @@
-$(document).ready(function() {
+Badgame = this.Badgame || {};
+
+Badgame.RefreshHiddenBlocks = function() {
 	$('.hiddenheader').toggle(function() {
+		var hiddenblock = $(this).next('.hiddenblock');
 		if ($(this).hasClass('nwsheader')) {
-			var hiddenblock = $(this).next('.hiddenblock');
 			var html = hiddenblock.find('textarea').val();
 			hiddenblock.find('textarea').replaceWith(html);
 		}
@@ -9,4 +11,6 @@ $(document).ready(function() {
 	}, function() {
 		$(this).next('.hiddenblock').slideUp();
 	});
-});
+}
+
+$(document).ready(Badgame.RefreshHiddenBlocks);

@@ -434,7 +434,7 @@ a img
 
 .nwsblock
 {
-	color: #757575;
+	color: #454545;
 	background-color: #EEE3E8;
 	border: 1px solid #AE8EAC;
 	border-left: 3px solid #AE8EAC;
@@ -448,7 +448,6 @@ a img
 	border-left: 3px solid black;
 	background-color: #454545;
 	color: #FFFFFF;
-	border-top: 0;
 }
 
 .spoilerblock
