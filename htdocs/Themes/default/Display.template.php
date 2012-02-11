@@ -272,7 +272,7 @@ function template_main()
 		echo '
 				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
 					<tr>
-						<td class="userinfo" valign="top" width="190px" height="200px" rowspan="2" style="overflow: hidden;">
+						<td class="userinfo" valign="top" width="190px" height="200px"rowspan="2" style="overflow: hidden; ', !empty($options['center_avatars']) ? 'text-align: center' : '', '">
 							<b>', $message['member']['link'], '</b><br /><br />
 							<div class="smalltext">';
 
@@ -566,7 +566,8 @@ function template_main()
 	}
 	
 	echo '
-	<tr><td style="padding: 0 0 1px 0;"></td></tr>
+	<tr class="catbg3"><td style="padding-top: 4px; padding-bottom: 4px; padding-right: 9px">',
+	'</td></tr>
 </table>
 <a name="lastPost"></a>';
 

@@ -50,7 +50,7 @@ div.topic-search {
 	font-weight: bold;
 }
 
-.thread-action-button, .action-button {
+.thread-action-button, .action-button, .view-action-button {
 	margin-left: 8px;
 	
 	height: 14px;

@@ -22,6 +22,11 @@ function template_options()
 			'default' => true,
 		),
 		array(
+			'id' => 'center_avatars',
+			'label' => $txt['center_avatars'],
+			'default' => false,
+		),
+		array(
 			'id' => 'show_no_signatures',
 			'label' => $txt['show_no_signatures'],
 			'default' => true,

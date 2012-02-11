@@ -1778,6 +1778,11 @@ function template_theme()
 											</td>
 										</tr><tr>
 											<td colspan="2">
+												<input type="hidden" name="default_options[center_avatars]" value="0" />
+												<label for="center_avatars"><input type="checkbox" name="default_options[center_avatars]" id="center_avatars" value="1"', !empty($context['member']['options']['center_avatars']) ? ' checked="checked"' : '', ' class="check" /> ', $txt['center_avatars'], '</label>
+											</td>
+										</tr><tr>
+											<td colspan="2">
 												<input type="hidden" name="default_options[show_no_signatures]" value="0" />
 												<label for="show_no_signatures"><input type="checkbox" name="default_options[show_no_signatures]" id="show_no_signatures" value="1"', !empty($context['member']['options']['show_no_signatures']) ? ' checked="checked"' : '', ' class="check" /> ', $txt['show_no_signatures'], '</label>
 											</td>
