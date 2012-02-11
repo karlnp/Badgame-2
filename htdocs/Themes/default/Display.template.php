@@ -7,6 +7,11 @@ function template_main()
 
 	// Show the anchor for the top and for the first message. If the first message is new, say so.
 	echo '
+	<script language="JavaScript" type="text/javascript">
+		$(document).ready(function() {
+			Tipped.create(".avatar-container", {skin: "badgame"});
+		});
+	</script>
 <a name="top"></a>
 <a name="msg', $context['first_message'], '"></a>', $context['first_new_message'] ? '<a name="new"></a>' : '';
 
@@ -326,8 +331,12 @@ function template_main()
 			*/
 			// Show avatars, images, etc.?
 			if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
-				echo '
-								<div style="overflow: auto; width: 100%; margin-bottom: 2px">', $message['member']['avatar']['image'], '</div>';
+				$tooltipHtml = "<div style='padding: 8px'><b>" . $message["member"]["username"] . "</b><br />" . 
+					"Registered on " . $message["member"]["registered"] . "<br />" .
+					"Post count : " . $message["member"]["real_posts"] . "</div>";
+				echo '<div class="avatar-container" title="', $tooltipHtml, '" style="overflow: auto; margin-bottom: 2px">', 
+					$message['member']['avatar']['image'], 
+					'</div>';
 
 			// Show their personal text?
 			if (!empty($settings['show_blurb']) && $message['member']['blurb'] != '')
