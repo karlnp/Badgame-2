@@ -805,6 +805,32 @@ function loadPermissions()
 	banPermissions();
 }
 
+function loadBanner() {
+	global $context, $db_prefix;
+	
+	$request = db_query("
+			SELECT banners.id, banners.id_uploader, banners.filename, banners.approved, members.ID_MEMBER, members.memberName
+			FROM {$db_prefix}bg2_banners AS banners, ${db_prefix}members AS members
+			WHERE banners.approved = true 
+			AND banners.id_uploader = members.ID_MEMBER
+			ORDER BY rand() 
+			LIMIT 1", __FILE__, __LINE__);
+				
+	if ($row = mysql_fetch_assoc($request))
+	{
+		$banner = array(
+			"id" => $row['id'],
+			"filename" => $row['filename'],
+			"uploader_id" => $row['id_uploader'],
+			"uploader_name" => $row['memberName']
+		);
+		
+		$context['banner'] = $banner;
+	}
+	
+	mysql_free_result($request);
+}
+
 // Loads an array of users' data by ID or memberName.
 function loadMemberData($users, $is_name = false, $set = 'normal')
 {

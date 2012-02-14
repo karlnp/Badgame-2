@@ -163,6 +163,9 @@ function smf_main()
 
 	// Load the current user's permissions.
 	loadPermissions();
+	
+	// Load the banner for this page.
+	loadBanner();
 
 	// Do some logging, unless this is an attachment, avatar, theme option or XML feed.
 	if (empty($_REQUEST['action']) || !in_array($_REQUEST['action'], array('dlattach', 'jsoption', '.xml')))
@@ -225,6 +228,7 @@ function smf_main()
 		'admin' => array('Admin.php', 'Admin'),
 		'announce' => array('Post.php', 'AnnounceTopic'),
 		'ban' => array('ManageBans.php', 'Ban'),
+		'banners' => array('Banners.php', 'Bannerlist'),
 		'boardrecount' => array('Admin.php', 'AdminBoardRecount'),
 		'buddy' => array('Subs-Members.php', 'BuddyListToggle'),
 		'calendar' => array('Calendar.php', 'CalendarMain'),
@@ -343,5 +347,4 @@ function smf_main()
 	require_once($sourcedir . '/' . $actionArray[$_REQUEST['action']][0]);
 	return $actionArray[$_REQUEST['action']][1];
 }
-
 ?>
