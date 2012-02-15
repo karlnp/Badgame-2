@@ -309,6 +309,24 @@ div.topic-search {
 	padding: 5px;
 	border: 1px solid #454545;
 }
+
+.resized-image {
+	position: relative;
+	width: 100%;
+}
+
+.zoomtip {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	font-size: 10px;
+	padding: 1px 1px 2px 2px;
+	background-color: white;
+	color: black;
+	opacity: 0.8;
+	border: 1px solid black;
+	font-family: sans-serif;
+}
 /* Normal, standard links. */
 a:link
 {

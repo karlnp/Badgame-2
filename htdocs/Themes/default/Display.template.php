@@ -7,6 +7,7 @@ function template_main()
 
 	// Show the anchor for the top and for the first message. If the first message is new, say so.
 	echo '
+	<script language="JavaScript" type="text/javascript" src="js/resize-images.js"></script>
 	<script language="JavaScript" type="text/javascript">
 		$(document).ready(function() {
 			Tipped.create(".avatar-container", {skin: "badgame"});

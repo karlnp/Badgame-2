@@ -247,7 +247,8 @@ function template_main()
 			$timeStr = date("H:i M d Y", $topic['last_post']['timestamp']);
 			echo '			<span class="smalltext">
 								', $timeStr, '<br />
-								', '<a href="', $topic['last_post']['href'], '">', $topic['last_post']['member']['name'], '</a>
+								', '<a href="', $topic['last_post']['href'], '">', 
+								$topic['last_post']['member']['name'], '</a>
 							</span>
 						</td>';
 
