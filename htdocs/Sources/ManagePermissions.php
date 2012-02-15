@@ -1302,6 +1302,8 @@ function loadAllPermissions()
 				'who_view' => false,
 				'search_posts' => false,
 				'karma_edit' => false,
+				'upload_banners' => false,
+				'approve_banners' => false,
 			),
 			'pm' => array(
 				'pm_read' => false,

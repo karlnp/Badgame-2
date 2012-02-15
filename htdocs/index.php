@@ -228,7 +228,7 @@ function smf_main()
 		'admin' => array('Admin.php', 'Admin'),
 		'announce' => array('Post.php', 'AnnounceTopic'),
 		'ban' => array('ManageBans.php', 'Ban'),
-		'banners' => array('Banners.php', 'Bannerlist'),
+		'banners' => array('Banners.php', 'Banners'),
 		'boardrecount' => array('Admin.php', 'AdminBoardRecount'),
 		'buddy' => array('Subs-Members.php', 'BuddyListToggle'),
 		'calendar' => array('Calendar.php', 'CalendarMain'),

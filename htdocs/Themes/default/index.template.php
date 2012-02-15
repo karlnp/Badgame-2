@@ -364,7 +364,7 @@ function template_menu()
 	$current_action = 'home';
 	if (in_array($context['current_action'], array('admin', 'ban', 'boardrecount', 'cleanperms', 'detailedversion', 'dumpdb', 'featuresettings', 'featuresettings2', 'findmember', 'maintain', 'manageattachments', 'manageboards', 'managecalendar', 'managesearch', 'membergroups', 'modlog', 'news', 'optimizetables', 'packageget', 'packages', 'permissions', 'pgdownload', 'postsettings', 'regcenter', 'repairboards', 'reports', 'serversettings', 'serversettings2', 'smileys', 'viewErrorLog', 'viewmembers')))
 		$current_action = 'admin';
-	if (in_array($context['current_action'], array('search', 'admin', 'calendar', 'profile', 'mlist', 'register', 'login', 'help', 'pm')))
+	if (in_array($context['current_action'], array('search', 'admin', 'banners', 'calendar', 'profile', 'mlist', 'register', 'login', 'help', 'pm')))
 		$current_action = $context['current_action'];
 	if ($context['current_action'] == 'search2')
 		$current_action = 'search';

@@ -275,6 +275,40 @@ div.topic-search {
 	width:28px;
 }
 
+.banner-help {
+	
+	margin: 10px;
+	/* for modern browsers use semi-transparent color on the border. nice! */
+	border:3px solid #795ACC;
+	
+	background-color: #B29FE5;
+	background-image:url(images/nag-beandog.png);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	
+	min-height: 80px;
+	padding: 16px;
+	
+	padding-right: 220px;
+	padding-bottom: 0;
+}
+
+.banner-help h1 {
+	margin: 5px;
+	margin-top: 0;
+}
+
+.queued-banner {
+	margin: 10px;
+}
+
+.badgame-message {
+	width: 50%;
+	margin: 10px auto;
+	text-align: center;
+	padding: 5px;
+	border: 1px solid #454545;
+}
 /* Normal, standard links. */
 a:link
 {
