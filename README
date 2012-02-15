@@ -5,3 +5,5 @@ and community-driven features.
 Badgame 2 should be installed on top of a fresh SMF 1.1.16 installation, 
 replacing the Sources/ and Themes/ directories. The shell script in the SQL folder 
 should then be run - this then sets about creating and modifying database tables.
+
+Remember to run the included sql file and change line 90 of Banners.php before deploying.
