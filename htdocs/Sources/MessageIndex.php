@@ -56,8 +56,6 @@ function MessageIndex()
 	// Make sure the starting place makes sense and construct the page index.
 	if (isset($_REQUEST['sort']))
 		$context['page_index'] = constructPageIndex($scripturl . '?board=' . $board . '.%d;sort=' . $_REQUEST['sort'] . (isset($_REQUEST['desc']) ? ';desc' : ''), $_REQUEST['start'], $board_info['num_topics'], $maxindex, true);
-	else if (isset($_REQUEST['icon']))
-		$context['page_index'] = constructPageIndex($scripturl . '?board=' . $board . '.%d;icon=' . $_REQUEST['icon'], $_REQUEST['start'], $board_info['num_topics'], $maxindex, true);
 	else
 		$context['page_index'] = constructPageIndex($scripturl . '?board=' . $board . '.%d', $_REQUEST['start'], $board_info['num_topics'], $maxindex, true);
 	$context['start'] = &$_REQUEST['start'];
@@ -439,10 +437,6 @@ function MessageIndex()
 	// Grab the appropriate topic information...
 	if (!$pre_query || !empty($topic_ids))
 	{
-		
-		if (!empty($_GET['icon'])) {
-			$filterIcon = mysql_real_escape_string($_GET['icon']);
-		}
 
 		$result = db_query("
 			SELECT
@@ -464,7 +458,6 @@ function MessageIndex()
 			WHERE " . ($pre_query ? 't.ID_TOPIC IN (' . implode(', ', $topic_ids) . ')' : "t.ID_BOARD = $board") . "
 				AND ml.ID_MSG = t.ID_LAST_MSG
 				AND mf.ID_MSG = t.ID_FIRST_MSG
-				" . ($filterIcon ? "AND mf.icon = '" . $filterIcon . "'" : "") . "
 			ORDER BY " . ($pre_query ? "FIND_IN_SET(t.ID_TOPIC, '" . implode(',', $topic_ids) . "')" : (!empty($modSettings['enableStickyTopics']) ? 'isSticky' . ($fake_ascending ? '' : ' DESC') . ', ' : '') . $_REQUEST['sort'] . ($ascending ? '' : ' DESC')) . "
 			LIMIT " . ($pre_query ? '' : "$start, ") . "$maxindex", __FILE__, __LINE__);
 
