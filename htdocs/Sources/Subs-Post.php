@@ -1526,12 +1526,14 @@ function createPost(&$msgOptions, &$topicOptions, &$posterOptions)
 
 	$new_topic = empty($topicOptions['id']);
 
+	$parsedBody = mysql_real_escape_string(parse_bbc($msgOptions['body'], $msgOptions['smileys_enabled']));
+
 	// Insert the post.
 	db_query("
 		INSERT INTO {$db_prefix}messages
-			(ID_BOARD, ID_TOPIC, ID_MEMBER, subject, body, posterName, posterEmail, posterTime,
+			(ID_BOARD, ID_TOPIC, ID_MEMBER, subject, body, parsed_body, posterName, posterEmail, posterTime,
 			posterIP, smileysEnabled, modifiedName, icon)
-		VALUES ($topicOptions[board], $topicOptions[id], $posterOptions[id], SUBSTRING('$msgOptions[subject]', 1, 255), SUBSTRING('$msgOptions[body]', 1, 65534), SUBSTRING('$posterOptions[name]', 1, 255), SUBSTRING('$posterOptions[email]', 1, 255), " . time() . ",
+		VALUES ($topicOptions[board], $topicOptions[id], $posterOptions[id], SUBSTRING('$msgOptions[subject]', 1, 255), SUBSTRING('$msgOptions[body]', 1, 65534), SUBSTRING('$parsedBody', 1, 65534), SUBSTRING('$posterOptions[name]', 1, 255), SUBSTRING('$posterOptions[email]', 1, 255), " . time() . ",
 			SUBSTRING('$posterOptions[ip]', 1, 255), " . ($msgOptions['smileys_enabled'] ? '1' : '0') . ", '', SUBSTRING('$msgOptions[icon]', 1, 16))", __FILE__, __LINE__);
 	$msgOptions['id'] = db_insert_id();
 
@@ -1867,8 +1869,10 @@ function modifyPost(&$msgOptions, &$topicOptions, &$posterOptions)
 		$messages_columns[] = "subject = '$msgOptions[subject]'";
 	if (isset($msgOptions['body']))
 	{
+		$msgOptions['parsed_body'] = mysql_real_escape_string(parse_bbc($msgOptions['body']));
+
 		$messages_columns[] = "body = '$msgOptions[body]'";
-		
+		$messages_columns[] = "parsed_body = '$msgOptions[parsed_body]'";		
 		if (!empty($modSettings['search_custom_index_config']))
 		{
 			$request = db_query("

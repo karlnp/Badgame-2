@@ -2041,7 +2041,7 @@ function getTopic()
 
 	// If you're modifying, get only those posts before the current one. (otherwise get all.)
 	$request = db_query("
-		SELECT IFNULL(mem.realName, m.posterName) AS posterName, m.posterTime, m.body, m.smileysEnabled, m.ID_MSG
+		SELECT IFNULL(mem.realName, m.posterName) AS posterName, m.posterTime, m.body, m.parsed_body, m.smileysEnabled, m.ID_MSG
 		FROM {$db_prefix}messages AS m
 			LEFT JOIN {$db_prefix}members AS mem ON (mem.ID_MEMBER = m.ID_MEMBER)
 		WHERE m.ID_TOPIC = $topic" . (isset($_REQUEST['msg']) ? "
@@ -2051,8 +2051,13 @@ function getTopic()
 	while ($row = mysql_fetch_assoc($request))
 	{
 		// Censor, BBC, ...
-		censorText($row['body']);
-		$row['body'] = parse_bbc($row['body'], $row['smileysEnabled'], $row['ID_MSG']);
+		if($row['parsed_body']){
+			censorText($row['parsed_body']);
+			$row['body'] = stripslashes($row['parsed_body']);
+		} else {
+			censorText($row['body']);
+			$row['body'] = parse_bbc($row['body'], $row['smileysEnabled'], $row['ID_MSG']);
+		}
 
 		// ...and store.
 		$context['previous_posts'][] = array(
