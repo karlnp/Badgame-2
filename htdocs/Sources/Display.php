@@ -731,7 +731,7 @@ function Display()
 			loadMemberData($posters);
 		$messages_request = db_query("
 			SELECT
-				ID_MSG, icon, subject, posterTime, posterIP, ID_MEMBER, modifiedTime, modifiedName, body,
+				ID_MSG, icon, subject, posterTime, posterIP, ID_MEMBER, modifiedTime, modifiedName, body, parsed_body,
 				smileysEnabled, posterName, posterEmail,
 				ID_MSG_MODIFIED < $topicinfo[new_from] AS isRead
 			FROM {$db_prefix}messages
@@ -816,7 +816,7 @@ function Display()
 // Callback for the message display.
 function prepareDisplayContext($reset = false)
 {
-	global $settings, $txt, $modSettings, $scripturl, $options, $user_info;
+	global $db_prefix, $settings, $txt, $modSettings, $scripturl, $options, $user_info;
 	global $memberContext, $context, $messages_request, $topic, $ID_MEMBER, $attachments;
 
 	static $counter = null;
@@ -884,12 +884,28 @@ function prepareDisplayContext($reset = false)
 	$memberContext[$message['ID_MEMBER']]['ip'] = $message['posterIP'];
 
 	// Do the censor thang.
-	censorText($message['body']);
 	censorText($message['subject']);
 
-	// Run BBC interpreter on the message.
-	$message['body'] = parse_bbc($message['body'], $message['smileysEnabled'], $message['ID_MSG']);
+	if(empty($message['parsed_body'])){
+		censorText($message['body']);
 
+		// Run BBC interpreter on the message.
+		$message['body'] = parse_bbc($message['body'], $message['smileysEnabled'], $message['ID_MSG']);
+		$escapedBody = mysql_real_escape_string($message['body']);
+
+		// Persist the parsed message so we don't have to do it again
+		db_query("
+			UPDATE {$db_prefix}messages
+			SET parsed_body = '$escapedBody'
+			WHERE ID_MSG = $message[ID_MSG]
+			LIMIT 1
+			", __FILE__, __LINE__);
+	} else {
+		censorText($message['parsed_body']);
+		$message['body'] = stripslashes($message['parsed_body']);
+	}
+
+	
 	// Compose the memory eat- I mean message array.
 	$output = array(
 		'attachment' => loadAttachmentContext($message['ID_MSG']),

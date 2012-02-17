@@ -8,3 +8,9 @@ create table if not exists smf_bg2_banners (
   approved bit default 0,
   id_approver mediumint references smf_members(id_member)
 );
+
+-- cache field (May need to run script with --force so this doesn't stop execution from progressing)
+ALTER TABLE smf_messages ADD parsed_body TEXT NOT NULL;
+
+-- Clear out cache field
+UPDATE smf_messages set parsed_body = '';
