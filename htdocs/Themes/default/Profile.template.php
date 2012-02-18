@@ -221,6 +221,16 @@ function template_summary()
 					<td><b>', $txt[604], ': </b></td>
 					<td>', $context['member']['yim']['link_text'], '</td>
 				</tr><tr>
+					<td><b>Steam Community:</b></td>
+					<td>', $context['member']['options']['profile_steam_id'], '<td>
+				</tr><tr>
+					<td><b>Xbox Live:</b></td>
+					<td>', $context['member']['options']['profile_xbox_live_id'], '<td>
+				</tr><tr>
+					<td><b>PSN:</b></td>
+					<td>', $context['member']['options']['profile_psn_id'], '<td>
+				</tr>
+				<tr>
 					<td><b>', $txt[69], ': </b></td>
 					<td>';
 
@@ -1433,9 +1443,26 @@ function template_forumProfile()
 							</tr><tr>
 								<td width="40%"><b>', $txt[604], ': </b><div class="smalltext">', $txt[602], '</div></td>
 								<td><input type="text" name="YIM" maxlength="32" size="24" value="', $context['member']['yim']['name'], '" /></td>
-							</tr><tr>
-								<td colspan="2"><hr width="100%" size="1" class="hrcolor" /></td>
 							</tr>';
+							
+	echo '
+		<tr>
+		<td><b>Steam ID: </b><div class="smalltext">This is your handle on Steam Community.</div></td>
+		<td><input type="text" name="default_options[profile_steam_id]" size="50" value="', @$context['member']['options']['profile_steam_id'], '" /></td>';
+
+	echo '
+		<tr>
+		<td><b>Xbox Live ID: </b><div class="smalltext">This is your Xbox Live gamertag.</div></td>
+		<td><input type="text" name="default_options[profile_xbox_live_id]" size="50" value="', @$context['member']['options']['profile_xbox_live_id'], '" /></td>';
+		
+	echo '
+		<tr>
+		<td><b>PSN ID: </b><div class="smalltext">This is your Playstation Network ID.</div></td>
+		<td><input type="text" name="default_options[profile_psn_id]" size="50" value="', @$context['member']['options']['profile_psn_id'], '" /></td>';
+
+	echo '<tr>
+								<td colspan="2"><hr width="100%" size="1" class="hrcolor" /></td>
+							</tr>';	
 
 	// Input box for custom titles, if they can edit it...
 	if (!empty($modSettings['titlesEnable']) && $context['allow_edit_title'])
@@ -1523,8 +1550,8 @@ function template_forumProfile()
 								<td width="40%"><b>', $txt[84], ': </b><div class="smalltext">', $txt[599], '</div></td>
 								<td><input type="text" name="websiteUrl" size="50" value="', $context['member']['website']['url'], '" /></td>
 							</tr>';
-
-	// If karma is enabled let the admin edit it...
+							
+ 	// If karma is enabled let the admin edit it...
 	if ($context['user']['is_admin'] && !empty($modSettings['karmaMode']))
 	{
 		echo '
