@@ -1,14 +1,10 @@
 jQuery.extend(Tipped.Skins, {
 	'badgame' : {
-		border: {size: 1, color: '#BABABA' },
-		background: {
-			color: [
-				{position: 0, color: '#FFFFFF'},
-				{position: 1, color: '#000000'}
-			]
-		},
-		background: '#ffffff',
+		border: {size: 0, color: '#000000' },
+		color: '#FFFFFF',
+		background: '#252525',
 		radius: 1,
-		hook: 'topmiddle'
+		hook: {target: 'topright', tooltip: 'bottomleft'},
+		offset: {x: -10}
 	}
 })

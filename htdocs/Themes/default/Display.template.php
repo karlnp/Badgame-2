@@ -10,7 +10,11 @@ function template_main()
 	<script language="JavaScript" type="text/javascript" src="js/resize-images.js"></script>
 	<script language="JavaScript" type="text/javascript">
 		$(document).ready(function() {
-			Tipped.create(".avatar-container", {skin: "badgame"});
+			$(".avatar-container img").each(function() {
+				var tooltipHtml = $(this).parent().attr("title");
+				$(this).parent().attr("title", "");
+				Tipped.create(this, tooltipHtml, {skin: "badgame"});
+			});
 		});
 	</script>
 <a name="top"></a>
@@ -274,7 +278,14 @@ function template_main()
 				<table width="100%" cellpadding="5" cellspacing="0" style="table-layout: fixed;">
 					<tr>
 						<td class="userinfo" valign="top" width="190px" height="200px"rowspan="2" style="overflow: hidden; ', !empty($options['center_avatars']) ? 'text-align: center' : '', '">
-							<b>', $message['member']['link'], '</b><br /><br />
+							<b>', $message['member']['link'], '</b><br />';
+
+		if ($message['can_see_ip']) {
+			echo '<div class="smalltext">', $message['member']['ip'], '</div>';
+		}
+		
+		echo '				
+							<br />
 							<div class="smalltext">';
 
 /*
@@ -332,7 +343,7 @@ function template_main()
 			*/
 			// Show avatars, images, etc.?
 			if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
-				$tooltipHtml = "<div style='padding: 8px'><b>" . $message["member"]["username"] . "</b><br />" . 
+				$tooltipHtml = "<div class='smalltext' style='padding: 8px; color: white'><b>" . $message["member"]["username"] . "</b><br />" . 
 					"Registered on " . $message["member"]["registered"] . "<br />" .
 					"Post count : " . $message["member"]["real_posts"] . "</div>";
 				echo '<div class="avatar-container" title="', $tooltipHtml, '" style="overflow: auto; margin-bottom: 2px">', 
