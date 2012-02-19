@@ -205,7 +205,7 @@ function template_main()
 	// Show the topic information - icon, subject, etc.
 	echo '
 <table width="100%" cellpadding="3" cellspacing="0" border="0" class="tborder" style="border-bottom: 0;">
-		<tr class="catbg3">
+		<tr class="catbg3" style="padding: 3px">
 				<td valign="middle" width="2%" style="padding-left: 6px;">
 						<img src="', $settings['images_url'], '/topic/', $context['class'], '.gif" align="bottom" alt="" />
 				</td>';
@@ -217,8 +217,9 @@ function template_main()
 		
 		echo '<td valign="middile" width="85%" id="top_subject">';
 		echo '<div class="thread-actions" style="float: right">';
-		echo '<div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Post Reply</span></div>';
-		echo '<div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/bin.png" /> <span class="button-text">Hide Thread</span></div>';
+		
+		template_thread_actions();
+		
 		echo '</div>';
 		echo '</td>';
 		echo '
@@ -599,8 +600,11 @@ function template_main()
 	}
 	
 	echo '
-	<tr class="catbg3"><td style="padding-top: 4px; padding-bottom: 4px; padding-right: 9px">',
-	'</td></tr>
+	<tr class="catbg3"><td style="padding-top: 4px; padding-bottom: 4px; padding-right: 9px">';
+	
+	template_thread_actions();
+	
+	echo '</td></tr>
 </table>
 <a name="lastPost"></a>';
 
@@ -613,12 +617,12 @@ function template_main()
 	echo '
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
 	<tr>
-		<td class="middletext">', $txt[139], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a href="#top"><b>' . $txt['topbottom4'] . '</b></a>' : '', '</td>
+		<td class="normaltext">', $txt[139], ': ', $context['page_index'], !empty($modSettings['topbottomEnable']) ? $context['menu_separator'] . ' &nbsp;&nbsp;<a href="#top"><b>' . $txt['topbottom4'] . '</b></a>' : '', '</td>
 		<td align="right" style="padding-right: 1ex;">
 			<table cellpadding="0" cellspacing="0">
 				<tr>
-					', template_button_strip($normal_buttons, 'top', true), '
-				</tr>
+					', // template_button_strip($normal_buttons, 'top', true), '
+				'</tr>
 			</table>
 		</td>
 	</tr>
@@ -655,11 +659,13 @@ echo '
 		<tr>';
 	if ($settings['linktree_inline'])
 			echo '
-				<td valign="top">', theme_linktree(), '</td> ';
+				<td valign="top" class="normaltext">', theme_linktree(), '</td> ';
 	echo '
-				<td valign="top" align="', !$context['right_to_left'] ? 'right' : 'left', '" class="nav"> ', $context['previous_next'], '</td>
+				<td valign="top" align="', !$context['right_to_left'] ? 'right' : 'left', '" class="nav"></td>
 		</tr>
-</table>';
+		</table>';
+
+		echo theme_linktree() . '<br />';
 
 	$mod_buttons = array(
 		'move' => array('test' => 'can_move', 'text' => 132, 'image' => 'admin_move.gif', 'lang' => true, 'url' => $scripturl . '?action=movetopic;topic=' . $context['current_topic'] . '.0'),
@@ -753,6 +759,42 @@ echo '
 	if ($context['show_spellchecking'])
 		echo '
 <form action="', $scripturl, '?action=spellcheck" method="post" accept-charset="', $context['character_set'], '" name="spell_form" id="spell_form" target="spellWindow"><input type="hidden" name="spellstring" value="" /></form>';
+}
+
+function template_thread_actions() {
+	global $context, $settings, $txt;
+	
+		if ($context['can_reply']) {
+			$replyUrl = $scripturl . '?action=post;topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'];
+			echo '<a href="', $replyUrl, '"><div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Reply</span></div></a>';
+		}
+		
+		echo '<div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/bin.png" /> <span class="button-text">Hide</span></div>';
+		
+		if ($context['can_add_poll']) {
+			$pollUrl = $scripturl . '?action=editpoll;add;topic=' . $context['current_topic'] . '.' . $context['start'] . ';sesc=' . $context['session_id'];
+			echo '<a href="', $pollUrl, '"><div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/chart_bar.png" /> <span class="button-text">Poll</span></div></a>';
+		}
+		
+		if ($context['can_move']) {
+			$moveUrl = $scripturl . '?action=movetopic;topic=' . $context['current_topic'] . '.0';
+			echo '<a href="', $moveUrl, '"><div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/table_go.png" /> <span class="button-text">Move</span></div></a>';
+		}
+
+		if ($context['can_delete']) {
+			$gasUrl = $scripturl . '?action=removetopic2;topic=' . $context['current_topic'] . '.0;sesc=' . $context['session_id'];
+			echo '<a href="', $gasUrl, '" onclick="return confirm(\'' . $txt[162] . '\');""><div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/thumb_down.png" /> <span class="button-text">Gas</span></div></a>';
+		}
+		
+		if ($context['can_lock']) {
+			$lockUrl = $scripturl . '?action=lock;topic=' . $context['current_topic'] . '.' . $context['start'] . ';sesc=' . $context['session_id'];
+			echo '<a href="', $lockUrl, '"><div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/', empty($context['is_locked']) ? 'lock.png' : 'lock_open.png', '" /> <span class="button-text">', empty($context['is_locked']) ? 'Lock' : 'Unlock', '</span></div></a>';
+		}
+		
+		if ($context['can_sticky']) {
+			$stickyUrl = $scripturl . '?action=sticky;topic=' . $context['current_topic'] . '.' . $context['start'] . ';sesc=' . $context['session_id'];
+			echo '<a href="', $stickyUrl, '"><div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/note.png" /> <span class="button-text">', empty($context['is_sticky']) ? 'Sticky' : 'Unsticky', '</span></div></a>';
+		}
 }
 
 function template_search_topic() {

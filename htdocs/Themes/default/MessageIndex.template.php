@@ -351,6 +351,7 @@ function template_main()
 	echo '
 	<div>', theme_linktree(), '<br /></div>';
 
+	/*
 	echo '
 	<div class="tborder">
 		<table cellpadding="8" cellspacing="0" width="100%" class="titlebg2">
@@ -388,6 +389,7 @@ function template_main()
 
 		/* Now go through each board - they all have:
 				id, name, child_level (how many parents they have, basically...), and is_current. (is this the current board?) */
+		/*
 		foreach ($category['boards'] as $board)
 		{
 			// Show some more =='s if this is a child, so as to make it look nice.
@@ -404,7 +406,8 @@ function template_main()
 			</tr>
 		</table>
 	</div>';
-
+	*/
+	
 	// Javascript for inline editing.
 	echo '
 <script language="JavaScript" type="text/javascript" src="' . $settings['default_theme_url'] . '/xml_board.js"></script>
