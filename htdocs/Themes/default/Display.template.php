@@ -542,17 +542,39 @@ function template_main()
 		echo '<td class="responses">';
 		
 		echo '<div class="member-actions">';
+		
 		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/emoticon_tongue.png" /> <span class="button-text">Profile</span></div>';
 		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/heart.png" /> <span class="button-text">Private</span></div>';
 		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/hourglass.png" /> <span class="button-text">History</span></div>';
 		echo '</div>';
 		
 		echo '<div class="post-actions">';
-		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Quote</span></div>';
-		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/pencil.png" /> <span class="button-text">Edit</span></div>';
-		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/cut_red.png" /> <span class="button-text">Split</span></div>';
-		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/cancel.png" /> <span class="button-text">Delete</span></div>';
-		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/tux.png" /> <span class="button-text">Report</span></div>';
+		
+		if ($context['can_reply']) {
+			$quoteUrl = $scripturl . '?action=post;quote=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'] . ';sesc=' . $context['session_id'];
+			echo '<a href="', $quoteUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Quote</span></div></a>';
+		}
+
+		if ($message['can_modify']) {
+			$editUrl  = $scripturl . '?action=post;msg=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';sesc=' . $context['session_id'];
+			echo '<a href="', $editUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/pencil.png" /> <span class="button-text">Edit</span></div></a>';
+		}
+
+		if ($context['can_split']) {
+			$splitUrl = $scripturl . '?action=splittopics;topic=' . $context['current_topic'] . '.0;at=' . $message['id'];
+			echo '<a href="', $splitUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/cut_red.png" /> <span class="button-text">Split</span></div></a>';
+		}
+		
+		if ($message['can_remove']) {
+			$removeUrl = $scripturl . '?action=deletemsg;topic=' . $context['current_topic'] . '.' . $context['start'] . ';msg=' .$message['id'] . ';sesc=' . $context['session_id'];
+			echo '<a href="', $removeUrl, '" onclick="return confirm(\'', $txt[154], '?\'); "><div class="action-button"><img src="', $settings['images_url'], '/silkicons/cancel.png" /> <span class="button-text">Delete</span></div></a>';
+		}
+
+		if ($context['can_report_moderator']) {
+			$reportUrl = $scripturl . '?action=reporttm;topic=' . $context['current_topic'] . '.' . $message['counter'] . ';msg=' . $message['id'];
+			echo '<a href="', $reportUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/tux.png" /> <span class="button-text">Report</span></div></a>';
+		
+		}
 		echo '</div>';
 		
 		echo '</td></tr>';
