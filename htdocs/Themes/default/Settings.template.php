@@ -27,6 +27,11 @@ function template_options()
 			'default' => false,
 		),
 		array(
+			'id' => 'show_banner',
+			'label' => $txt['show_banner'],
+			'default' => true,
+		),
+		array(
 			'id' => 'show_no_signatures',
 			'label' => $txt['show_no_signatures'],
 			'default' => true,

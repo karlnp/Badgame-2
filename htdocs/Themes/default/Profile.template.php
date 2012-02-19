@@ -1810,6 +1810,11 @@ function template_theme()
 											</td>
 										</tr><tr>
 											<td colspan="2">
+												<input type="hidden" name="default_options[show_banner]" value="0" />
+												<label for="show_banner"><input type="checkbox" name="default_options[show_banner]" id="show_banner" value="1"', !empty($context['member']['options']['show_banner']) ? ' checked="checked"' : '', ' class="check" /> ', $txt['show_banner'], '</label>
+											</td>
+										</tr><tr>
+											<td colspan="2">
 												<input type="hidden" name="default_options[show_no_signatures]" value="0" />
 												<label for="show_no_signatures"><input type="checkbox" name="default_options[show_no_signatures]" id="show_no_signatures" value="1"', !empty($context['member']['options']['show_no_signatures']) ? ' checked="checked"' : '', ' class="check" /> ', $txt['show_no_signatures'], '</label>
 											</td>

@@ -206,15 +206,18 @@ function template_news()
 
 function template_banner()
 {
-	global $context;
-	echo '<div id="banner-area">';
+	global $context, $options;
 	
-	if ($context['banner']) {
-		echo '<img src="', $context['banner']['filename'], '" banner-id="', $context['banner']['id'], '" title="Uploaded by ', $context['banner']['uploader_name'], '" />';
-	} else {
-		echo '<img src="banners/default.png" title="No banners found." />';
+	if (!empty($options['show_banner'])) {
+		echo '<div id="banner-area">';
+		
+		if ($context['banner']) {
+			echo '<img src="', $context['banner']['filename'], '" banner-id="', $context['banner']['id'], '" title="Uploaded by ', $context['banner']['uploader_name'], '" />';
+		} else {
+			echo '<img src="banners/default.png" title="No banners found." />';
+		}
+		echo '</div>';
 	}
-	echo '</div>';
 }
 
 function template_main_below()

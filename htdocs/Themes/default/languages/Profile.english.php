@@ -254,6 +254,7 @@ $txt[732] = 'Show board descriptions inside boards.';
 $txt['show_children'] = 'Show child boards on every page inside boards, not just the first.';
 $txt['show_no_avatars'] = 'Don\'t show users\' avatars.';
 $txt['center_avatars'] = 'Center users\' avatars.';
+$txt['show_banner'] = 'Show the banner above pages.';
 $txt['show_no_signatures'] = 'Don\'t show users\' signatures.';
 $txt['show_no_censored'] = 'Leave words uncensored.';
 $txt['calendar_start_day'] = 'First day of the week on the calendar';
