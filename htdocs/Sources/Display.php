@@ -886,7 +886,7 @@ function prepareDisplayContext($reset = false)
 	// Do the censor thang.
 	censorText($message['subject']);
 
-	if(empty($message['parsed_body'])) === ""){
+	if(empty($message['parsed_body']) || trim($message['parsed_body']) === ""){
 		censorText($message['body']);
 
 		// Run BBC interpreter on the message.

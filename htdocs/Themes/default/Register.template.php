@@ -117,6 +117,13 @@ function template_before()
 						<td>
 							<input type="password" name="passwrd2" size="30" tabindex="', $context['tabindex']++, '" />
 						</td>
+					</tr><tr>
+						<td width="40%">
+							<b>Spam Protection:</b><div class="smalltext" style="color: #EE2222">What colour is this text?</div>
+						</td>
+						<td>
+							<input type="text" name="textcolour" size="30" tabindex="', $context['tabindex']++, '" />
+						</td>
 					</tr>';
 
 	if ($context['visual_verification'])

@@ -2058,7 +2058,7 @@ function getTopic()
 			censorText($row['body']);
 			$row['body'] = parse_bbc($row['body'], $row['smileysEnabled'], $row['ID_MSG']);
 		}
-
+		
 		// ...and store.
 		$context['previous_posts'][] = array(
 			'poster' => $row['posterName'],

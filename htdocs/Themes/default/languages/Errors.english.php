@@ -289,6 +289,7 @@ $txt['loadavg_allunread_disabled'] = 'The server\'s resources are temporarily un
 $txt['loadavg_unreadreplies_disabled'] = 'The server is currently under high stress.  Please try again shortly.';
 $txt['loadavg_show_posts_disabled'] = 'Please try again later.  This member\'s posts are not currently available due to high load on the server.';
 
+$txt['text_colour_failed'] = 'You did not correctly specify the colour of the text. This means you are either a dog or a bot, and neither are welcome here. Sorry.';
 $txt['visual_verification_failed'] = 'The letters you typed don\'t match the letters that were shown in the picture.';
 
 ?>

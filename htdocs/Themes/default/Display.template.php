@@ -602,6 +602,8 @@ function template_main()
 	echo '
 	<tr class="catbg3"><td style="padding-top: 4px; padding-bottom: 4px; padding-right: 9px">';
 	
+	echo '<div id="hide-images" class="thread-action-button" style="float: left; margin-left: 0; padding-left: 4px">Hide Images</div>';
+	
 	template_thread_actions();
 	
 	echo '</td></tr>

@@ -167,6 +167,11 @@ function Register2()
 		fatal_lang_error('under_age_registration_prohibited', false, array($modSettings['coppaAge']));
 	}
 
+	// Check that it's red after all
+	if (!isset($_POST['textcolour']) || strtolower($_POST['textcolour']) !== "red") {
+		fatal_lang_error('text_colour_failed', false);
+	}
+	
 	// Check whether the visual verification code was entered correctly.
 	if ((empty($modSettings['disable_visual_verification']) || $modSettings['disable_visual_verification'] != 1) && (empty($_REQUEST['visual_verification_code']) || strtoupper($_REQUEST['visual_verification_code']) !== $_SESSION['visual_verification_code']))
 	{
