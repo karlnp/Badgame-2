@@ -39,8 +39,11 @@ function template_main()
 	</table>';
 	}
 	
-	echo '<div class="tborder">';
+	echo '<div class="tborder" style="padding: 10px">';
 	
+	foreach ($context['banners'] as $banner) {
+		echo '<img src="', $banner['filename'], '" title="Uploaded by ', $banner['uploader_name'], '" style="margin: 5px" />';
+	}
 	echo '</div>';
 }
 

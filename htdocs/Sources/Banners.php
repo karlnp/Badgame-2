@@ -49,9 +49,33 @@ function Banners()
 
 function BannerList()
 {
-	global $scripturl, $txt, $modSettings, $context, $settings;
+	global $scripturl, $txt, $modSettings, $context, $settings, $db_prefix;
 	
 	$context['page_title'] = "Banner List";
+	
+	$request = db_query("
+				SELECT banners.id, banners.id_uploader, banners.upload_time, banners.filename, banners.approved, members.ID_MEMBER, members.memberName
+				FROM {$db_prefix}bg2_banners AS banners, ${db_prefix}members AS members
+				WHERE banners.approved = true 
+				AND banners.id_uploader = members.ID_MEMBER
+				ORDER BY banners.upload_time DESC", __FILE__, __LINE__);
+					
+	$context['banners'] = array();
+		
+	while ($row = mysql_fetch_assoc($request))
+	{
+		$banner = array(
+			"id" => $row['id'],
+			"filename" => $row['filename'],
+			"time" => $row['upload_time'],
+			"uploader_id" => $row['id_uploader'],
+			"uploader_name" => $row['memberName']
+		);
+		
+		array_push($context['banners'], $banner);
+	}
+	
+	mysql_free_result($request);
 }
 
 function BannerUpload()
