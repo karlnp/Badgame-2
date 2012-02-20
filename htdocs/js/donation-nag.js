@@ -4,9 +4,9 @@ Badgame.DonationNag = this.Badgame.DonationNag || {};
 Badgame.DonationNag.RemindNextMonth = function() {
 	var now = new Date();
 	if (now.getMonth() == 11) {
-		nextReminder = new Date(now.getFullYear() + 1, 0, 1);
+		nextReminder = new Date(now.getFullYear() + 1, 0, 5);
 	} else {
-		nextReminder = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+		nextReminder = new Date(now.getFullYear(), now.getMonth() + 1, 5);
 	}
 	var reminderTime = nextReminder.getTime();
 	localStorage.setItem('nag.reminder', reminderTime);
