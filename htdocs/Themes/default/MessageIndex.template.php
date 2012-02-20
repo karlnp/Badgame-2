@@ -271,8 +271,8 @@ function template_main()
 			echo '		<td class="windowbg2" valign="middle" width="14%">
 							', $topic['first_post']['member']['link'], '
 						</td>
-						<td style="text-decoration: underline" class="windowbg' , $topic['is_sticky'] ? '3' : '' , '" valign="middle" width="4%" align="center">
-							<a href="#">', $topic['replies'], '</a>
+						<td class="windowbg' , $topic['is_sticky'] ? '3' : '' , '" valign="middle" width="4%" align="center">
+							', $topic['replies'], '
 						</td>
 						<td class="windowbg' , $topic['is_sticky'] ? '3' : '' , '" valign="middle" width="4%" align="center">
 							', $topic['views'], '

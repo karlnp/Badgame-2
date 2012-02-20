@@ -1,0 +1,976 @@
+/* BADGAME 2 */
+
+div#banner-area {
+	border: 1px solid black;
+	background-color: white;
+	width: 460px;
+	text-align: center;
+	margin: 0 auto;
+	margin-top: 12px;
+	padding: 8px;
+}
+
+div#news-area {
+	border: 1px solid #DD6666;
+	background-color: #FFCECE;
+	font-size: 1.6em;
+	width: 60%;
+	margin: 0 auto;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 10px;
+}
+
+div.topic-search {
+	width: 310px;
+	
+	background: url("images/mirrortab_back.gif") repeat-x;
+	
+	padding-top: 3px;
+	padding-right: 10px;
+	padding-left: 2px;
+	color: white;
+	font-weight: bold;
+}
+
+.userinfo {
+	border-right: 1px solid #555;
+	padding: 5px;
+}
+
+.postinfo, .responses {
+	border-top: 1px solid #555;
+}
+
+.postinfo {
+	border-right: 1px solid #555;
+}
+
+.thread-title {
+	font-size: 2em;
+	font-weight: bold;
+}
+
+.thread-action-button, .action-button, .view-action-button {
+	margin-left: 8px;
+	
+	height: 14px;
+	padding-left: 2px;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	padding-right: 6px;
+	
+	color: #333;
+	border: 1px solid #555;
+	border-top: 1px solid #AAA;
+	border-left: 1px solid #AAA;
+		
+	cursor: pointer;
+	font-size: 12px;
+	min-width: 65px;
+
+	background: #f2f2f2; /* Old browsers */
+	background: -moz-linear-gradient(top, #f2f2f2 0%, #c4c4c4 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f2f2f2), color-stop(100%,#c4c4c4)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #f2f2f2 0%,#c4c4c4 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #f2f2f2 0%,#c4c4c4 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #f2f2f2 0%,#c4c4c4 100%); /* IE10+ */
+	background: linear-gradient(top, #f2f2f2 0%,#c4c4c4 100%); /* W3C */
+}
+
+.action-button:hover {
+	background: #bcbcbc; /* Old browsers */
+	background: -moz-linear-gradient(top, #bcbcbc 0%, #8b99b5 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bcbcbc), color-stop(100%,#8b99b5)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #bcbcbc 0%,#8b99b5 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #bcbcbc 0%,#8b99b5 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #bcbcbc 0%,#8b99b5 100%); /* IE10+ */
+	background: linear-gradient(top, #bcbcbc 0%,#8b99b5 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bcbcbc', endColorstr='#8b99b5',GradientType=0 ); /* IE6-9 */
+	
+	border: 1px solid #333;
+	border-top: 1px solid #777;
+	border-left: 1px solid #777;
+}
+
+.action-button:active {
+	background: #606060; /* Old browsers */
+	background: -moz-linear-gradient(top, #606060 0%, #1e1e1e 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#606060), color-stop(100%,#1e1e1e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* IE10+ */
+	background: linear-gradient(top, #606060 0%,#1e1e1e 100%); /* W3C */
+	
+	color: white;
+	
+	border: 1px solid #333;
+	border-top: 1px solid #777;
+	border-left: 1px solid #777;
+}
+
+.thread-action-button {
+	float: right;
+	border: 1px solid #2B3440;
+	border-top: 1px solid #89A5C9;
+	border-left: 1px solid #89A5C9;
+	
+	color: white;
+	
+	background: #507b9e; /* Old browsers */
+	background: -moz-linear-gradient(top, #507b9e 0%, #394c6b 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#507b9e), color-stop(100%,#394c6b)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #507b9e 0%,#394c6b 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #507b9e 0%,#394c6b 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #507b9e 0%,#394c6b 100%); /* IE10+ */
+	background: linear-gradient(top, #507b9e 0%,#394c6b 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#507b9e', endColorstr='#394c6b',GradientType=0 ); /* IE6-9 */
+}
+
+.thread-action-button:hover {
+	background: #3b5c84; /* Old browsers */
+	background: -moz-linear-gradient(top, #3b5c84 0%, #233b60 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3b5c84), color-stop(100%,#233b60)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #3b5c84 0%,#233b60 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #3b5c84 0%,#233b60 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #3b5c84 0%,#233b60 100%); /* IE10+ */
+	background: linear-gradient(top, #3b5c84 0%,#233b60 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b5c84', endColorstr='#233b60',GradientType=0 ); /* IE6-9 */
+	
+	border: 1px solid #333;
+	border-top: 1px solid #777;
+	border-left: 1px solid #777;
+}
+
+.thread-action-button:active {
+	background: #606060; /* Old browsers */
+	background: -moz-linear-gradient(top, #606060 0%, #1e1e1e 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#606060), color-stop(100%,#1e1e1e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* IE10+ */
+	background: linear-gradient(top, #606060 0%,#1e1e1e 100%); /* W3C */
+	
+	border: 1px solid #333;
+	border-top: 1px solid #777;
+	border-left: 1px solid #777;
+}
+
+.member-actions .action-button {
+	float: left;
+	margin-left: 0;
+	margin-right: 8px; 
+}
+
+.post-actions .action-button {
+	float: right;
+}
+
+.button-text {
+	float: right;
+}
+
+.thread-action-hide {
+	background-image: url('images/silkicons/bin.png');
+}
+
+.member-actions {
+	float: left;
+}
+
+.post-actions {
+	float: right;
+}
+
+.thread-list-pages {
+	margin-top: 2px;
+}
+
+#nagbox {
+
+	/* overlay is hidden before loading */
+	display:none;
+
+	/* standard decorations */
+	width:600px;
+	
+	/* for modern browsers use semi-transparent color on the border. nice! */
+	border:5px solid #343434;
+
+	/* hot CSS3 features for mozilla and webkit-based browsers (rounded borders) */
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	
+	background-color: white;
+	background-image:url(images/nag-beandog.png);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	
+	min-height: 80px;
+	padding: 16px;
+}
+
+#nagbox h1 {
+	margin-top: 0;
+}
+
+#nagbox .nagbutton {
+	background: #eeeeee; /* Old browsers */
+	background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* IE10+ */
+	background: linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* W3C */
+	
+	border: 2px solid #333;
+	color: #222;
+	font-weight: bold;
+	
+	width: 280px;
+	
+	margin: 4px;
+	padding: 2px;
+	
+	cursor: pointer;
+}
+
+#nagbox .nagbutton:hover {
+	background: #d1d6cd; /* Old browsers */
+	background: -moz-linear-gradient(top, #d1d6cd 0%, #838c81 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d1d6cd), color-stop(100%,#838c81)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* IE10+ */
+	background: linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* W3C */
+}
+
+#nagbox .positive-nagbutton {
+	background: #fefcea; /* Old browsers */
+	background: -moz-linear-gradient(top, #fefcea 0%, #f1da36 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefcea), color-stop(100%,#f1da36)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* IE10+ */
+	background: linear-gradient(top, #fefcea 0%,#f1da36 100%); /* W3C */
+	
+	font-size: 1.1em;
+}
+
+#nagbox .positive-nagbutton:hover {
+	background: #ffc578; /* Old browsers */
+	background: -moz-linear-gradient(top, #ffc578 0%, #fb9d23 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc578), color-stop(100%,#fb9d23)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* IE10+ */
+	background: linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* W3C */
+}
+
+/* close button positioned on upper right corner */
+#nagbox .close {
+	background-image:url(images/close.png);
+	position:absolute;
+	left:-18px;
+	top:-14px;
+	cursor:pointer;
+	height:28px;
+	width:28px;
+}
+
+.banner-help {
+	
+	margin: 10px;
+	/* for modern browsers use semi-transparent color on the border. nice! */
+	border:3px solid #8694A8;
+	
+	background-color: #DFE5F0;
+	background-image:url(images/nag-beandog.png);
+	background-repeat: no-repeat;
+	background-position: bottom right;
+	
+	min-height: 80px;
+	padding: 16px;
+	
+	padding-right: 220px;
+	padding-bottom: 0;
+}
+
+.banner-help h1 {
+	margin: 5px;
+	margin-top: 0;
+}
+
+.queued-banner {
+	margin: 10px;
+}
+
+.badgame-message {
+	width: 50%;
+	margin: 10px auto;
+	text-align: center;
+	padding: 5px;
+	border: 1px solid #454545;
+}
+
+.resized-image {
+	position: relative;
+	width: 100%;
+}
+
+.zoomtip {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	font-size: 10px;
+	padding: 1px 1px 2px 2px;
+	background-color: white;
+	color: black;
+	opacity: 0.8;
+	border: 1px solid black;
+	font-family: sans-serif;
+}
+
+.lastReadButton {
+	background: #eeeeee; /* Old browsers */
+	background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Opera11.10+ */
+	background: -ms-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* IE10+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+	background: linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* W3C */
+	
+	border: 1px solid #A5A5A5;
+}
+
+.lastReadClearButton
+{
+	font-weight: bold;
+	color: #E57575;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+
+.newPostCount {
+	border-left: 0;
+	font-weight: bold;
+	color: #656565;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 20px;
+	padding-right: 4px;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+
+.threadrow #hidebutton {
+	display: none;
+	cursor: pointer;
+	opacity: 0.6;
+}
+
+.threadrow:hover #hidebutton {
+	display: inline;
+}
+
+.hidden-thread * {
+	background-color: #FFD5D5 !important;
+}
+
+.spoiler {
+	background-color: #242424;
+	color: #242424;
+	padding: 2px;
+}
+
+.spoiler:hover {
+	color: #FFFFFF;
+}
+
+ul.smilies {
+	margin: 0;
+}
+
+ul.smilies li {
+	min-height: 35px;
+	list-style: none;
+	float: left;
+	width: 95px;
+	height: 50px;
+	margin: 8px 3px;
+	overflow: hidden;
+	text-align: center;
+	border: 1px solid #DBDBDB;
+	padding: 8px;
+}
+
+ul.smilies li:hover {
+	background-color: #EAEAEA;
+}
+
+.post-icon {
+	float: left;
+	min-width: 96px;
+}
+
+.post-icon input {
+	margin: 0;
+	padding: 0;
+	margin-left: 6px;
+	margin-right: 4px;
+}
+.post-icon img {
+	padding-bottom: 8px;
+}
+/* Normal, standard links. */
+a:link
+{
+	color: #476C8E;
+	text-decoration: none;
+}
+a:visited
+{
+	color: #476C8E;
+	text-decoration: none;
+}
+a:hover
+{
+	text-decoration: underline;
+}
+
+/* Navigation links - for the link tree. */
+.nav, .nav:link, .nav:visited
+{
+	color: #000000;
+	text-decoration: none;
+}
+a.nav:hover
+{
+	color: #cc3333;
+	text-decoration: underline;
+}
+
+/* Tables should show empty cells. */
+table
+{
+	empty-cells: show;
+}
+
+/* By default (td, body..) use verdana in black. */
+body, td, th , tr
+{
+	color: #000000;
+	font-size: small;
+	font-family: verdana, sans-serif;
+}
+
+/* The main body of the entire forum. */
+body
+{
+	background-color: #E5E5E8;
+	margin: 0px;
+	padding: 0px 30px 4px 30px;
+}
+
+/* Input boxes - just a bit smaller than normal so they align well. */
+input, textarea, button
+{
+	color: #000000;
+	font-family: verdana, sans-serif;
+}
+input, button
+{
+	font-size: 90%;
+}
+
+textarea
+{
+	font-size: 100%;
+	color: #000000;
+	font-family: verdana, sans-serif;
+}
+
+/* All input elements that are checkboxes or radio buttons. */
+input.check
+{
+}
+
+/* Selects are a bit smaller, because it makes them look even better 8). */
+select
+{
+	font-size: 90%;
+	font-weight: normal;
+	color: #000000;
+	font-family: verdana, sans-serif;
+}
+
+/* Standard horizontal rule.. ([hr], etc.) */
+hr, .hrcolor
+{
+	height: 1px;
+	border: 0;
+	color: #666666;
+	background-color: #666666;
+}
+
+/* No image should have a border when linked */
+a img
+{
+	border: 0;
+}
+
+/* A code block - maybe even PHP ;). */
+.code
+{
+	color: #000000;
+	background-color: #dddddd;
+	font-family: "courier new", "times new roman", monospace;
+	line-height: 1.3em;
+	/* Put a nice border around it. */
+	border: 1px solid #242424;
+	border-left: 3px solid #242424;
+	padding: 1px;
+	/* Don't wrap its contents, and show scrollbars. */
+	white-space: nowrap;
+	overflow: auto;
+	padding: 12px;
+	/* Stop after about 24 lines, and just show a scrollbar. */
+	max-height: 24em;
+}
+
+/* The "Quote:" and "Code:" header parts... */
+.quoteheader, .codeheader, .nwsheader, .spoilerheader, .tldrheader
+{
+	padding: 5px 8px;
+	background-image: url('images/cockhead.png');
+	background-repeat: no-repeat;
+	background-position: right;
+	text-decoration: none;
+	background-color: #BECBE0;
+	border: 1px solid #8293BA;
+	border-left: 3px solid #8293BA;
+	border-bottom: 0;
+	font-style: normal;
+	font-weight: bold;
+	font-size: x-small;
+	line-height: 1.2em;
+}
+
+.codeheader
+{
+	background-image: url('images/glasses.png');
+	background-color: #DDD;
+	border: 1px solid #242424;
+	border-left: 3px solid #242424;
+	border-bottom: 0;
+}
+
+.hiddenheader 
+{
+	cursor: pointer;
+}
+
+.nwsheader
+{
+	background-image: url('images/lilies.png');
+	background-color: #EEE3E8;
+	border: 1px solid #AE8EAC;
+	border-left: 3px solid #AE8EAC;
+	color: #757575;
+}
+
+.nwsblock
+{
+	color: #454545;
+	background-color: #EEE3E8;
+	border: 1px solid #AE8EAC;
+	border-left: 3px solid #AE8EAC;
+	border-top: 0;
+}
+
+.spoilerheader
+{
+	background-image: url('images/aeris.png');
+	border: 1px solid black;
+	border-left: 3px solid black;
+	background-color: #454545;
+	color: #FFFFFF;
+}
+
+.spoilerblock
+{
+	background-color: #454545;
+	color: #FFFFFF;
+	border: 1px solid black;
+	border-left: 3px solid black;
+	border-top: 0;
+}
+
+.tldrheader
+{
+	background-image: url('images/tree.png');
+	font-family: "Garamond", "Georgia", "Times New Roman", serif;
+	border: 1px solid #242424;
+	font-size: 1.0em;
+	border-left: 3px solid #242424;
+	background-color: #F0EFE9;
+	color: #242424;
+}
+
+.tldrblock
+{
+	background-color: #F0EFE9;
+	font-family: "Georgia", "Century Schoolbook L", "Times New Roman", "Times", serif;
+	border: 1px solid #242424;
+	border-left: 3px solid #242424;
+	border-top: 0;
+	font-size: 1.1em;
+	line-height: 160%;
+}
+
+.hiddenblock
+{
+	padding: 12px;
+	display: none;
+}
+
+/* A quote, perhaps from another post. */
+.quote
+{
+	color: #555;
+	background-color: #DFE5F0;
+	border: 1px solid #8293BA;
+	border-left: 3px solid #8293BA;
+	padding: 12px;
+	font-family: Georgia, times new roman;
+	margin-bottom: 8px;
+}
+
+/* Generally, those [?] icons.  This makes your cursor a help icon. */
+.help
+{
+	cursor: help;
+}
+
+/* /me uses this a lot. (emote, try typing /me in a post.) */
+.meaction
+{
+	color: red;
+}
+
+/* The main post box - this makes it as wide as possible. */
+.editor
+{
+	width: 96%;
+}
+
+/* Highlighted text - such as search results. */
+.highlight
+{
+	background-color: yellow;
+	font-weight: bold;
+	color: black;
+}
+
+/* Alternating backgrounds for posts, and several other sections of the forum. */
+.windowbg, #preview_body
+{
+	color: #232323;
+	background-color: #FAFAFA;
+}
+.windowbg2
+{
+	color: #232323;
+	background-color: #DFDFDF;
+}
+.windowbg3
+{
+	color: #000000;
+	background-color: #E0E1E8;
+}
+/* the today container in calendar */
+.calendar_today
+{
+	background-color: #FFFFFF;
+}
+
+.signature img
+{
+	max-height: 150px;
+}
+/* These are used primarily for titles, but also for headers (the row that says what everything in the table is.) */
+.titlebg, tr.titlebg th, tr.titlebg td, .titlebg2, tr.titlebg2 th, tr.titlebg2 td
+{
+	color: black;
+	font-style: normal;
+	background: url(images/titlebg.jpg) #E9F0F6 repeat-x;
+	border-bottom: solid 1px #9BAEBF;
+	border-top: solid 1px #FFFFFF;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.titlebg, .titlebg a:link, .titlebg a:visited
+{
+	font-weight: bold;
+	color: black;
+	font-style: normal;
+}
+
+.titlebg a:hover
+{
+	color: #404040;
+}
+/* same as titlebg, but used where bold text is not needed */
+.titlebg2 a:link, .titlebg2 a:visited
+{
+	color: black;
+	font-style: normal;
+	text-decoration: underline;
+}
+
+.titlebg2 a:hover
+{
+	text-decoration: underline;
+}
+
+/* This is used for categories, page indexes, and several other areas in the forum.
+.catbg and .catbg2 is for boardindex, while .catbg3 is for messageindex and display headers*/
+.catbg , tr.catbg td , .catbg3 , tr.catbg3 td
+{
+	/* background: url(images/catbg.jpg) #88A6C0 repeat-x; */
+	background-color: #8694A8;
+	color: #ffffff;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.catbg2 , tr.catbg2 td
+{
+	background: url(images/catbg2.jpg) #A1BFD9 repeat-x;
+	color: #ffffff;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.catbg, .catbg2, .catbg3
+{
+	border-bottom: solid 1px #375576;
+}
+.catbg, .catbg2
+{
+	font-weight: bold;
+}
+.catbg3, tr.catbg3 td, .catbg3 a:link, .catbg3 a:visited
+{
+	font-size: 95%;
+	color: white;
+	text-decoration: none;
+}
+.catbg a:link, .catbg a:visited , .catbg2 a:link, .catbg2 a:visited
+{
+	color: white;
+	text-decoration: none;
+}
+.catbg a:hover, .catbg2 a:hover, .catbg3 a:hover
+{
+	color: #e0e0ff;
+}
+/* This is used for tables that have a grid/border background color (such as the topic listing.) */
+.bordercolor
+{
+	background-color: #ADADAD;
+	padding: 0px;
+}
+
+/* This is used on tables that should just have a border around them. */
+.tborder
+{
+	padding: 1px;
+	border: 1px solid #696969;
+	background-color: #FFFFFF;
+}
+
+/* Default font sizes: small (8pt), normal (10pt), and large (14pt). */
+.smalltext
+{
+	font-size: x-small;
+	font-family: verdana, sans-serif;
+}
+.middletext
+{
+	font-size: 90%;
+}
+.normaltext
+{
+	font-size: small;
+}
+.largetext
+{
+	font-size: large;
+}
+
+
+/* Posts and personal messages displayed throughout the forum. */
+.post, .personalmessage
+{
+	width: 100%;
+	overflow: auto;
+	line-height: 1.3em;
+}
+
+/* All the signatures used in the forum.  If your forum users use Mozilla, Opera, or Safari, you might add max-height here ;). */
+.signature
+{
+	width: 100%;
+	overflow: hidden;
+	line-height: 1.3em;
+	max-height: 160px;
+	padding: 3px;
+}
+
+/* Sometimes there will be an error when you post */
+.error
+{
+	color: red;
+}
+
+
+/* definitions for the main tab, active means the tab reflects which page is displayed */
+.maintab_first, .maintab_back, .maintab_last, .maintab_active_first, .maintab_active_back, .maintab_active_last
+{
+	color: white;
+	text-transform: uppercase;
+	vertical-align: top;
+}
+.maintab_back, .maintab_active_back
+{
+	color: white;
+	text-decoration: none;
+	font-size:  9px;
+	vertical-align: top;
+	padding: 2px 6px 6px 6px;
+	font-family: tahoma, sans-serif;
+}
+
+.maintab_first
+{
+	background: url(images/maintab_first.gif) left bottom no-repeat;
+	width: 10px;
+}
+.maintab_back
+{
+	background: url(images/maintab_back.gif) left bottom repeat-x;
+}
+.maintab_last
+{
+	background: url(images/maintab_last.gif) left bottom no-repeat;
+	width: 8px;
+}
+.maintab_active_first
+{
+	background: url(images/maintab_active_first.gif) left bottom no-repeat;
+	width: 6px;
+}
+.maintab_active_back
+{
+	background: url(images/maintab_active_back.gif) left bottom repeat-x;
+}
+.maintab_active_last
+{
+	background: url(images/maintab_active_last.gif) left bottom no-repeat;
+	width: 8px;
+}
+
+/* how links behave in main tab. */
+.maintab_back a:link , .maintab_back a:visited, .maintab_active_back a:link , .maintab_active_back a:visited
+{
+	color: white;
+	text-decoration: none;
+}
+
+.maintab_back a:hover, .maintab_active_back a:hover
+{
+	color: #e0e0ff;
+	text-decoration: none;
+}
+/* definitions for the mirror tab */
+.mirrortab_first, .mirrortab_back, .mirrortab_last, .mirrortab_active_first, .mirrortab_active_back, .mirrortab_active_last
+{
+	color: white;
+	text-transform: uppercase;
+	vertical-align: top;
+}
+.mirrortab_back, .mirrortab_active_back
+{
+	color: white;
+	text-decoration: none;
+	font-size: 9px;
+	vertical-align: bottom;
+	padding: 6px 6px 2px 6px;
+	font-family: tahoma, sans-serif;
+}
+
+.mirrortab_first
+{
+	background: url(images/mirrortab_first.gif) no-repeat;
+	width: 10px;
+}
+.mirrortab_back
+{
+	background: url(images/mirrortab_back.gif) repeat-x;
+}
+.mirrortab_last
+{
+	background: url(images/mirrortab_last.gif) no-repeat;
+	width: 6px;
+}
+.mirrortab_active_first
+{
+	background: url(images/mirrortab_active_first.gif) no-repeat;
+	width: 6px;
+}
+.mirrortab_active_back
+{
+	background: url(images/mirrortab_active_back.gif) repeat-x;
+}
+.mirrortab_active_last
+{
+	background: url(images/mirrortab_active_last.gif) no-repeat;
+	width: 8px;
+}
+
+/* how links behave in mirror tab. */
+.mirrortab_back a:link , .mirrortab_back a:visited, .mirrortab_active_back a:link , .mirrortab_active_back a:visited
+{
+	color: white;
+	text-decoration: none;
+}
+
+.mirrortab_back a:hover, .mirrortab_active_back a:hover
+{
+	color: #e0e0ff;
+	text-decoration: none;
+}
+
+.windowbg a, .windowbg2 a, .windowbg3 a 
+{
+	color: #454545;
+}
+
+/* The AJAX notifier */
+#ajax_in_progress
+{
+	background: #32CD32;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18pt;
+	padding: 3px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
