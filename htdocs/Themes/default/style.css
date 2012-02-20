@@ -378,6 +378,52 @@ div.topic-search {
 .hidden-thread * {
 	background-color: #FFD5D5 !important;
 }
+
+.spoiler {
+	background-color: #242424;
+	color: #242424;
+	padding: 2px;
+}
+
+.spoiler:hover {
+	color: #FFFFFF;
+}
+
+ul.smilies {
+	margin: 0;
+}
+
+ul.smilies li {
+	min-height: 35px;
+	list-style: none;
+	float: left;
+	width: 95px;
+	height: 50px;
+	margin: 8px 3px;
+	overflow: hidden;
+	text-align: center;
+	border: 1px solid #DBDBDB;
+	padding: 8px;
+}
+
+ul.smilies li:hover {
+	background-color: #EAEAEA;
+}
+
+.post-icon {
+	float: left;
+	min-width: 96px;
+}
+
+.post-icon input {
+	margin: 0;
+	padding: 0;
+	margin-left: 6px;
+	margin-right: 4px;
+}
+.post-icon img {
+	padding-bottom: 8px;
+}
 /* Normal, standard links. */
 a:link
 {

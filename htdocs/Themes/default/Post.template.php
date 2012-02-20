@@ -166,6 +166,20 @@ function template_main()
 					if (document.forms.postmodify.elements[i].name.indexOf("options") == 0)
 						document.forms.postmodify.elements[i].value = document.forms.postmodify.elements[i].value.replace(/&#/g, "&#38;#");
 			}';
+			
+	// Smilies
+	echo '
+		var currentSmileySwap = true;
+		function swapSmileys() {
+			
+			document.getElementById("smileysExpand").src = smf_images_url + "/" + (currentSmileySwap ? "collapse.gif" : "expand.gif");
+			document.getElementById("smileysExpand").alt = currentSmileySwap ? "-" : "+";
+			
+			document.getElementById("smiley-container").style.display = currentSmileySwap ? "" : "none";
+			
+			currentSmileySwap = !currentSmileySwap;
+		}
+	';
 
 
 	// Code for showing and hiding additional options.
@@ -433,24 +447,24 @@ function template_main()
 								<td>
 									<input type="text" name="subject"', $context['subject'] == '' ? '' : ' value="' . $context['subject'] . '"', ' tabindex="', $context['tabindex']++, '" size="80" maxlength="80" />
 								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<b>', $txt[71], ':</b>
-								</td>
-								<td>
-									<select name="icon" id="icon" onchange="showimage()">';
-
-	// Loop through each message icon allowed, adding it to the drop down list.
-	foreach ($context['icons'] as $icon)
-		echo '
-										<option value="', $icon['value'], '"', $icon['value'] == $context['icon'] ? ' selected="selected"' : '', '>', $icon['name'], '</option>';
-
-	echo '
-									</select>
-									<img src="', $context['icon_url'], '" name="icons" hspace="15" alt="" />
-								</td>
 							</tr>';
+	
+	if ($context['is_new_topic']) {
+		echo '					<tr>
+									<td align="right">
+										<b>', $txt[71], ':</b>
+									</td>
+									<td>';
+		
+		echo '<div class="post-icons">';
+		
+		foreach($context['icons'] as $icon) {
+			echo '<div class="post-icon"><input type="radio" name="icon" value="', $icon['value'], '"><img src="', $icon['url'], '" align="middle", alt="', $icon['name'], '" width="60" height="15" /></div>';
+		}
+									
+		echo '					</div></td>
+								</tr>';					
+	}
 
 	// If this is a poll then display all the poll options!
 	if ($context['make_poll'])
@@ -520,11 +534,47 @@ function template_main()
 										</td>
 									</tr>';
 
+	echo '
+			<tr><td></td>
+				<td>
+					<a href="javascript:swapSmilies();"><img src="', $settings['images_url'], '/expand.gif" alt="+" id="smileysExpand" /></a> <a href="javascript:swapSmileys();"><b>', 'Show smileys...', '</b></a>
+				</td>
+			</tr>';
+	// Now start printing all of the smileys.
+	if (!empty($context['smileys']['postform']))
+	{
+		echo '
+			<tr>
+				<td align="right"></td>
+				<td valign="middle"><div id="smiley-container" style="display: none">';
+
+		echo '<ul class="smilies">';
+		// Show each row of smileys ;).
+		foreach ($context['smileys']['postform'] as $smiley_row)
+		{
+			
+			foreach ($smiley_row['smileys'] as $smiley)
+				echo '
+					<a href="javascript:void(0);" onclick="replaceText(\' ', $smiley['code'], '\', document.forms.', $context['post_form'], '.', $context['post_box_name'], '); return false;"><li class="smiley"><img src="', $settings['smileys_url'], '/', $smiley['filename'], '" align="bottom" alt="', $smiley['description'], '" title="', $smiley['description'], '" /></li></a>';
+
+		}
+		echo '</ul>';
+
+		// If the smileys popup is to be shown... show it!
+		if (!empty($context['smileys']['popup']))
+			echo '
+					<a href="javascript:moreSmileys();">[', $txt['more_smileys'], ']</a>';
+
+		echo '
+				</div></td>
+			</tr>';
+	}
+	
 	// If the admin has enabled the hiding of the additional options - show a link and image for it.
 	if (!empty($settings['additional_options_collapsable']))
 		echo '
-									<tr>
-										<td colspan="2" style="padding-left: 5ex;">
+									<tr><td></td>
+										<td>
 											<a href="javascript:swapOptions();"><img src="', $settings['images_url'], '/expand.gif" alt="+" id="postMoreExpand" /></a> <a href="javascript:swapOptions();"><b>', $txt['post_additionalopt'], '</b></a>
 										</td>
 									</tr>';
@@ -557,6 +607,7 @@ function template_main()
 										</td>
 									</tr>';
 
+	/*
 	// If this post already has attachments on it - give information about them.
 	if (!empty($context['current_attachments']))
 	{
@@ -620,7 +671,8 @@ function template_main()
 								</td>
 							</tr>';
 	}
-
+	*/
+	
 	// Finally, the submit buttons.
 	echo '
 							<tr>
@@ -773,8 +825,6 @@ function template_postbox(&$message)
 			array(),
 			'size' => array('code' => 'size', 'before' => '[size=10pt]', 'after' => '[/size]', 'description' => $txt[532]),
 			'face' => array('code' => 'font', 'before' => '[font=Verdana]', 'after' => '[/font]', 'description' => $txt[533]),
-		);
-		$context['bbc_tags'][] = array(
 			'flash' => array('code' => 'flash', 'before' => '[flash=200,200]', 'after' => '[/flash]', 'description' => $txt[433]),
 			'img' => array('code' => 'img', 'before' => '[img]', 'after' => '[/img]', 'description' => $txt[435]),
 			'url' => array('code' => 'url', 'before' => '[url]', 'after' => '[/url]', 'description' => $txt[257]),
@@ -793,6 +843,11 @@ function template_postbox(&$message)
 			'quote' => array('code' => 'quote', 'before' => '[quote]', 'after' => '[/quote]', 'description' => $txt[260]),
 			array(),
 			'list' => array('code' => 'list', 'before' => '[list]\n[li]', 'after' => '[/li]\n[li][/li]\n[/list]', 'description' => $txt[261]),
+			array(),
+			'youtube' => array('code' => 'youtube', 'before' => '[youtube]', 'after' => '[/youtube]', 'description' => 'Youtube'),
+			'nws' => array('code' => 'nws', 'before' => '[nws]', 'after' => '[/nws]', 'description' => 'Not work safe!'),
+			'blockspoiler' => array('code' => 'blockspoiler', 'before' => '[blockspoiler]', 'after' => '[/blockspoiler]', 'description' => 'Block Spoiler'),
+			'tldr' => array('code' => 'tldr', 'before' => '[tldr]', 'after' => '[/tldr]', 'description' => 'Too Long Didn\'t Read'),
 		);
 
 		$found_button = false;
@@ -827,6 +882,7 @@ function template_postbox(&$message)
 		}
 
 		// Print a drop down list for all the colors we allow!
+		/*
 		if (!isset($context['disabled_tags']['color']))
 			echo ' <select onchange="surroundText(\'[color=\' + this.options[this.selectedIndex].value.toLowerCase() + \']\', \'[/color]\', document.forms.', $context['post_form'], '.', $context['post_box_name'], '); this.selectedIndex = 0; document.forms.', $context['post_form'], '.', $context['post_box_name'], '.focus(document.forms.', $context['post_form'], '.', $context['post_box_name'], '.caretPos);" style="margin-bottom: 1ex;">
 							<option value="" selected="selected">', $txt['change_color'], '</option>
@@ -845,6 +901,8 @@ function template_postbox(&$message)
 							<option value="Maroon">', $txt[274], '</option>
 							<option value="LimeGreen">', $txt[275], '</option>
 						</select>';
+		 *
+		 */
 		echo '<br />';
 
 		$found_button = false;
@@ -876,36 +934,6 @@ function template_postbox(&$message)
 				$found_button = false;
 			}
 		}
-
-		echo '
-				</td>
-			</tr>';
-	}
-
-	// Now start printing all of the smileys.
-	if (!empty($context['smileys']['postform']))
-	{
-		echo '
-			<tr>
-				<td align="right"></td>
-				<td valign="middle">';
-
-		// Show each row of smileys ;).
-		foreach ($context['smileys']['postform'] as $smiley_row)
-		{
-			foreach ($smiley_row['smileys'] as $smiley)
-				echo '
-					<a href="javascript:void(0);" onclick="replaceText(\' ', $smiley['code'], '\', document.forms.', $context['post_form'], '.', $context['post_box_name'], '); return false;"><img src="', $settings['smileys_url'], '/', $smiley['filename'], '" align="bottom" alt="', $smiley['description'], '" title="', $smiley['description'], '" /></a>';
-
-			// If this isn't the last row, show a break.
-			if (empty($smiley_row['last']))
-				echo '<br />';
-		}
-
-		// If the smileys popup is to be shown... show it!
-		if (!empty($context['smileys']['popup']))
-			echo '
-					<a href="javascript:moreSmileys();">[', $txt['more_smileys'], ']</a>';
 
 		echo '
 				</td>

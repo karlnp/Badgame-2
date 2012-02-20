@@ -1658,6 +1658,11 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'block_level' => true,
 			),
 			array(
+				'tag' => 'spoiler',
+				'before' => '<span class="spoiler">',
+				'after' => '</span>'
+			),
+			array(
 				'tag' => 'youtube',
 				'type' => 'unparsed_content',
 				'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
@@ -1670,6 +1675,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 						parse_str(parse_url($data, PHP_URL_QUERY), $urlParts);
 						$data = $urlParts["v"];
 					}
+					$data = strip_tags($data);
 				'),
 				'disabled_content' => '($1)',
 				'block_level' => true,

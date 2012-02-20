@@ -285,7 +285,7 @@ function template_main()
 	while ($message = $context['get_message']())
 	{
 		echo '
-	<tr><td style="padding: 1px 1px 0 1px;">';
+	<tr class="postrow" author-id="', $message['member']['id'], '"><td style="padding: 1px 1px 0 1px;">';
 
 		// Show the message anchor and a "new" anchor if this message is new.
 		if ($message['id'] != $context['first_message'])
