@@ -355,6 +355,25 @@ function template_main()
 					</tr>';
 		}
 
+		echo '<tr class="catbg3">';
+		echo '<td colspan="7">';
+		
+		echo '<div class="thread-actions">';
+
+		if ($context['can_post_new']) {
+			$newThreadUrl = $scripturl . '?action=post;board=' . $context['current_board'] . '.0';
+			echo '<a href="', $newThreadUrl, '"><div class="thread-action-button" style="width: 85px"><img src="', $settings['images_url'], '/silkicons/award_star_gold_2.png" /> <span class="button-text">New Thread</span></div></a>';
+		}
+		
+		if ($context['can_post_poll']) {
+			$newPollUrl = $scripturl . '?action=post;board=' . $context['current_board'] . '.0;poll';
+			echo '<a href="', $newPollUrl, '"><div class="thread-action-button" style="width: 70px"><img src="', $settings['images_url'], '/silkicons/chart_bar.png" /> <span class="button-text">New Poll</span></div></a>';
+		}
+		echo '</div>';
+		
+		echo '</td>';
+		echo '</tr>';
+		
 		echo '
 				</table>
 			</div>
@@ -373,8 +392,8 @@ function template_main()
 			<td align="right" style="padding-right: 1ex;">
 				<table cellpadding="0" cellspacing="0">
 					<tr>
-						', template_button_strip($normal_buttons, 'top'), '
-					</tr>
+						', // template_button_strip($normal_buttons, 'top'), '
+					' </tr>
 				</table>
 			</td>
 		</tr>
