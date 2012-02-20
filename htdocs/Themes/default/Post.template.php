@@ -166,6 +166,20 @@ function template_main()
 					if (document.forms.postmodify.elements[i].name.indexOf("options") == 0)
 						document.forms.postmodify.elements[i].value = document.forms.postmodify.elements[i].value.replace(/&#/g, "&#38;#");
 			}';
+			
+	// Smilies
+	echo '
+		var currentSmileySwap = true;
+		function swapSmileys() {
+			
+			document.getElementById("smileysExpand").src = smf_images_url + "/" + (currentSmileySwap ? "collapse.gif" : "expand.gif");
+			document.getElementById("smileysExpand").alt = currentSmileySwap ? "-" : "+";
+			
+			document.getElementById("smiley-container").style.display = currentSmileySwap ? "" : "none";
+			
+			currentSmileySwap = !currentSmileySwap;
+		}
+	';
 
 
 	// Code for showing and hiding additional options.
@@ -532,7 +546,7 @@ function template_main()
 		echo '
 			<tr>
 				<td align="right"></td>
-				<td valign="middle"><div class="smiley-container" style="display: none">';
+				<td valign="middle"><div id="smiley-container" style="display: none">';
 
 		echo '<ul class="smilies">';
 		// Show each row of smileys ;).
