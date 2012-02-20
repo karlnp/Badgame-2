@@ -378,6 +378,16 @@ div.topic-search {
 .hidden-thread * {
 	background-color: #FFD5D5 !important;
 }
+
+.spoiler {
+	background-color: #242424;
+	color: #242424;
+	padding: 2px;
+}
+
+.spoiler:hover {
+	color: #FFFFFF;
+}
 /* Normal, standard links. */
 a:link
 {

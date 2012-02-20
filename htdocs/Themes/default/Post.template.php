@@ -773,8 +773,6 @@ function template_postbox(&$message)
 			array(),
 			'size' => array('code' => 'size', 'before' => '[size=10pt]', 'after' => '[/size]', 'description' => $txt[532]),
 			'face' => array('code' => 'font', 'before' => '[font=Verdana]', 'after' => '[/font]', 'description' => $txt[533]),
-		);
-		$context['bbc_tags'][] = array(
 			'flash' => array('code' => 'flash', 'before' => '[flash=200,200]', 'after' => '[/flash]', 'description' => $txt[433]),
 			'img' => array('code' => 'img', 'before' => '[img]', 'after' => '[/img]', 'description' => $txt[435]),
 			'url' => array('code' => 'url', 'before' => '[url]', 'after' => '[/url]', 'description' => $txt[257]),
@@ -793,6 +791,11 @@ function template_postbox(&$message)
 			'quote' => array('code' => 'quote', 'before' => '[quote]', 'after' => '[/quote]', 'description' => $txt[260]),
 			array(),
 			'list' => array('code' => 'list', 'before' => '[list]\n[li]', 'after' => '[/li]\n[li][/li]\n[/list]', 'description' => $txt[261]),
+			array(),
+			'youtube' => array('code' => 'youtube', 'before' => '[youtube]', 'after' => '[/youtube]', 'description' => 'Youtube'),
+			'nws' => array('code' => 'nws', 'before' => '[nws]', 'after' => '[/nws]', 'description' => 'Not work safe!'),
+			'blockspoiler' => array('code' => 'blockspoiler', 'before' => '[blockspoiler]', 'after' => '[/blockspoiler]', 'description' => 'Block Spoiler'),
+			'tldr' => array('code' => 'tldr', 'before' => '[tldr]', 'after' => '[/tldr]', 'description' => 'Too Long Didn\'t Read'),
 		);
 
 		$found_button = false;
@@ -827,6 +830,7 @@ function template_postbox(&$message)
 		}
 
 		// Print a drop down list for all the colors we allow!
+		/*
 		if (!isset($context['disabled_tags']['color']))
 			echo ' <select onchange="surroundText(\'[color=\' + this.options[this.selectedIndex].value.toLowerCase() + \']\', \'[/color]\', document.forms.', $context['post_form'], '.', $context['post_box_name'], '); this.selectedIndex = 0; document.forms.', $context['post_form'], '.', $context['post_box_name'], '.focus(document.forms.', $context['post_form'], '.', $context['post_box_name'], '.caretPos);" style="margin-bottom: 1ex;">
 							<option value="" selected="selected">', $txt['change_color'], '</option>
@@ -845,6 +849,8 @@ function template_postbox(&$message)
 							<option value="Maroon">', $txt[274], '</option>
 							<option value="LimeGreen">', $txt[275], '</option>
 						</select>';
+		 *
+		 */
 		echo '<br />';
 
 		$found_button = false;
