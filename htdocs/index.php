@@ -233,6 +233,7 @@ function smf_main()
 		'buddy' => array('Subs-Members.php', 'BuddyListToggle'),
 		'calendar' => array('Calendar.php', 'CalendarMain'),
 		'cleanperms' => array('Admin.php', 'CleanupPermissions'),
+		'clearlastread' => array('ClearLastRead.php', 'ClearLastRead'),
 		'collapse' => array('Subs-Boards.php', 'CollapseCategory'),
 		'convertentities' => array('Admin.php', 'ConvertEntities'),
 		'convertutf8' => array('Admin.php', 'ConvertUtf8'),

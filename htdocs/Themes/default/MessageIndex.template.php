@@ -5,6 +5,19 @@ function template_main()
 {
 	global $context, $settings, $options, $scripturl, $modSettings, $txt;
 
+	echo '<script language="JavaScript" type="text/javascript" >
+	$(document).ready(function() {
+		$(".lastReadClearButton").click(function() {
+			var clearUrl = "index.php?action=clearlastread&topic=" + $(this).attr("topic-id");
+			$.ajax({
+				url: clearUrl
+			});
+			$(this).fadeOut();
+			$(this).siblings().fadeOut();
+		});
+	});
+	</script>';
+	
 	echo '
 	<div style="margin-bottom: 2px;"><a name="top"></a>', theme_linktree(), '</div>';
 
@@ -152,7 +165,7 @@ function template_main()
 			echo '
 						<td width="50px" class="catbg3"></td>
 
-						<td class="catbg3"><a href="', $scripturl, '?board=', $context['current_board'], '.', $context['start'], ';sort=subject', $context['sort_by'] == 'subject' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt[70], $context['sort_by'] == 'subject' ? ' <img src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.gif" alt="" />' : '', '</a></td>
+						<td class="catbg3" colspan="2"><a href="', $scripturl, '?board=', $context['current_board'], '.', $context['start'], ';sort=subject', $context['sort_by'] == 'subject' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt[70], $context['sort_by'] == 'subject' ? ' <img src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.gif" alt="" />' : '', '</a></td>
 
 						<td class="catbg3" width="11%"><a href="', $scripturl, '?board=', $context['current_board'], '.', $context['start'], ';sort=starter', $context['sort_by'] == 'starter' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt[109], $context['sort_by'] == 'starter' ? ' <img src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.gif" alt="" />' : '', '</a></td>
 
@@ -232,8 +245,26 @@ function template_main()
 			*/
 			echo '
 							<div class="thread-list-pages"><small id="pages' . $topic['first_post']['id'] . '">', $topic['pages'], '</small></div>
-						</td>
-						<td class="windowbg2" valign="middle" width="14%">
+						</td>';
+			echo '<td class="windowbg2 new-replies" style="text-align: right">';
+			
+			if ($topic['posts_read']) {
+				echo '<span class="lastReadButton lastReadClearButton" topic-id="', $topic['id'], '">X</span>';
+				if ($topic['posts_read'] % $modSettings['defaultMaxMessages'] == 0) {
+					echo '<a href="', $scripturl, '?topic=', $topic['id'], '.', ($topic['posts_read']), '">';
+				} else {
+					echo '<a href="', $scripturl, '?topic=', $topic['id'], '.msg', $topic['last_post_id'], '#msg', $topic['last_post_id'], '">';
+				}
+				$unreadPosts = ($topic['replies'] + 1) - $topic['posts_read'];
+				if ($unreadPosts > 0) {
+					echo '<span class="lastReadButton newPostCount">', $unreadPosts, '</span>';
+				}
+				echo '</a>';
+			}
+			
+			echo '</td>';	
+						
+			echo '		<td class="windowbg2" valign="middle" width="14%">
 							', $topic['first_post']['member']['link'], '
 						</td>
 						<td style="text-decoration: underline" class="windowbg' , $topic['is_sticky'] ? '3' : '' , '" valign="middle" width="4%" align="center">

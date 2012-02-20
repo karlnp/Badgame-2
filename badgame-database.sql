@@ -15,4 +15,14 @@ ALTER TABLE smf_messages ADD parsed_body TEXT NOT NULL;
 -- Clear out cache field
 UPDATE smf_messages set parsed_body = '';
 
+-- last modified field on members
 ALTER TABLE smf_members ADD last_modified int(10);
+
+-- last read
+create table if not exists smf_bg2_lastread (
+  id_member mediumint not null references smf_members(id_member),
+  id_thread mediumint not null references smf_topics(ID_TOPIC),
+  postsread int(10),
+  lastpostid int(10),
+  primary key (id_member, id_thread)
+);

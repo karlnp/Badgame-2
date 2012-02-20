@@ -694,6 +694,53 @@ function Display()
 
 	$attachments = array();
 
+	// BADGAME LAST READ
+	if (!$user_info['is_guest']) {
+		$query = db_query("SELECT postsread, lastpostid
+			FROM {$db_prefix}bg2_lastread
+			WHERE (id_member = $ID_MEMBER AND id_thread = $topic)", __FILE__, __LINE__);
+			
+		// Get number of read posts
+		if ($context['page_info']['current_page'] < $context['page_info']['num_pages']) {
+			$readPosts = $context['page_info']['current_page'] * $modSettings['defaultMaxMessages'];
+		} else {
+			$readPosts = ($context['page_info']['current_page']-1) * $modSettings['defaultMaxMessages'];
+			$readPosts += count($messages);
+		}
+		
+		// Get last post id
+		
+		if (!$ascending) {
+			$lastPostIndex = 0;
+		} else {
+			$lastPostIndex = count($messages) - 1;
+		}
+		
+		$lastPostId = $messages[$lastPostIndex];
+		
+		if (mysql_num_rows($query) == 0) {
+			// Insert
+			$insertion = db_query("INSERT INTO {$db_prefix}bg2_lastread (id_member, id_thread, postsread, lastpostid) VALUES (
+				$ID_MEMBER,
+				$topic,
+				$readPosts,
+				$lastPostId )", __FILE__, __LINE__);
+		} else {
+			while ($row = mysql_fetch_assoc($query)) {
+				$oldReadPosts = $row['postsread'];
+			}
+			
+			if ($readPosts > $oldReadPosts) {
+				// Update
+				$update = db_query("UPDATE {$db_prefix}bg2_lastread 
+					SET postsread = $readPosts, 
+					lastpostid = $lastPostId
+					WHERE id_member = $ID_MEMBER 
+					AND id_thread = $topic", __FILE__, __LINE__);
+			}
+		}
+	}
+
 	// If there _are_ messages here... (probably an error otherwise :!)
 	if (!empty($messages))
 	{

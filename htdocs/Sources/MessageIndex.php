@@ -448,11 +448,15 @@ function MessageIndex()
 				t.ID_FIRST_MSG, mf.posterTime AS firstPosterTime,
 				mf.subject AS firstSubject, mf.icon AS firstIcon, mf.posterName AS firstMemberName,
 				mf.ID_MEMBER AS firstID_MEMBER, IFNULL(memf.realName, mf.posterName) AS firstDisplayName,
-				LEFT(ml.body, 384) AS lastBody, LEFT(mf.body, 384) AS firstBody, ml.smileysEnabled AS lastSmileys,
+				LEFT(ml.body, 384) AS lastBody, LEFT(mf.body, 384) AS firstBody, ml.smileysEnabled AS lastSmileys," .
+				($user_info['is_guest'] ? '' : "
+				lastread.postsread AS postsRead, lastread.lastpostid AS lastPostId,
+				") . "
 				mf.smileysEnabled AS firstSmileys
 			FROM ({$db_prefix}topics AS t, {$db_prefix}messages AS ml, {$db_prefix}messages AS mf)
 				LEFT JOIN {$db_prefix}members AS meml ON (meml.ID_MEMBER = ml.ID_MEMBER)
 				LEFT JOIN {$db_prefix}members AS memf ON (memf.ID_MEMBER = mf.ID_MEMBER)" . ($user_info['is_guest'] ? '' : "
+				LEFT JOIN {$db_prefix}bg2_lastread AS lastread ON (lastread.id_member = $ID_MEMBER AND lastread.id_thread = t.ID_TOPIC)
 				LEFT JOIN {$db_prefix}log_topics AS lt ON (lt.ID_TOPIC = t.ID_TOPIC AND lt.ID_MEMBER = $ID_MEMBER)
 				LEFT JOIN {$db_prefix}log_mark_read AS lmr ON (lmr.ID_BOARD = $board AND lmr.ID_MEMBER = $ID_MEMBER)"). "
 			WHERE " . ($pre_query ? 't.ID_TOPIC IN (' . implode(', ', $topic_ids) . ')' : "t.ID_BOARD = $board") . "
@@ -574,6 +578,8 @@ function MessageIndex()
 					'href' => $scripturl . '?topic=' . $row['ID_TOPIC'] . ($row['numReplies'] == 0 ? '.0' : '.msg' . $row['ID_LAST_MSG']) . '#new',
 					'link' => '<a href="' . $scripturl . '?topic=' . $row['ID_TOPIC'] . ($row['numReplies'] == 0 ? '.0' : '.msg' . $row['ID_LAST_MSG']) . '#new">' . $row['lastSubject'] . '</a>'
 				),
+				'posts_read' => $row['postsRead'],
+				'last_post_id' => $row['lastPostId'],
 				'is_sticky' => !empty($modSettings['enableStickyTopics']) && !empty($row['isSticky']),
 				'is_locked' => !empty($row['locked']),
 				'is_poll' => $modSettings['pollMode'] == '1' && $row['ID_POLL'] > 0,
