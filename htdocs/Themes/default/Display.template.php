@@ -33,6 +33,10 @@ function template_main()
 			if (localStorage.getItem("images.hide")) {
 				doHide();
 			}
+			$(".quote .youtube").each(function() {
+				var url = $(this).find(".youtube-url").html();
+				$(this).replaceWith("<a href=\"" + url + "\">" + url + "</a>");
+			});
 		});
 	</script>
 <a name="top"></a>
