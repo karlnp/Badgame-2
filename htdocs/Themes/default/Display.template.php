@@ -801,8 +801,6 @@ function template_thread_actions() {
 			echo '<a href="', $replyUrl, '"><div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Reply</span></div></a>';
 		}
 		
-		echo '<div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/bin.png" /> <span class="button-text">Hide</span></div>';
-		
 		if ($context['can_add_poll']) {
 			$pollUrl = $scripturl . '?action=editpoll;add;topic=' . $context['current_topic'] . '.' . $context['start'] . ';sesc=' . $context['session_id'];
 			echo '<a href="', $pollUrl, '"><div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/chart_bar.png" /> <span class="button-text">Poll</span></div></a>';

@@ -365,6 +365,19 @@ div.topic-search {
 	cursor: pointer;
 }
 
+.threadrow #hidebutton {
+	display: none;
+	cursor: pointer;
+	opacity: 0.6;
+}
+
+.threadrow:hover #hidebutton {
+	display: inline;
+}
+
+.hidden-thread * {
+	background-color: #FFD5D5 !important;
+}
 /* Normal, standard links. */
 a:link
 {

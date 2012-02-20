@@ -5,6 +5,7 @@ function template_main()
 {
 	global $context, $settings, $options, $scripturl, $modSettings, $txt;
 
+	echo '<script language="JavaScript" type="text/javascript" src="js/hide-threads.js"></script>';
 	echo '<script language="JavaScript" type="text/javascript" >
 	$(document).ready(function() {
 		$(".lastReadClearButton").click(function() {
@@ -142,8 +143,10 @@ function template_main()
 				<td align="right" style="padding-right: 1ex;">
 					<table cellpadding="0" cellspacing="0">
 						<tr>
-							'; //, template_button_strip($normal_buttons, 'bottom'), '
-		echo '			</tr>
+							<span class="middletext" style="color: #656565"><input id="show-hidden-threads" type="checkbox" />
+							Show hidden threads?
+							</span>
+						</tr>
 					</table>
 				</td>
 			</tr>
@@ -217,7 +220,7 @@ function template_main()
 				$topic['class'] = substr($topic['class'], 0, strrpos($topic['class'], '_locked'));
 	
 			echo '
-					<tr>';
+					<tr class="threadrow" thread-id="', $topic['id'], '">';
 					/*
 						<td class="windowbg2" valign="middle" align="center" width="5%">
 							<img src="', $settings['images_url'], '/topic/', $topic['class'], '.gif" alt="" />
@@ -237,6 +240,7 @@ function template_main()
 			echo '
 							', $topic['is_sticky'] ? '<b>' : '' , '<span id="msg_' . $topic['first_post']['id'] . '">', $topic['first_post']['link'], '</span>', $topic['is_sticky'] ? '</b>' : '';
 
+			echo '<img src="', $settings['images_url'], '/silkicons/lightbulb.png" align="right", alt="", id="hidebutton" />';
 			/*
 			// Is this topic new? (assuming they are logged in!)
 			if ($topic['new'] && $context['user']['is_logged'])
