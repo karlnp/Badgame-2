@@ -14,3 +14,5 @@ ALTER TABLE smf_messages ADD parsed_body TEXT NOT NULL;
 
 -- Clear out cache field
 UPDATE smf_messages set parsed_body = '';
+
+ALTER TABLE smf_members ADD last_modified int(10);

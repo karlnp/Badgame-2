@@ -866,7 +866,7 @@ function loadMemberData($users, $is_name = false, $set = 'normal')
 			mem.signature, mem.personalText, mem.location, mem.gender, mem.avatar, mem.ID_MEMBER, mem.memberName,
 			mem.realName, mem.emailAddress, mem.hideEmail, mem.dateRegistered, mem.websiteTitle, mem.websiteUrl,
 			mem.birthdate, mem.memberIP, mem.memberIP2, mem.ICQ, mem.AIM, mem.YIM, mem.MSN, mem.posts, mem.lastLogin,
-			mem.karmaGood, mem.ID_POST_GROUP, mem.karmaBad, mem.lngfile, mem.ID_GROUP, mem.timeOffset, mem.showOnline,
+			mem.karmaGood, mem.ID_POST_GROUP, mem.karmaBad, mem.lngfile, mem.ID_GROUP, mem.last_modified, mem.timeOffset, mem.showOnline,
 			mem.buddy_list, mg.onlineColor AS member_group_color, IFNULL(mg.groupName, '') AS member_group,
 			pg.onlineColor AS post_group_color, IFNULL(pg.groupName, '') AS post_group, mem.is_activated,
 			IF(mem.ID_GROUP = 0 OR mg.stars = '', pg.stars, mg.stars) AS stars" . (!empty($modSettings['titlesEnable']) ? ',
@@ -887,7 +887,7 @@ function loadMemberData($users, $is_name = false, $set = 'normal')
 			mem.karmaBad, mem.memberIP, mem.memberIP2, mem.lngfile, mem.ID_GROUP, mem.ID_THEME, mem.buddy_list, mem.pm_ignore_list,
 			mem.pm_email_notify, mem.timeOffset" . (!empty($modSettings['titlesEnable']) ? ', mem.usertitle' : '') . ",
 			mem.timeFormat, mem.secretQuestion, mem.is_activated, mem.additionalGroups, mem.smileySet, mem.showOnline,
-			mem.totalTimeLoggedIn, mem.ID_POST_GROUP, mem.notifyAnnouncements, mem.notifyOnce, mem.notifySendBody,
+			mem.totalTimeLoggedIn, mem.ID_POST_GROUP, mem.notifyAnnouncements, mem.last_modified, mem.notifyOnce, mem.notifySendBody,
 			mem.notifyTypes, lo.url, mg.onlineColor AS member_group_color, IFNULL(mg.groupName, '') AS member_group,
 			pg.onlineColor AS post_group_color, IFNULL(pg.groupName, '') AS post_group,
 			IF(mem.ID_GROUP = 0 OR mg.stars = '', pg.stars, mg.stars) AS stars, mem.passwordSalt";
@@ -901,7 +901,7 @@ function loadMemberData($users, $is_name = false, $set = 'normal')
 	{
 		$select_columns = '
 			mem.ID_MEMBER, mem.memberName, mem.realName, mem.emailAddress, mem.hideEmail, mem.dateRegistered,
-			mem.posts, mem.lastLogin, mem.memberIP, mem.memberIP2, mem.lngfile, mem.ID_GROUP';
+			mem.posts, mem.lastLogin, mem.memberIP, mem.memberIP2, mem.last_modified, mem.lngfile, mem.ID_GROUP';
 		$select_tables = '';
 	}
 	else
@@ -1027,7 +1027,7 @@ function loadMemberContext($user)
 		$avatar_width = '';
 		$avatar_height = '';
 	}
-
+	
 	// What a monstrous array...
 	$memberContext[$user] = array(
 		'username' => &$profile['memberName'],
@@ -1118,6 +1118,7 @@ function loadMemberContext($user)
 		'post_group_color' => $profile['post_group_color'],
 		'group_stars' => str_repeat('<img src="' . str_replace('$language', $context['user']['language'], isset($profile['stars'][1]) ? $settings['images_url'] . '/' . $profile['stars'][1] : '') . '" alt="*" border="0" />', empty($profile['stars'][0]) || empty($profile['stars'][1]) ? 0 : $profile['stars'][0]),
 		'local_time' => timeformat(time() + ($profile['timeOffset'] - $user_info['time_offset']) * 3600, false),
+		'last_modified' => $profile['last_modified'],
 	);
 
 	return true;

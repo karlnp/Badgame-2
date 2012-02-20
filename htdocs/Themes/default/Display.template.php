@@ -302,7 +302,7 @@ function template_main()
 					<tr>
 						<td class="userinfo" valign="top" width="190px" height="200px"rowspan="2" style="overflow: hidden; ', !empty($options['center_avatars']) ? 'text-align: center' : '', '">
 							<b>', $message['member']['link'], '</b><br />';
-
+							
 		if ($message['can_see_ip']) {
 			echo '<div class="smalltext">', $message['member']['ip'], '</div>';
 		}
@@ -370,7 +370,7 @@ function template_main()
 					"Registered on " . $message["member"]["registered"] . "<br />" .
 					"Post count : " . $message["member"]["real_posts"] . "</div>";
 				echo '<div class="avatar-container" title="', $tooltipHtml, '" style="overflow: auto; margin-bottom: 2px">', 
-					$message['member']['avatar']['image'], 
+					'<img src="', $message['member']['avatar']['href'], (empty($message['member']['last_modified']) ? '' : ('?m=' . $message['member']['last_modified'])), '" />',
 					'</div>';
 
 			// Show their personal text?
@@ -786,7 +786,7 @@ echo '
 }
 
 function template_thread_actions() {
-	global $context, $settings, $txt;
+	global $context, $settings, $txt, $scripturl;
 	
 		if ($context['can_reply']) {
 			$replyUrl = $scripturl . '?action=post;topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'];

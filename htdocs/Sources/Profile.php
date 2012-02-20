@@ -287,7 +287,7 @@ function ModifyProfile($post_errors = array())
 		),
 		'avatar' => array(
 			'name' => &$user_profile[$memID]['avatar'],
-			'href' => empty($user_profile[$memID]['ID_ATTACH']) ? '' : (empty($user_profile[$memID]['attachmentType']) ? $scripturl . '?action=dlattach;attach=' . $user_profile[$memID]['ID_ATTACH'] . ';type=avatar' : $modSettings['custom_avatar_url'] . '/' . $user_profile[$memID]['filename']),
+			'href' => empty($user_profile[$memID]['ID_ATTACH']) ? '' : (empty($user_profile[$memID]['attachmentType']) ? $scripturl . '?action=dlattach;attach=' . $user_profile[$memID]['ID_ATTACH'] . ';type=avatar' : $modSettings['custom_avatar_url'] . '/' . $user_profile[$memID]['filename']) . (empty($user_profile[$memID]['last_modified']) ? '' : ('?m=' . $user_profile[$memID]['last_modified'])),
 			'custom' => stristr($user_profile[$memID]['avatar'], 'http://') ? $user_profile[$memID]['avatar'] : 'http://',
 			'selection' => $user_profile[$memID]['avatar'] == '' || stristr($user_profile[$memID]['avatar'], 'http://') ? '' : $user_profile[$memID]['avatar'],
 			'ID_ATTACH' => &$user_profile[$memID]['ID_ATTACH'],
@@ -1224,6 +1224,12 @@ function makeAvatarChanges($memID, &$post_errors)
 	}
 	else
 		$_POST['avatar'] = '';
+	
+	$time = time();
+	db_query("UPDATE {$db_prefix}members
+					SET last_modified = $time 
+					WHERE ID_MEMBER = $memID", __FILE__, __LINE__);
+				
 }
 
 // View a summary.
