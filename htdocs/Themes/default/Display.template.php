@@ -577,8 +577,15 @@ function template_main()
 		echo '<div class="member-actions">';
 		
 		echo '<a href="', $message['member']['href'], '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/emoticon_tongue.png" /> <span class="button-text">Profile</span></div></a>';
-		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/heart.png" /> <span class="button-text">Private</span></div>';
-		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/hourglass.png" /> <span class="button-text">History</span></div>';
+		
+		if ($context['can_send_pm']) {
+			$privateMessageUrl = $scripturl . '?action=pm;sa=send;u=' . $message['member']['id'];
+			echo '<a href="', $privateMessageUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/heart.png" /> <span class="button-text">Private</span></div></a>';
+		}
+		
+		$showHistoryUrl = $scripturl . '?action=profile;u=' . $message['member']['id'] . ';sa=showPosts';
+		echo '<a href="', $showHistoryUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/hourglass.png" /> <span class="button-text">History</span></div></a>';
+		
 		echo '</div>';
 		
 		echo '<div class="post-actions">';
