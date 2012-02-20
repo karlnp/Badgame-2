@@ -10,8 +10,8 @@ function template_main()
 	<script language="JavaScript" type="text/javascript" src="js/resize-images.js"></script>
 	<script language="JavaScript" type="text/javascript">
 		function doHide() {
-			$(".post img.posted-image").each(function() {
-				var linkHtml = "<div><a href=\"" + $(this).attr("src") + "\">Image hidden! Click here to view!</a></div>";
+			$(".post img.posted-image, .signature img.posted-image").each(function() {
+				var linkHtml = "<div><a href=\"" + $(this).attr("src") + "\"><img src=\"', $settings['images_url'], '/silkicons/picture.png\" /> Image hidden! Click here to view!</a></div>";
 				$(this).replaceWith(linkHtml);
 			});
 		}
@@ -576,7 +576,7 @@ function template_main()
 		
 		echo '<div class="member-actions">';
 		
-		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/emoticon_tongue.png" /> <span class="button-text">Profile</span></div>';
+		echo '<a href="', $message['member']['href'], '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/emoticon_tongue.png" /> <span class="button-text">Profile</span></div></a>';
 		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/heart.png" /> <span class="button-text">Private</span></div>';
 		echo '<div class="action-button"><img src="', $settings['images_url'], '/silkicons/hourglass.png" /> <span class="button-text">History</span></div>';
 		echo '</div>';
@@ -707,8 +707,8 @@ echo '
 	echo '
 	<table cellpadding="0" cellspacing="0" border="0" style="margin-left: 1ex;">
 		<tr>
-			', template_button_strip($mod_buttons, 'bottom') , '
-		</tr>
+			', // template_button_strip($mod_buttons, 'bottom') , '
+		'</tr>
 	</table>';
 
 	if (!empty($options['display_quick_mod']) && $options['display_quick_mod'] == 1 && $context['can_remove_post'])
@@ -724,6 +724,7 @@ echo '
 	echo '
 </form>';
 
+/*
 	echo '
 <div class="tborder"><div class="titlebg2" style="padding: 4px;" align="', !$context['right_to_left'] ? 'right' : 'left', '">
 	<form action="', $scripturl, '" method="get" accept-charset="', $context['character_set'], '" style="padding:0; margin: 0;">
@@ -747,7 +748,7 @@ echo '
 </div></div>';
 
 	echo '<br />';
-
+*/
 	if ($context['can_reply'] && !empty($options['display_quick_reply']))
 	{
 		echo '
