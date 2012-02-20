@@ -1675,6 +1675,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 						parse_str(parse_url($data, PHP_URL_QUERY), $urlParts);
 						$data = $urlParts["v"];
 					}
+					$data = strip_tags($data);
 				'),
 				'disabled_content' => '($1)',
 				'block_level' => true,
