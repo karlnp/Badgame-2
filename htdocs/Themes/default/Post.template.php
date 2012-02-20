@@ -433,24 +433,24 @@ function template_main()
 								<td>
 									<input type="text" name="subject"', $context['subject'] == '' ? '' : ' value="' . $context['subject'] . '"', ' tabindex="', $context['tabindex']++, '" size="80" maxlength="80" />
 								</td>
-							</tr>
-							<tr>
-								<td align="right">
-									<b>', $txt[71], ':</b>
-								</td>
-								<td>
-									<select name="icon" id="icon" onchange="showimage()">';
-
-	// Loop through each message icon allowed, adding it to the drop down list.
-	foreach ($context['icons'] as $icon)
-		echo '
-										<option value="', $icon['value'], '"', $icon['value'] == $context['icon'] ? ' selected="selected"' : '', '>', $icon['name'], '</option>';
-
-	echo '
-									</select>
-									<img src="', $context['icon_url'], '" name="icons" hspace="15" alt="" />
-								</td>
 							</tr>';
+	
+	if ($context['is_new_topic']) {
+		echo '					<tr>
+									<td align="right">
+										<b>', $txt[71], ':</b>
+									</td>
+									<td>';
+		
+		echo '<div class="post-icons">';
+		
+		foreach($context['icons'] as $icon) {
+			echo '<div class="post-icon"><input type="radio" name="icon" value="', $icon['value'], '"><img src="', $icon['url'], '" align="middle", alt="', $icon['name'], '" width="60" height="15" /></div>';
+		}
+									
+		echo '					</div></td>
+								</tr>';					
+	}
 
 	// If this is a poll then display all the poll options!
 	if ($context['make_poll'])
@@ -520,11 +520,47 @@ function template_main()
 										</td>
 									</tr>';
 
+	echo '
+			<tr><td></td>
+				<td>
+					<a href="javascript:swapSmilies();"><img src="', $settings['images_url'], '/expand.gif" alt="+" id="smileysExpand" /></a> <a href="javascript:swapSmileys();"><b>', 'Show smileys...', '</b></a>
+				</td>
+			</tr>';
+	// Now start printing all of the smileys.
+	if (!empty($context['smileys']['postform']))
+	{
+		echo '
+			<tr>
+				<td align="right"></td>
+				<td valign="middle"><div class="smiley-container" style="display: none">';
+
+		echo '<ul class="smilies">';
+		// Show each row of smileys ;).
+		foreach ($context['smileys']['postform'] as $smiley_row)
+		{
+			
+			foreach ($smiley_row['smileys'] as $smiley)
+				echo '
+					<a href="javascript:void(0);" onclick="replaceText(\' ', $smiley['code'], '\', document.forms.', $context['post_form'], '.', $context['post_box_name'], '); return false;"><li class="smiley"><img src="', $settings['smileys_url'], '/', $smiley['filename'], '" align="bottom" alt="', $smiley['description'], '" title="', $smiley['description'], '" /></li></a>';
+
+		}
+		echo '</ul>';
+
+		// If the smileys popup is to be shown... show it!
+		if (!empty($context['smileys']['popup']))
+			echo '
+					<a href="javascript:moreSmileys();">[', $txt['more_smileys'], ']</a>';
+
+		echo '
+				</div></td>
+			</tr>';
+	}
+	
 	// If the admin has enabled the hiding of the additional options - show a link and image for it.
 	if (!empty($settings['additional_options_collapsable']))
 		echo '
-									<tr>
-										<td colspan="2" style="padding-left: 5ex;">
+									<tr><td></td>
+										<td>
 											<a href="javascript:swapOptions();"><img src="', $settings['images_url'], '/expand.gif" alt="+" id="postMoreExpand" /></a> <a href="javascript:swapOptions();"><b>', $txt['post_additionalopt'], '</b></a>
 										</td>
 									</tr>';
@@ -557,6 +593,7 @@ function template_main()
 										</td>
 									</tr>';
 
+	/*
 	// If this post already has attachments on it - give information about them.
 	if (!empty($context['current_attachments']))
 	{
@@ -620,7 +657,8 @@ function template_main()
 								</td>
 							</tr>';
 	}
-
+	*/
+	
 	// Finally, the submit buttons.
 	echo '
 							<tr>
@@ -882,36 +920,6 @@ function template_postbox(&$message)
 				$found_button = false;
 			}
 		}
-
-		echo '
-				</td>
-			</tr>';
-	}
-
-	// Now start printing all of the smileys.
-	if (!empty($context['smileys']['postform']))
-	{
-		echo '
-			<tr>
-				<td align="right"></td>
-				<td valign="middle">';
-
-		// Show each row of smileys ;).
-		foreach ($context['smileys']['postform'] as $smiley_row)
-		{
-			foreach ($smiley_row['smileys'] as $smiley)
-				echo '
-					<a href="javascript:void(0);" onclick="replaceText(\' ', $smiley['code'], '\', document.forms.', $context['post_form'], '.', $context['post_box_name'], '); return false;"><img src="', $settings['smileys_url'], '/', $smiley['filename'], '" align="bottom" alt="', $smiley['description'], '" title="', $smiley['description'], '" /></a>';
-
-			// If this isn't the last row, show a break.
-			if (empty($smiley_row['last']))
-				echo '<br />';
-		}
-
-		// If the smileys popup is to be shown... show it!
-		if (!empty($context['smileys']['popup']))
-			echo '
-					<a href="javascript:moreSmileys();">[', $txt['more_smileys'], ']</a>';
 
 		echo '
 				</td>
