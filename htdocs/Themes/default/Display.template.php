@@ -9,12 +9,30 @@ function template_main()
 	echo '
 	<script language="JavaScript" type="text/javascript" src="js/resize-images.js"></script>
 	<script language="JavaScript" type="text/javascript">
+		function doHide() {
+			$(".post img.posted-image").each(function() {
+				var linkHtml = "<div><a href=\"" + $(this).attr("src") + "\">Image hidden! Click here to view!</a></div>";
+				$(this).replaceWith(linkHtml);
+			});
+		}
 		$(document).ready(function() {
 			$(".avatar-container img").each(function() {
 				var tooltipHtml = $(this).parent().attr("title");
 				$(this).parent().attr("title", "");
 				Tipped.create(this, tooltipHtml, {skin: "badgame"});
 			});
+			$("#hide-images").click(function() {
+				if (localStorage.getItem("images.hide")) {
+					localStorage.removeItem("images.hide");
+					location.reload(true);
+				} else {
+					localStorage.setItem("images.hide", "true");
+					doHide();
+				}
+			});
+			if (localStorage.getItem("images.hide")) {
+				doHide();
+			}
 		});
 	</script>
 <a name="top"></a>

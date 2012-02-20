@@ -446,12 +446,6 @@ function template_menu()
 					<a href="', $scripturl, '?action=mlist">' , $txt[331] , '</a>
 				</td>' , $current_action == 'mlist' ? '<td class="maintab_active_' . $last . '">&nbsp;</td>' : '';
 
-	// Show the [banlist] button.
-	echo ($current_action=='banlist' || $context['browser']['is_ie4']) ? '<td class="maintab_active_' . $first . '">&nbsp;</td>' : '' , '
-				<td valign="top" class="maintab_' , $current_action == 'banlist' ? 'active_back' : 'back' , '">
-					<a href="', $scripturl, '">' , 'Bans' , '</a>
-				</td>' , $current_action == 'banlist' ? '<td class="maintab_active_' . $last . '">&nbsp;</td>' : '';
-
 	// If the user is a guest, show [login] button.
 	if ($context['user']['is_guest'])
 		echo ($current_action == 'login' || $context['browser']['is_ie4']) ? '<td class="maintab_active_' . $first . '">&nbsp;</td>' : '' , '

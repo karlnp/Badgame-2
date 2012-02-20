@@ -1314,7 +1314,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 					'width' => array('optional' => true, 'value' => ' width="$1"', 'match' => '(\d+)'),
 					'height' => array('optional' => true, 'value' => ' height="$1"', 'match' => '(\d+)'),
 				),
-				'content' => '<img src="$1" alt="{alt}"{width}{height} border="0" />',
+				'content' => '<img class="posted-image" src="$1" alt="{alt}"{width}{height} border="0" />',
 				'validate' => create_function('&$tag, &$data, $disabled', '
 					$data = strtr($data, array(\'<br />\' => \'\'));
 					if (strpos($data, \'http://\') !== 0 && strpos($data, \'https://\') !== 0)
@@ -1325,7 +1325,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 			array(
 				'tag' => 'img',
 				'type' => 'unparsed_content',
-				'content' => '<img src="$1" alt="" border="0" />',
+				'content' => '<img class="posted-image" src="$1" alt="" border="0" />',
 				'validate' => create_function('&$tag, &$data, $disabled', '
 					$data = strtr($data, array(\'<br />\' => \'\'));
 					if (strpos($data, \'http://\') !== 0 && strpos($data, \'https://\') !== 0)
