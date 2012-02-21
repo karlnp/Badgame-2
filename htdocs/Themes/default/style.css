@@ -447,6 +447,14 @@ ul.smilies li:hover {
 .youtube {
 	height: 500px;
 }
+
+.banner-queue-help {
+	margin: 10px;
+	padding: 8px;
+	border:3px solid #795ACC;
+	background-color: #B29FE5;
+}
+
 /* Normal, standard links. */
 a:link
 {

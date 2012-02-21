@@ -164,6 +164,12 @@ function template_queue()
 	if ($context['banner_mod_message']) {
 		echo '<div class="badgame-message">', $context['banner_mod_message'], '</div>';
 	} else {
+		echo '<div class="banner-queue-help">';
+		echo '<p>', count($context['queued_banners']), " banners currently in the queue.</p>";
+		echo '<p>Rejecting banners should work now. Please reject any banners that have been in the BG1 rotation, 
+		they will be brought back at a later date.</p><p>Similarly please reject any plain old unfunny / lazy banners - the user doesn\'t
+		know their banner has been rejected. Contact me immediately if anything bad crops up.</p>';
+		echo '</div>';
 		echo '<div class="banner-collection">';
 		
 		foreach ($context['queued_banners'] as $banner) {
