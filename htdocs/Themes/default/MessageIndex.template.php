@@ -212,8 +212,16 @@ function template_main()
 					</tr>';
 		}
 
+		$index = 0;
 		foreach ($context['topics'] as $topic)
 		{
+			if ($index % 2 == 0) {
+				$alternate = TRUE;
+			} else {
+				$alternate = FALSE;
+			}
+			$index++;
+			
 			// Do we want to seperate the sticky and lock status out?
 			if (!empty($settings['seperate_sticky_lock']) && strpos($topic['class'], 'sticky') !== false)
 				$topic['class'] = substr($topic['class'], 0, strrpos($topic['class'], '_sticky'));
@@ -231,7 +239,7 @@ function template_main()
 						<td class="windowbg2" valign="middle" align="center" width="4%">
 							<img src="', $topic['first_post']['icon_url'], '" alt="" />
 						</td>
-						<td class="windowbg' , !empty($settings['seperate_sticky_lock']) && $topic['is_sticky'] ? '3' : '' , '" valign="middle" ', (!empty($topic['quick_mod']['remove']) ? 'id="topic_' . $topic['first_post']['id'] . '" onmouseout="mouse_on_div = 0;" onmouseover="mouse_on_div = 1;" ondblclick="modify_topic(\'' . $topic['id'] . '\', \'' . $topic['first_post']['id'] . '\', \'' . $context['session_id'] . '\');"' : ''), '>';
+						<td class="windowbg" valign="middle" ', (!empty($topic['quick_mod']['remove']) ? 'id="topic_' . $topic['first_post']['id'] . '" onmouseout="mouse_on_div = 0;" onmouseover="mouse_on_div = 1;" ondblclick="modify_topic(\'' . $topic['id'] . '\', \'' . $topic['first_post']['id'] . '\', \'' . $context['session_id'] . '\');"' : ''), '>';
 
 			if (!empty($settings['seperate_sticky_lock']))
 				echo '
@@ -250,7 +258,7 @@ function template_main()
 			echo '
 							<div class="thread-list-pages"><small id="pages' . $topic['first_post']['id'] . '">', $topic['pages'], '</small></div>
 						</td>';
-			echo '<td class="windowbg2 new-replies" style="text-align: right">';
+			echo '<td class="windowbg new-replies" style="text-align: right">';
 			
 			if ($topic['posts_read']) {
 				echo '<span class="lastReadButton lastReadClearButton" topic-id="', $topic['id'], '">X</span>';
@@ -271,13 +279,13 @@ function template_main()
 			echo '		<td class="windowbg2" valign="middle" width="14%">
 							', $topic['first_post']['member']['link'], '
 						</td>
-						<td class="windowbg' , $topic['is_sticky'] ? '3' : '' , '" valign="middle" width="4%" align="center">
+						<td class="windowbg" valign="middle" width="4%" align="center">
 							', $topic['replies'], '
 						</td>
-						<td class="windowbg' , $topic['is_sticky'] ? '3' : '' , '" valign="middle" width="4%" align="center">
+						<td class="windowbg2" valign="middle" width="4%" align="center">
 							', $topic['views'], '
 						</td>
-						<td class="windowbg2" valign="middle" width="14%" style="text-align: right">';
+						<td class="windowbg" valign="middle" width="14%" style="text-align: right">';
 			//				<a href="', $topic['last_post']['href'], '"><img src="', $settings['images_url'], '/icons/last_post.gif" alt="', $txt[111], '" title="', $txt[111], '" style="float: right;" /></a>
 			$timeStr = date("H:i M d Y", $topic['last_post']['timestamp']);
 			echo '			<span class="smalltext">
