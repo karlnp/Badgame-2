@@ -618,7 +618,7 @@ function template_main()
 
 		if ($context['can_report_moderator']) {
 			$reportUrl = $scripturl . '?action=reporttm;topic=' . $context['current_topic'] . '.' . $message['counter'] . ';msg=' . $message['id'];
-			echo '<a href="', $reportUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/tux.png" /> <span class="button-text">Report</span></div></a>';
+			echo '<a href="', $reportUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/icons/report_icon.png" /> <span class="button-text">Report</span></div></a>';
 		
 		}
 		echo '</div>';
