@@ -22,7 +22,7 @@ function template_main()
 				var imageHtml = "<img class=\"posted-image\" src=\"" + $(this).attr("original-image") + "\" />";
 				$(this).replaceWith(imageHtml)
 			});
-			$(".avatar-container img").css("display", "block");
+			$(".avatar-container img").css("display", "inline");
 		}
 		
 		$(document).ready(function() {
