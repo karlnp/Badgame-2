@@ -303,7 +303,7 @@ function template_main()
 						<td class="userinfo" valign="top" width="190px" height="200px"rowspan="2" style="overflow: hidden; ', !empty($options['center_avatars']) ? 'text-align: center' : '', '">
 							<b>', $message['member']['link'], '</b><br />';
 							
-		if ($message['can_see_ip']) {
+		if ($context['can_moderate_forum'] && !empty($message['member']['ip'])) {
 			echo '<div class="smalltext">', $message['member']['ip'], '</div>';
 		}
 		
