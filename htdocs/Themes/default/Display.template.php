@@ -562,7 +562,7 @@ function template_main()
 							<hr width="100%" size="1" class="hrcolor" />
 							<div class="signature">', $message['member']['signature'], '</div>';
 
-		echo '</td></tr><tr><td class="postinfo" ><span class="middletext">';
+		echo '</td></tr><tr><td class="postinfo" ><span class="smalltext">';
 		
 		echo '<a href="', $message['href'], '">#', $message['counter'], '</a> ';
 
