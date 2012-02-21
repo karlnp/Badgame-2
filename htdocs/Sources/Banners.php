@@ -80,7 +80,7 @@ function BannerList()
 
 function BannerUpload()
 {
-	global $scripturl, $txt, $modSettings, $context, $settings, $db_prefix;
+	global $bannerLocationPrefix, $scripturl, $txt, $modSettings, $context, $settings, $db_prefix;
 	
 	$context['page_title'] = "Upload a Banner";
 	$context['sub_template'] = 'upload';
@@ -112,8 +112,7 @@ function BannerUpload()
 						);
 						$extension = isset($extensions[$sizes[2]]) ? $extensions[$sizes[2]] : '.bmp';
 						
-						// CHANGE THIS BEFORE DEPLOYING (trailing slash required)
-						$bannerLocationPrefix = "/home/danny/badgame2/htdocs/banners/";
+						// Set bannerLocationPrefix in Settings.php
 						$newFilename = $bannerLocationPrefix . $filehash . $extension;
 
 						// Move the file.
