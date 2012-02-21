@@ -364,12 +364,12 @@ function template_main()
 
 		if ($context['can_post_new']) {
 			$newThreadUrl = $scripturl . '?action=post;board=' . $context['current_board'] . '.0';
-			echo '<a href="', $newThreadUrl, '"><div class="thread-action-button" style="width: 85px"><img src="', $settings['images_url'], '/silkicons/award_star_gold_2.png" /> <span class="button-text">New Thread</span></div></a>';
+			echo '<a href="', $newThreadUrl, '"><div class="thread-action-button" style="width: 100px"><img src="', $settings['images_url'], '/silkicons/award_star_gold_2.png" /> <span class="button-text">New Thread</span></div></a>';
 		}
 		
 		if ($context['can_post_poll']) {
 			$newPollUrl = $scripturl . '?action=post;board=' . $context['current_board'] . '.0;poll';
-			echo '<a href="', $newPollUrl, '"><div class="thread-action-button" style="width: 70px"><img src="', $settings['images_url'], '/silkicons/chart_bar.png" /> <span class="button-text">New Poll</span></div></a>';
+			echo '<a href="', $newPollUrl, '"><div class="thread-action-button" style="width: 80px"><img src="', $settings['images_url'], '/silkicons/chart_bar.png" /> <span class="button-text">New Poll</span></div></a>';
 		}
 		echo '</div>';
 		
