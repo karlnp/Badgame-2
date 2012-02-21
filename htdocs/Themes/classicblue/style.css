@@ -55,9 +55,9 @@ div.topic-search {
 	margin-left: 8px;
 	
 	height: 14px;
-	/* padding-left: 2px; */
+	padding-left: 2px;
 	padding-top: 2px;
-	padding-bottom: 2px;
+	padding-bottom: 3px;
 	padding-right: 6px;
 	
 	color: #333;
