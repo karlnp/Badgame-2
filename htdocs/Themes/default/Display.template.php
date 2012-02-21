@@ -14,6 +14,7 @@ function template_main()
 				var linkHtml = "<div><a href=\"" + $(this).attr("src") + "\"><img src=\"', $settings['images_url'], '/silkicons/picture.png\" /> Image hidden! Click here to view!</a></div>";
 				$(this).replaceWith(linkHtml);
 			});
+			$(".avatar-container img").css("display", "none");
 		}
 		$(document).ready(function() {
 			$(".avatar-container img").each(function() {
@@ -576,7 +577,7 @@ function template_main()
 		
 		echo '<div class="member-actions">';
 		
-		echo '<a href="', $message['member']['href'], '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/emoticon_tongue.png" /> <span class="button-text">Profile</span></div></a>';
+		echo '<a href="', $message['member']['href'], '"><div class="action-button"><img src="', $settings['images_url'], '/icons/profile_icon.png" /> <span class="button-text">Profile</span></div></a>';
 		
 		if ($context['can_send_pm']) {
 			$privateMessageUrl = $scripturl . '?action=pm;sa=send;u=' . $message['member']['id'];
