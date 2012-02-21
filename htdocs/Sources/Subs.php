@@ -1668,7 +1668,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
 					'<param name="movie" value="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1"></param>' .
 					'<embed src="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1" ' .
-					'type="application/x-shockwave-flash" width="600" height="475">' .
+					'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
 					'</embed></object></div>',
 				'validate' => create_function('&$tag, &$data, $disabled', '
 					if (strstr($data, "youtube")) {
@@ -1686,7 +1686,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
 					'<param name="movie" value="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1"></param>' .
 					'<embed src="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1" ' .
-					'type="application/x-shockwave-flash" width="600" height="475">' .
+					'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
 					'</embed></object></div>',
 				'validate' => create_function('&$tag, &$data, $disabled', '
 					if (strstr($data, "youtube")) {
