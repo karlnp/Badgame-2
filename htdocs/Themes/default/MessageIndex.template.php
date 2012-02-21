@@ -252,8 +252,6 @@ function template_main()
 						</td>';
 			echo '<td class="windowbg2 new-replies" style="text-align: right">';
 			
-			echo '<span class="lastReadButton hideThreadButton" alt="Hide" id="hidebutton" >HIDE</span>';
-			
 			if ($topic['posts_read']) {
 				echo '<span class="lastReadButton lastReadClearButton" topic-id="', $topic['id'], '">X</span>';
 				if ($topic['posts_read'] % $modSettings['defaultMaxMessages'] == 0) {
