@@ -395,7 +395,7 @@ function template_main()
 			if (!empty($settings['show_blurb']) && $message['member']['blurb'] != '')
 				echo '
 								', $message['member']['blurb'], '<br />
-								<br />';
+								';
 								
 			echo '<div class="network-icons">';
 			
