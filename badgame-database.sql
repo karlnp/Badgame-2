@@ -26,3 +26,6 @@ create table if not exists smf_bg2_lastread (
   lastpostid int(10),
   primary key (id_member, id_thread)
 );
+
+-- add hidden column to banners
+ALTER TABLE smf_bg2_banners ADD hidden bit default 0;
