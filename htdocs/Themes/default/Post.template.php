@@ -449,7 +449,6 @@ function template_main()
 								</td>
 							</tr>';
 	
-	if ($context['is_new_topic']) {
 		echo '					<tr>
 									<td align="right">
 										<b>', $txt[71], ':</b>
@@ -464,7 +463,6 @@ function template_main()
 									
 		echo '					</div></td>
 								</tr>';					
-	}
 
 	// If this is a poll then display all the poll options!
 	if ($context['make_poll'])
