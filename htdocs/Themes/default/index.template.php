@@ -71,6 +71,9 @@ function template_main_above()
 	<script language="JavaScript" type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script language="JavaScript" type="text/javascript" src="http://cdn.jquerytools.org/1.2.6/tiny/jquery.tools.min.js"></script>
 	<script language="JavaScript" type="text/javascript" src="js/modernizr-2.5.1.js" ></script>
+	<!--[if lt IE 9]>
+		<script type="text/javascript" src="/js/excanvas/excanvas.js"></script>
+	<![endif]-->
 	<script language="JavaScript" type="text/javascript" src="js/donation-nag.js"></script>
 	<script language="JavaScript" type="text/javascript" src="js/hidden-tags.js"></script>
 	<script language="JavaScript" type="text/javascript" src="js/tipped/tipped.js"></script>
