@@ -394,15 +394,20 @@ div.topic-search {
 
 ul.smilies {
 	margin: 0;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	-webkit-padding-start: 0px;
 }
 
 ul.smilies li {
-	min-height: 35px;
+	min-height: 30px;
 	list-style: none;
 	float: left;
-	width: 95px;
-	height: 50px;
+	height: 30px;
 	margin: 8px 3px;
+	margin-top: 0;
 	overflow: hidden;
 	text-align: center;
 	border: 1px solid #DBDBDB;
