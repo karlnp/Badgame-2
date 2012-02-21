@@ -535,7 +535,7 @@ function template_main()
 	echo '
 			<tr><td></td>
 				<td>
-					<a href="javascript:swapSmilies();"><img src="', $settings['images_url'], '/expand.gif" alt="+" id="smileysExpand" /></a> <a href="javascript:swapSmileys();"><b>', 'Show smileys...', '</b></a>
+					<a href="javascript:swapSmileys();"><img src="', $settings['images_url'], '/expand.gif" alt="+" id="smileysExpand" /></a> <a href="javascript:swapSmileys();"><b>', 'Show smileys...', '</b></a>
 				</td>
 			</tr>';
 	// Now start printing all of the smileys.
