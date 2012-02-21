@@ -822,7 +822,7 @@ a img
 .post, .personalmessage
 {
 	width: 100%;
-	overflow: auto;
+	overflow: visible;
 	line-height: 1.3em;
 }
 
