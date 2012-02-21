@@ -905,6 +905,7 @@ function template_postbox(&$message)
 
 		$found_button = false;
 		// Print the buttom row of buttons!
+		/*
 		foreach ($context['bbc_tags'][1] as $image => $tag)
 		{
 			if (isset($tag['before']))
@@ -932,6 +933,8 @@ function template_postbox(&$message)
 				$found_button = false;
 			}
 		}
+		 * 
+		 */
 
 		echo '
 				</td>
