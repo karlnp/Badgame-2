@@ -85,6 +85,9 @@ function BannerUpload()
 	$context['page_title'] = "Upload a Banner";
 	$context['sub_template'] = 'upload';
 	
+	$context['banner_upload_success'] = "";
+	$context['banner_upload_error'] = '';
+	
 	if ($_FILES['banner']) {
 		// Oh shit! Someone's trying to upload something!
 		$sizes = @getimagesize($_FILES['banner']['tmp_name']);
