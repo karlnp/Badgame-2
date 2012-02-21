@@ -444,6 +444,9 @@ ul.smilies li:hover {
 	font-family: verdana, sans-serif;
 }
 
+.youtube {
+	height: 500px;
+}
 /* Normal, standard links. */
 a:link
 {
