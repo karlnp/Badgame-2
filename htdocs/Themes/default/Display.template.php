@@ -304,7 +304,7 @@ function template_main()
 
 		echo '
 		<table width="100%" cellpadding="3" cellspacing="0" border="0">
-			<tr><td class="', $message['alternate'] == 0 ? 'windowbg' : 'windowbg2', '">';
+			<tr><td class="', $message['alternate'] == 0 ? 'windowbg' : 'windowbg2', '" style="padding: 0">';
 
 		// Show information about the poster of this message.
 		echo '
