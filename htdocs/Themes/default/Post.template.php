@@ -449,22 +449,21 @@ function template_main()
 								</td>
 							</tr>';
 	
-	if ($context['is_new_topic']) {
-		echo '					<tr>
+		echo '					<tr ', ($context['is_new_topic'] ? '' : 'style="display: none"'), '>
 									<td align="right">
 										<b>', $txt[71], ':</b>
 									</td>
 									<td>';
 		
-		echo '<div class="post-icons">';
+		echo '<div class="post-icons" >';
+		
 		
 		foreach($context['icons'] as $icon) {
-			echo '<div class="post-icon"><input type="radio" name="icon" value="', $icon['value'], '"><img src="', $icon['url'], '" align="middle", alt="', $icon['name'], '" width="60" height="15" /></div>';
+			echo '<div class="post-icon"><input type="radio" name="icon" value="', $icon['value'], '" ', ($icon['selected'] ? 'checked' : ''), '><img src="', $icon['url'], '" align="middle", alt="', $icon['name'], '" width="60" height="15" /></div>';
 		}
 									
 		echo '					</div></td>
 								</tr>';					
-	}
 
 	// If this is a poll then display all the poll options!
 	if ($context['make_poll'])
