@@ -449,8 +449,7 @@ function template_main()
 								</td>
 							</tr>';
 	
-		
-		echo '					<tr ', ($context['is_new_topic'] ? '' : 'style="display: none"'), ')>
+		echo '					<tr ', (($context['is_new_topic'] || $context['is_first_post']) ? '' : 'style="display: none"'), ')>
 									<td align="right">
 										<b>', $txt[71], ':</b>
 									</td>
