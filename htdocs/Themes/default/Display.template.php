@@ -11,11 +11,20 @@ function template_main()
 	<script language="JavaScript" type="text/javascript">
 		function doHide() {
 			$(".post img.posted-image, .signature img.posted-image").each(function() {
-				var linkHtml = "<div><a href=\"" + $(this).attr("src") + "\"><img src=\"', $settings['images_url'], '/silkicons/picture.png\" /> Image hidden! Click here to view!</a></div>";
+				var linkHtml = "<div class=\"hidden-image\" original-image=\"" + $(this).attr("src") + "\"><a href=\"" + $(this).attr("src") + "\"><img src=\"', $settings['images_url'], '/silkicons/picture.png\" /> Image hidden! Click here to view!</a></div>";
 				$(this).replaceWith(linkHtml);
 			});
 			$(".avatar-container img").css("display", "none");
 		}
+		
+		function doUnhide() {
+			$(".hidden-image").each(function() {
+				var imageHtml = "<img class=\"posted-image\" src=\"" + $(this).attr("original-image") + "\" />";
+				$(this).replaceWith(imageHtml)
+			});
+			$(".avatar-container img").css("display", "block");
+		}
+		
 		$(document).ready(function() {
 			$(".avatar-container img").each(function() {
 				var tooltipHtml = $(this).parent().attr("title");
@@ -25,7 +34,7 @@ function template_main()
 			$("#hide-images").click(function() {
 				if (localStorage.getItem("images.hide")) {
 					localStorage.removeItem("images.hide");
-					location.reload(true);
+					doUnhide();
 				} else {
 					localStorage.setItem("images.hide", "true");
 					doHide();
