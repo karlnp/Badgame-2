@@ -15,6 +15,7 @@ function template_main()
 				$(this).replaceWith(linkHtml);
 			});
 			$(".avatar-container img").css("display", "none");
+			$("#hide-images").html("Unhide Images");
 		}
 		
 		function doUnhide() {
@@ -23,6 +24,7 @@ function template_main()
 				$(this).replaceWith(imageHtml)
 			});
 			$(".avatar-container img").css("display", "inline");
+			$("#hide-images").html("Hide Images");
 		}
 		
 		$(document).ready(function() {
