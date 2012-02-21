@@ -449,7 +449,8 @@ function template_main()
 								</td>
 							</tr>';
 	
-		echo '					<tr>
+		
+		echo '					<tr ', ($context['is_new_topic'] ? '' : 'style="display: none"'), ')>
 									<td align="right">
 										<b>', $txt[71], ':</b>
 									</td>
@@ -458,7 +459,7 @@ function template_main()
 		echo '<div class="post-icons">';
 		
 		foreach($context['icons'] as $icon) {
-			echo '<div class="post-icon"><input type="radio" name="icon" value="', $icon['value'], '"><img src="', $icon['url'], '" align="middle", alt="', $icon['name'], '" width="60" height="15" /></div>';
+			echo '<div class="post-icon"><input type="radio" name="icon" value="', $icon['value'], '" ', ($icon['selected'] ? 'checked' : ''), '><img src="', $icon['url'], '" align="middle", alt="', $icon['name'], '" width="60" height="15" /></div>';
 		}
 									
 		echo '					</div></td>
