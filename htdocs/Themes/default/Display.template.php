@@ -366,13 +366,14 @@ function template_main()
 								<br />';
 			*/
 			// Show avatars, images, etc.?
-			if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
+			if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image'])) {
 				$tooltipHtml = "<div class='smalltext' style='padding: 8px; color: white'><b>" . $message["member"]["username"] . "</b><br />" . 
 					"Registered on " . $message["member"]["registered"] . "<br />" .
 					"Post count : " . $message["member"]["real_posts"] . "</div>";
 				echo '<div class="avatar-container" title="', $tooltipHtml, '" style="overflow: auto; margin-bottom: 2px">', 
 					'<img src="', $message['member']['avatar']['href'], (empty($message['member']['last_modified']) ? '' : ('?m=' . $message['member']['last_modified'])), '" />',
 					'</div>';
+			}
 
 			// Show their personal text?
 			if (!empty($settings['show_blurb']) && $message['member']['blurb'] != '')
