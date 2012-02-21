@@ -830,7 +830,7 @@ function template_thread_actions() {
 		
 		if ($context['can_sticky']) {
 			$stickyUrl = $scripturl . '?action=sticky;topic=' . $context['current_topic'] . '.' . $context['start'] . ';sesc=' . $context['session_id'];
-			echo '<a href="', $stickyUrl, '"><div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/note.png" /> <span class="button-text">', empty($context['is_sticky']) ? 'Sticky' : 'Unsticky', '</span></div></a>';
+			echo '<a href="', $stickyUrl, '"><div class="thread-action-button" style="width: 75px" ><img src="', $settings['images_url'], '/silkicons/note.png" /> <span class="button-text">', empty($context['is_sticky']) ? 'Sticky' : 'Unsticky', '</span></div></a>';
 		}
 }
 
