@@ -165,6 +165,8 @@ div.topic-search {
 
 .button-text {
 	float: right;
+	font-size: 0.9em;
+	padding-top: 1px;
 }
 
 .thread-action-hide {
