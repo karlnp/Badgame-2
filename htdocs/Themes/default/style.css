@@ -432,6 +432,18 @@ ul.smilies li:hover {
 .post-icon img {
 	padding-bottom: 8px;
 }
+
+.network-icons {
+	margin-top: 0.8em;
+}
+
+.t_Content_badgame {
+	color: white;
+	padding: 8px;
+	font-size: x-small;
+	font-family: verdana, sans-serif;
+}
+
 /* Normal, standard links. */
 a:link
 {

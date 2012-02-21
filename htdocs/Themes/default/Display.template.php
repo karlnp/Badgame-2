@@ -33,6 +33,11 @@ function template_main()
 				$(this).parent().attr("title", "");
 				Tipped.create(this, tooltipHtml, {skin: "badgame"});
 			});
+			
+			$(".network-icons .network-icon").each(function() {
+				Tipped.create(this, {skin: "badgame"});
+			})
+			
 			$("#hide-images").click(function() {
 				if (localStorage.getItem("images.hide")) {
 					localStorage.removeItem("images.hide");
@@ -378,9 +383,9 @@ function template_main()
 			*/
 			// Show avatars, images, etc.?
 			if (!empty($settings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image'])) {
-				$tooltipHtml = "<div class='smalltext' style='padding: 8px; color: white'><b>" . $message["member"]["username"] . "</b><br />" . 
+				$tooltipHtml = "<b>" . $message["member"]["username"] . "</b><br />" . 
 					"Registered on " . $message["member"]["registered"] . "<br />" .
-					"Post count : " . $message["member"]["real_posts"] . "</div>";
+					"Post count : " . $message["member"]["real_posts"] . "";
 				echo '<div class="avatar-container" title="', $tooltipHtml, '" style="overflow: auto; margin-bottom: 2px">', 
 					'<img src="', $message['member']['avatar']['href'], (empty($message['member']['last_modified']) ? '' : ('?m=' . $message['member']['last_modified'])), '" />',
 					'</div>';
@@ -391,6 +396,42 @@ function template_main()
 				echo '
 								', $message['member']['blurb'], '<br />
 								<br />';
+								
+			echo '<div class="network-icons">';
+			
+			if (!empty($message['member']['options']['profile_steam_id'])) {
+				$linkFound = FALSE;
+				// if it starts with http://, assume it's a link
+				if (strpos($message['member']['options']['profile_steam_id'], "http://") === 0) {
+					$linkFound = TRUE;
+					echo '<a href="', $message['member']['options']['profile_steam_id'], '">';
+				}
+				
+				echo '<img class="network-icon" src="', $settings['images_url'], '/icons/steam_icon.png" title="',
+				$message['member']['options']['profile_steam_id'], '" />';
+				
+				if ($linkFound) {
+					echo '</a>';
+				}
+				echo ' ';
+				
+			}
+			if (!empty($message['member']['options']['profile_xbox_live_id'])) {
+				echo '<img class="network-icon" src="', $settings['images_url'], '/icons/xbox_icon.png" title="',
+				$message['member']['options']['profile_xbox_live_id'],
+				'" /> '; 
+			}
+			if (!empty($message['member']['options']['profile_psn_id'])) {
+				echo '<img class="network-icon" src="', $settings['images_url'], '/icons/psn_icon.png" title="',
+				$message['member']['options']['profile_psn_id'],
+				'" /> '; 
+			}
+			// echo $message['member']['options']['profile_steam_id'], '<br />';		
+			// echo $message['member']['options']['profile_xbox_live_id'], '<br />';	
+			// echo $message['member']['options']['profile_psn_id'], '<br />';				
+			
+			echo '</div>';
+			
 			/*
 			// This shows the popular messaging icons.
 			echo '
