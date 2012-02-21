@@ -345,6 +345,7 @@ div.topic-search {
 {
 	font-weight: bold;
 	color: #E57575;
+	border-left: 0;
 	padding-top: 4px;
 	padding-bottom: 4px;
 	padding-left: 4px;
@@ -365,14 +366,15 @@ div.topic-search {
 	cursor: pointer;
 }
 
-.threadrow #hidebutton {
-	display: none;
+.hideThreadButton {
+	font-size: 0.8em;
+	font-weight: bold;
+	color: #656565;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 4px;
+	padding-right: 4px;
 	cursor: pointer;
-	opacity: 0.6;
-}
-
-.threadrow:hover #hidebutton {
-	display: inline;
 }
 
 .hidden-thread * {

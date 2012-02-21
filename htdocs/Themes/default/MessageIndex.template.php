@@ -240,7 +240,6 @@ function template_main()
 			echo '
 							', $topic['is_sticky'] ? '<b>' : '' , '<span id="msg_' . $topic['first_post']['id'] . '">', $topic['first_post']['link'], '</span>', $topic['is_sticky'] ? '</b>' : '';
 
-			echo '<img src="', $settings['images_url'], '/silkicons/lightbulb.png" align="right", alt="", id="hidebutton" />';
 			/*
 			// Is this topic new? (assuming they are logged in!)
 			if ($topic['new'] && $context['user']['is_logged'])
@@ -251,6 +250,8 @@ function template_main()
 							<div class="thread-list-pages"><small id="pages' . $topic['first_post']['id'] . '">', $topic['pages'], '</small></div>
 						</td>';
 			echo '<td class="windowbg2 new-replies" style="text-align: right">';
+			
+			echo '<span class="lastReadButton hideThreadButton" alt="Hide" id="hidebutton" >HIDE</span>';
 			
 			if ($topic['posts_read']) {
 				echo '<span class="lastReadButton lastReadClearButton" topic-id="', $topic['id'], '">X</span>';
