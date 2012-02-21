@@ -644,14 +644,14 @@ function template_main()
 		
 		echo '<div class="post-actions">';
 		
-		if ($context['can_reply']) {
-			$quoteUrl = $scripturl . '?action=post;quote=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'] . ';sesc=' . $context['session_id'];
-			echo '<a href="', $quoteUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Quote</span></div></a>';
-		}
-		
 		if ($context['can_reply'] && !empty($options['display_quick_reply'])) {
 			$quickQuoteUrl = $scripturl . '?action=post;quote=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'] . ';sesc=' . $context['session_id'];
 			echo '<a href="', $quickQuoteUrl, '" onclick="doQuote(' . $message['id'] . ', \'' . $context['session_id'] . '\'); return false;" ><div class="action-button" style="width: 90px"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Quick Quote</span></div></a>'; 
+		}
+
+		if ($context['can_reply']) {
+			$quoteUrl = $scripturl . '?action=post;quote=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'] . ';sesc=' . $context['session_id'];
+			echo '<a href="', $quoteUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Quote</span></div></a>';
 		}
 
 		if ($message['can_modify']) {
