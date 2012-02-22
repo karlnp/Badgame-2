@@ -970,7 +970,7 @@ function template_send()
 							<tr>
 								<td></td>
 								<td align="left">
-									<label for="outbox"><input type="checkbox" name="outbox" id="outbox" value="1" tabindex="', $context['tabindex']++, '"', $context['copy_to_outbox'] ? ' checked="checked"' : '', ' class="check" /> ', $txt['pm_save_outbox'], '</label>
+									<label for="outbox"><input type="checkbox" name="outbox" id="outbox" value="1" tabindex="', $context['tabindex']++, '"', ' checked="checked"', ' class="check" /> ', $txt['pm_save_outbox'], '</label>
 								</td>
 							</tr>
 						</table>
