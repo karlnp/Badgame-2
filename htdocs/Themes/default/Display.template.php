@@ -823,9 +823,9 @@ echo '
 		<tr>
 				<td colspan="2" class="catbg"><a href="javascript:swapQuickReply();"><img src="', $settings['images_url'], '/', $options['display_quick_reply'] == 2 ? 'collapse' : 'expand', '.gif" alt="+" id="quickReplyExpand" /></a> <a href="javascript:swapQuickReply();">', $txt['quick_reply_1'], '</a></td>
 		</tr>
-	<tr id="quickReplyOptions"', $options['display_quick_reply'] == 2 ? '' : ' style="display: none"', '>
-		<td class="windowbg" width="25%" valign="top">', $txt['quick_reply_2'], $context['is_locked'] ? '<br /><br /><b>' . $txt['quick_reply_warning'] . '</b>' : '', '</td>
-		<td class="windowbg" width="75%" align="center">
+	<tr id="quickReplyOptions"', $options['display_quick_reply'] == 2 ? '' : ' style="display: none"', '>',
+		// <td class="windowbg" width="25%" valign="top">', $txt['quick_reply_2'], $context['is_locked'] ? '<br /><br /><b>' . $txt['quick_reply_warning'] . '</b>' : '', '</td>
+		'<td class="windowbg" width="100%" align="center">
 			<form action="', $scripturl, '?action=post2" method="post" accept-charset="', $context['character_set'], '" name="postmodify" id="postmodify" onsubmit="submitonce(this);" style="margin: 0;">
 				<input type="hidden" name="topic" value="' . $context['current_topic'] . '" />
 				<input type="hidden" name="subject" value="' . $context['response_prefix'] . $context['subject'] . '" />
