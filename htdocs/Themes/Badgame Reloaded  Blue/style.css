@@ -1,0 +1,1173 @@
+
+/* BADGAME 2: RELOADED */
+/* ~fuck grape~ */
+/* dis skin wuz made by (¯`·._) MALTAG (¯`·._) ...relax, he understandz j00 */
+
+div#banner-area {	
+    border: 1px solid #333 !important;
+    background: #FFF !important;
+
+    text-align: center;
+    width: 445px !important;
+    height: 115px !important;
+    margin: 8px auto 0  auto !important;
+    padding: 8px important;
+}
+
+div#news-area {
+    border: 1px solid #DD6666;
+    background-color: #FFCECE;
+    font-size: 1.6em;
+    width: 60%;
+    margin: 0 auto;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
+div.topic-search {
+    width: 310px;
+    
+    background: #333 !important;
+    
+    padding: 8px !important;
+    color: white;
+    font-weight: bold;
+    
+    float: left !important;
+}
+
+
+.userinfo {
+    border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+    padding: 8px 16px 8px 16px !important;
+
+    background: #FFF !important;
+    color: #333 !important;
+
+    height: auto !important;
+}
+
+.userinfo b
+{
+    color: #111 !important;
+    display: block !important;
+    margin: 0 0 8px 0 !important;
+    
+    word-wrap: break-word;
+}
+
+.avatar-container {
+    margin: 8px 0 8px 0 !important;
+}
+
+.network-icons {
+	width: 100%;
+        height: auto !important;
+	margin: 8px 0 8px 0 !important;
+}
+
+.postinfo, .responses {
+    border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.postinfo {
+    border-right: 1px solid rgba(0, 0, 0, 0.2) !important;
+
+    background: #FFF !important;
+    color: #777 !important;
+    text-align: center;
+}
+
+.thread-title {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.thread-row a {
+    color: #222 !important;
+}
+
+.thread-action-button, .action-button, .view-action-button {
+    margin: 2px !important;
+    
+    height: 16px !important;
+    padding: 4px 6px 4px 6px !important;
+    
+    color: #333;
+    border: 1px solid #333 !important;
+        
+    cursor: pointer;
+    font-size: 12px;
+    min-width: 80px !important;
+
+    background: #f2f2f2; /* Old browsers */
+    background: -moz-linear-gradient(top, #FFF 0%, #EEE 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(100%,#EEE)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* IE10+ */
+    background: linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* W3C */
+    
+    border-radius: 2px;
+}
+
+.action-button:hover {
+	color: #EEE !important;
+
+    background: #f2f2f2; /* Old browsers */
+    background: -moz-linear-gradient(top, #dff0f9 0%, #c0d0dc 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#859bb9), color-stop(100%,#5f728d)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #859bb9 0%,#5f728d 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #dff0f9 0%,#c0d0dc 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #dff0f9 0%,#c0d0dc 100%) !important; /* IE10+ */
+    background: linear-gradient(top, #dff0f9 0%,#c0d0dc 100%) !important; /* W3C */
+    
+    border: 1px solid #333;
+    border-top: 1px solid #777;
+    border-left: 1px solid #777;
+}
+
+.action-button:active {
+    background: #606060; /* Old browsers */
+    background: -moz-linear-gradient(top, #606060 0%, #1e1e1e 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#606060), color-stop(100%,#1e1e1e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* IE10+ */
+    background: linear-gradient(top, #606060 0%,#1e1e1e 100%); /* W3C */
+    
+    color: white;
+    
+    border: 1px solid #333;
+    border-top: 1px solid #777;
+    border-left: 1px solid #777;
+}
+
+.thread-action-button {
+    color: #EEE !important;
+    
+    margin: 0 2px 0 2px !important;
+        
+    cursor: pointer;
+    font-size: 12px;
+    min-width: 80px !important;
+
+    background: #f2f2f2; /* Old browsers */
+    background: -moz-linear-gradient(top, #859bb9 0%, #5f728d 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#859bb9), color-stop(100%,#5f728d)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #859bb9 0%,#5f728d 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #859bb9 0%,#5f728d 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #859bb9 0%,#5f728d 100%) !important; /* IE10+ */
+    background: linear-gradient(top, #859bb9 0%,#5f728d 100%) !important; /* W3C */
+    
+    border-radius: 2px;
+}
+
+.thread-action-button:hover {
+	color: #333 !important;
+	
+    background: #FFF; /* Old browsers */
+    background: -moz-linear-gradient(top, #FFF 0%, #EEE 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(100%,#EEE)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* IE10+ */
+    background: linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* W3C */
+    
+    border: 1px solid #333;
+    border-top: 1px solid #777;
+    border-left: 1px solid #777;
+}
+
+.thread-action-button:active {
+    background: #606060; /* Old browsers */
+    background: -moz-linear-gradient(top, #606060 0%, #1e1e1e 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#606060), color-stop(100%,#1e1e1e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* IE10+ */
+    background: linear-gradient(top, #606060 0%,#1e1e1e 100%); /* W3C */
+    
+    border: 1px solid #333;
+    border-top: 1px solid #777;
+    border-left: 1px solid #777;
+}
+
+.member-actions .action-button {
+    float: left;
+    margin-left: 0;
+    margin-right: 8px; 
+}
+
+.post-actions .action-button {
+    float: right;
+}
+
+.button-text {
+    float: right;
+    font-size: 0.9em;
+    padding-top: 0.05em !important;
+}
+
+.thread-action-hide {
+    background-image: url('images/silkicons/bin.png');
+}
+
+.member-actions {
+    float: left;
+}
+
+.post-actions {
+    float: right;
+}
+
+.thread-list-pages {
+    margin-top: 2px;
+    color: #888 !important;
+}
+
+.thread-list-pages a {
+    color: #888 !important;
+}
+
+#nagbox {
+
+    /* overlay is hidden before loading */
+    display:none;
+
+    /* standard decorations */
+    width:600px;
+    
+    /* for modern browsers use semi-transparent color on the border. nice! */
+    border:5px solid #343434;
+
+    /* hot CSS3 features for mozilla and webkit-based browsers (rounded borders) */
+    -moz-border-radius:8px;
+    -webkit-border-radius:8px;
+    
+    background-color: white;
+    background-image:url(images/nag-beandog.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    
+    min-height: 80px;
+    padding: 16px;
+}
+
+#nagbox h1 {
+    margin-top: 0;
+}
+
+#nagbox .nagbutton {
+    background: #eeeeee; /* Old browsers */
+    background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* IE10+ */
+    background: linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* W3C */
+    
+    border: 2px solid #333;
+    color: #222;
+    font-weight: bold;
+    
+    width: 280px;
+    
+    margin: 4px;
+    padding: 2px;
+    
+    cursor: pointer;
+}
+
+#nagbox .nagbutton:hover {
+    background: #d1d6cd; /* Old browsers */
+    background: -moz-linear-gradient(top, #d1d6cd 0%, #838c81 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d1d6cd), color-stop(100%,#838c81)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* IE10+ */
+    background: linear-gradient(top, #d1d6cd 0%,#838c81 100%); /* W3C */
+}
+
+#nagbox .positive-nagbutton {
+    background: #fefcea; /* Old browsers */
+    background: -moz-linear-gradient(top, #fefcea 0%, #f1da36 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefcea), color-stop(100%,#f1da36)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #fefcea 0%,#f1da36 100%); /* IE10+ */
+    background: linear-gradient(top, #fefcea 0%,#f1da36 100%); /* W3C */
+    
+    font-size: 1.1em;
+}
+
+#nagbox .positive-nagbutton:hover {
+    background: #ffc578; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffc578 0%, #fb9d23 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffc578), color-stop(100%,#fb9d23)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* IE10+ */
+    background: linear-gradient(top, #ffc578 0%,#fb9d23 100%); /* W3C */
+}
+
+/* close button positioned on upper right corner */
+#nagbox .close {
+    background-image:url(images/close.png);
+    position:absolute;
+    left:-18px;
+    top:-14px;
+    cursor:pointer;
+    height:28px;
+    width:28px;
+}
+
+.banner-help {
+    
+    margin: 10px;
+    /* for modern browsers use semi-transparent color on the border. nice! */
+    border:3px solid #8694A8;
+    
+    background-color: #DFE5F0;
+    background-image:url(images/nag-beandog.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    
+    min-height: 80px;
+    padding: 16px;
+    
+    padding-right: 220px;
+    padding-bottom: 0;
+}
+
+.banner-help h1 {
+    margin: 5px;
+    margin-top: 0;
+}
+
+.queued-banner {
+    margin: 10px;
+}
+
+.badgame-message {
+    width: 50%;
+    margin: 10px auto;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #454545;
+}
+
+.resized-image {
+    position: relative;
+    width: 100%;
+}
+
+.zoomtip {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-size: 10px;
+    padding: 1px 1px 2px 2px;
+    background-color: white;
+    color: black;
+    opacity: 0.8;
+    border: 1px solid black;
+    font-family: sans-serif;
+}
+
+.lastReadButton {
+    background: #FFF; /* Old browsers */
+    background: -moz-linear-gradient(top, #FFF 0%, #EEE 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(100%,#EEE)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Opera11.10+ */
+    background: -ms-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF', endColorstr='#EEE',GradientType=0 ) !important; /* IE6-9 */
+    background: linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* W3C */
+    
+    border: 1px solid #A5A5A5;
+}
+
+.lastReadClearButton
+{
+    font-weight: bold;
+    color: #E57575;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.newPostCount {
+    border-left: 0;
+    font-weight: bold;
+    color: #656565;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 20px;
+    padding-right: 4px;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.hideThreadButton {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #656565; 
+
+    cursor: pointer;
+
+    padding: 4px;
+    width: 1em;
+    height: 1em;
+    border-radius: 2em;
+}
+
+#hidebutton {
+	display: block;
+	text-align: center;
+	margin: auto;
+	padding: 2px 2px 4px 2px !important;
+	font-size: 10px !important;
+	width: 10px !important;
+	height: 10px !important;
+	color: #8fc4ff !important;
+}
+
+.hidden-thread * {
+    background-color: #FFD5D5 !important;
+}
+
+.spoiler {
+    background-color: #242424;
+    color: #242424;
+    padding: 2px;
+}
+
+.spoiler:hover {
+    color: #FFFFFF;
+}
+
+ul.smilies {
+    margin: 0;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+
+ul.smilies li {
+    height: 40px !important;
+    width: 40px !important;
+    list-style: none;
+    float: left;
+    margin: 4px !important;
+    margin-top: 0;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #DBDBDB;
+    background: #FFF;
+    padding: 8px;
+    
+    border-radius: 2px;
+}
+
+ul.smilies li img {
+	max-height: 40px;
+	max-width: 40px;
+	margin: auto;
+}
+
+ul.smilies li:hover {
+    background-color: #EAEAEA;
+}
+
+.post-icon {
+    float: left;
+    min-width: 96px;
+}
+
+.post-icon input {
+    margin: 0;
+    padding: 0;
+    margin-left: 6px;
+    margin-right: 4px;
+}
+.post-icon img {
+    padding-bottom: 8px;
+}
+/* Normal, standard links. */
+a:link
+{
+    color: #333;
+    text-decoration: none;
+}
+a:visited
+{
+    color: #555;
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration: none !important;
+}
+
+/* Navigation links - for the link tree. */
+.nav, .nav:link, .nav:visited
+{
+    color: #1f4969 !important;
+    text-decoration: none;
+}
+
+a.nav:hover
+{
+    color: #000 !important;
+    text-decoration: none !Important;
+}
+
+.navPages {
+    color: #4b7290 !important;
+}
+
+/* Tables should show empty cells. */
+table
+{
+    empty-cells: show;
+}
+
+/* By default (td, body..) use verdana in black. */
+body, td, th , tr
+{
+    color: #000000;
+    font-size: small;
+    font-family: verdana, sans-serif;
+}
+
+/* The main body of the entire forum. */
+body
+{
+    background-color: #dde1e5 !important;
+    margin: 0;
+    padding: 0 30px 4px 30px !important;
+}
+
+#bodyarea 
+{
+    padding-top: 20px !important;
+}
+
+/* Input boxes - just a bit smaller than normal so they align well. */
+input, textarea, button
+{
+    color: #000000;
+    font-family: verdana, sans-serif;
+}
+input, button
+{
+    font-size: 90%;
+}
+
+textarea
+{
+    font-size: 100%;
+    color: #000000;
+    font-family: verdana, sans-serif;
+}
+
+/* All input elements that are checkboxes or radio buttons. */
+input.check
+{
+}
+
+/* Selects are a bit smaller, because it makes them look even better 8). */
+select
+{
+    font-size: 90%;
+    font-weight: normal;
+    color: #000000;
+    font-family: verdana, sans-serif;
+}
+
+/* Standard horizontal rule.. ([hr], etc.) */
+hr, .hrcolor
+{
+    height: 1px;
+    border: 0;
+    color: #666666;
+    background-color: #666666;
+}
+
+/* No image should have a border when linked */
+a img
+{
+    border: 0;
+}
+
+/* A code block - maybe even PHP ;). */
+.code
+{
+    color: #000000;
+    background-color: #EEE !important;
+    font-family: "courier new", "times new roman", monospace;
+    line-height: 1.3em;
+    /* Put a nice border around it. */
+    border: 1px solid #242424;
+    border-left: 3px solid #242424;
+    padding: 1px;
+    /* Don't wrap its contents, and show scrollbars. */
+    white-space: nowrap;
+    overflow: auto;
+    padding: 12px;
+    /* Stop after about 24 lines, and just show a scrollbar. */
+    max-height: 24em;
+}
+
+/* The "Quote:" and "Code:" header parts... */
+.quoteheader, .codeheader, .nwsheader, .spoilerheader, .tldrheader
+{
+    padding: 5px 8px;
+    background-repeat: no-repeat;
+    background-position: right;
+    text-decoration: none;
+    border: 1px solid #5e829e !important;
+    font-style: normal;
+    font-weight: bold;
+    font-size: x-small;
+    line-height: 1.2em;
+    
+    color: #FFF !important;
+    border-radius: 2px 2px 0 0;
+}
+
+.quoteheader {
+	background-color: #b0becc !important;
+	background-image: url('images/cockhead.png');
+}
+
+.quoteheader, .quoteheader a
+{
+    color: #446a87 !important;
+}
+
+.codeheader
+{
+    background-image: url('images/glasses.png');
+    background-color: #AAA;
+    border: 1px solid #242424;
+    border-left: 3px solid #242424;
+    border-bottom: 0;
+    color: #333 !important;
+}
+
+.hiddenheader 
+{
+    cursor: pointer;
+}
+
+.nwsheader
+{
+    background-image: url('images/lilies.png');
+    background-color: #efb5d4 !important;
+    color: #757575;
+}
+
+.nwsblock, .spoilerblock, .tldrblock, .code, .quote {
+    border-bottom: 1px solid #5e829e !important;
+    border-left: 1px solid #5e829e !important;
+    border-right: 1px solid #5e829e !important;
+    border-top: 0 !important;
+}
+
+.nwsblock
+{
+    color: #333 !important;
+    background-color: #f8edf3 !important;
+    border-top: 0;
+}
+
+.spoilerheader
+{
+    background-image: url('images/aeris.png');
+    background-color: #454545;
+    color: #DDD !important;
+}
+
+.spoilerblock
+{
+    background-color: #454545;
+    color: #FFFFFF;
+    border-top: 0;
+}
+
+.tldrheader
+{
+    background-image: url('images/tree.png');
+    font-family: Verdana, sans-serif !important;
+    font-size: 11px !important;
+    background-color: #F0EFE9;
+    color: #777 !important;
+}
+
+.tldrblock
+{
+    background-color: #F0EFE9;
+    font-family: Verdana, sans-serif !important;
+    border-top: 0;
+    font-size: 12px !important;
+    line-height: normal !important;
+}
+
+.hiddenblock
+{
+    padding: 12px;
+    display: none;
+}
+
+/* A quote, perhaps from another post. */
+.quote
+{
+    color: #8096a6 !important;
+    background: #e8edf3 !important;
+    padding: 12px;
+    font-family: Verdana, sans-serif !important;
+    margin-bottom: 8px;
+}
+
+/* Generally, those [?] icons.  This makes your cursor a help icon. */
+.help
+{
+    cursor: help;
+}
+
+/* /me uses this a lot. (emote, try typing /me in a post.) */
+.meaction
+{
+    color: red;
+}
+
+/* The main post box - this makes it as wide as possible. */
+.editor
+{
+    width: 96%;
+}
+
+/* Highlighted text - such as search results. */
+.highlight
+{
+    background-color: yellow;
+    font-weight: bold;
+    color: black;
+}
+
+/* Alternating backgrounds for posts, and several other sections of the forum. */
+.windowbg, #preview_body
+{
+    color: #111 !important;
+    background-color: #f7f8fa !important;
+}
+
+.windowbg2
+{
+    color: #111 !important;
+    background-color: #edeef0 !important;
+}
+
+.windowbg3
+{
+    color: #111 !important;
+    background-color: #d9d9d9 !important;
+}
+
+/* the today container in calendar */
+.calendar_today
+{
+    background-color: #FFFFFF;
+}
+
+.signature img
+{
+    height: auto !important; /* sigs ftw */
+}
+
+/* These are used primarily for titles, but also for headers (the row that says what everything in the table is.) */
+.titlebg, tr.titlebg th, tr.titlebg td, .titlebg2, tr.titlebg2 th, tr.titlebg2 td
+{
+    color: #333 !important;
+    font-style: normal;
+    background: #b1c7d8 !important;
+    border: solid 1px #5e829e !important;
+    padding: 10px !important;
+}
+.titlebg, .titlebg a:link, .titlebg a:visited
+{
+    font-weight: bold;
+    color: black;
+    font-style: normal;
+}
+
+.titlebg a:hover
+{
+    color: #404040;
+}
+/* same as titlebg, but used where bold text is not needed */
+.titlebg2 a:link, .titlebg2 a:visited
+{
+    color: black;
+    font-style: normal;
+    text-decoration: underline;
+}
+
+.titlebg2 a:hover
+{
+    text-decoration: underline;
+}
+
+/* This is used for categories, page indexes, and several other areas in the forum.
+.catbg and .catbg2 is for boardindex, while .catbg3 is for messageindex and display headers*/
+.catbg , tr.catbg td , .catbg3 , tr.catbg3 td
+{
+    /* background: url(images/catbg.jpg) #88A6C0 repeat-x; */
+    background: #b0becc !important;
+    color: #b9cedd !important;
+    padding: 8px !important;
+    margin: 8px 0 8px 0 !important;
+}
+
+.catbg, .catbg2 {
+	padding: 10px !important;
+}
+
+.catbg2, tr.catbg2 td
+{
+    background: #357392 !important;
+    color: #FFF !important;
+}
+
+.catbg, .catbg2, .catbg td {
+	border: 1px solid rgba(0, 0, 0, 0.2) !important;
+	font-weight: bold;
+}
+
+.catbg .smalltext {
+	color: #333 !important;
+}
+
+.catbg3, tr.catbg3 td, .catbg3 a:link, .catbg3 a:visited
+{
+    font-size: 12px !important;
+    font-family: Verdana, sans-serif;
+    color: #FFF !important;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.catbg a:link, .catbg a:visited , .catbg2 a:link, .catbg2 a:visited, .catbg, .catbg td div
+{
+    color: #FFF !important;
+    text-decoration: none;
+}
+
+.catbg a:hover, .catbg2 a:hover, .catbg3 a:hover
+{
+    color: #e0e0ff;
+}
+
+/* This is used for tables that have a grid/border background color (such as the topic listing.) */
+.bordercolor
+{
+    background: none !important;
+    padding: 0px !important;
+}
+
+/* This is used on tables that should just have a border around them. */
+.tborder {
+	background: none !important;
+	border: none !important;
+}
+
+.tborder .threadrow {
+	border-left: 1px solid #5e829e !important;
+	border-right: 1px solid #5e829e !important;
+}
+
+/* Default font sizes: small (8pt), normal (10pt), and large (14pt). */
+.smalltext
+{
+    font-size: x-small;
+    font-family: "Lucida Grande", sans-serif !important;
+}
+.middletext
+{
+    font-size: 90%;
+}
+.normaltext
+{
+    font-size: small;
+}
+.largetext
+{
+    font-size: large;
+}
+
+
+/* Posts and personal messages displayed throughout the forum. */
+.post, .personalmessage
+{
+    width: 98% !important;
+    overflow: auto;
+    line-height: 1.3em;
+    padding: 8px 4px 4px 8px !important;
+}
+
+/* All the signatures used in the forum.  If your forum users use Mozilla, Opera, or Safari, you might add max-height here ;). */
+.signature
+{
+    width: 97% !important;
+    overflow-y: visible !important; /* deal wi it */
+    overflow-x: hidden !important;
+
+    height: auto !important; /* sigs ftw */
+    max-height: 1000px !important;
+    padding: 6px 0 4px 0 !important;
+    margin: 0 14px 0 14px;
+
+    border-top: 1px dotted rgba(0, 0, 0, 0.3);
+    color: #777;
+}
+
+/* Sometimes there will be an error when you post */
+.error
+{
+    color: red;
+}
+
+
+/* definitions for the main tab, active means the tab reflects which page is displayed */
+.maintab_first, .maintab_back, .maintab_last, .maintab_active_first, .maintab_active_back, .maintab_active_last
+{
+	color: white;
+	text-transform: uppercase;
+	vertical-align: top;
+}
+
+.maintab_back, .maintab_active_back
+{
+	color: white;
+	text-decoration: none;
+	font-size:  9px;
+	vertical-align: top;
+	padding: 6px !important;
+	font-family: tahoma, sans-serif;
+	
+	display: block;
+	float: left;
+	min-width: 32px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	text-align: center;
+	margin-left: 2px;
+}
+
+.maintab_back
+{
+	background: #b1c7d8 !important;
+}
+
+.maintab_active_back
+{
+	background: #7cbdef !important;
+}
+
+.maintab_back:hover, .maintab_active_back:hover, .maintab_back:hover a, .maintab_active_back:hover a
+{
+	background: #639ac4 !important;
+	color: #FFF !important;
+}
+
+.maintab_first, .maintab_last, .maintab_active_first, .maintab_active_last
+{
+	display: none;
+}
+
+/* how links behave in main tab. */
+.maintab_back a:link , .maintab_back a:visited, .maintab_active_back a:link , .maintab_active_back a:visited
+{
+	color: white;
+	text-decoration: none;
+}
+
+/* definitions for the mirror tab */
+.mirrortab_first, .mirrortab_back, .mirrortab_last, .mirrortab_active_first, .mirrortab_active_back, .mirrortab_active_last
+{
+	color: white;
+	text-transform: uppercase;
+	vertical-align: top;
+}
+
+.mirrortab_back, .mirrortab_active_back
+{
+	color: #333 !important;
+	text-decoration: none;
+	font-size: 9px;
+	vertical-align: bottom;
+	padding: 6px !important;
+	margin: 0 !important;
+	font-family: tahoma, sans-serif;
+	
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.mirrortab_back
+{
+	background: none !important;
+}
+
+.mirrortab_active_back
+{
+	background: none !important;
+}
+
+.mirrortab_first, .mirrortab_last, .mirrortab_active_first, .mirrortab_active_last
+{
+	display: none;
+}
+
+
+/* how links behave in mirror tab. */
+.mirrortab_back a:link , .mirrortab_back a:visited, .mirrortab_active_back a:link , .mirrortab_active_back a:visited
+{
+	color: #333 !important;
+	text-decoration: none;
+}
+
+.mirrortab_back a:hover, .mirrortab_active_back a:hover
+{
+	color: #e0e0ff;
+	text-decoration: none;
+}
+
+.windowbg a, .windowbg2 a, .windowbg3 a 
+{
+	color: #454545;
+}
+
+/* The AJAX notifier */
+#ajax_in_progress
+{
+    background: #32CD32;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18pt;
+    padding: 3px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+
+.threadrow .windowbg
+{
+	padding: 4px !important;
+	font-size: 12px !important;
+}
+
+
+.threadrow .windowbg2 {
+	text-align: center !important;
+}
+
+.threadrow .windowbg2 a
+{
+	color: #777 !important;
+	font-size: 11px !important;
+}
+
+.postrow
+{
+	display: inline-table !important;
+    margin: 6px 0 6px 0 !important;
+	width: 100% !important;
+	border: 1px solid #8b98a3 !important;
+
+}
+
+.hrcolor
+{
+     display: none;
+}
+
+.userinfo br
+{
+     display: none;
+}
+
+#footerarea * {
+	color: #888 !important;
+}
+
+td.mirrortab_back form input {
+	border-radius: 1em;
+	border: 1px solid #333 !important;
+}
+
+#quickReplyOptions {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+#quickReplyOptions .windowbg {
+	display: block !important;
+	width: 100% !important;
+	clear: both;
+	height: auto;
+	color: #d4dbdf !important;
+	padding: 0 !important;
+	background: #d4dbdf !important;
+}
+
+#quickReplyOptions .windowbg form#postmodify {
+	padding-bottom: 8px;
+}
+
+#quickReplyOptions .windowbg form#postmodify textarea {
+	margin: 0 0 10px 0;
+	border-radius: 2px;
+	border: 1px solid #999;
+	box-shadow: inset 0 2px 4px #CCC;
+	width: 98% !important;
+}
+
+#quickReplyOptions .windowbg form#postmodify submit {
+	padding: 8px;
+	border-radius: 1em;
+}
+
+#quickReplyExpand, #smileysExpand, #postMoreExpand {
+	display: none;
+}
+
+body {
+    text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.youtube embed {
+	border: 1px solid #333;
+	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+	border-radius: 4px;
+}
+
+.catbg3 td {
+	border: 1px solid #8b98a3 !important;
+}
+
+#top_subject {
+	border-left: none !important;
+}

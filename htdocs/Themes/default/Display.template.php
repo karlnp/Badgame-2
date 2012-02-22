@@ -646,12 +646,12 @@ function template_main()
 
 		if ($context['can_reply']) {
 			$quoteUrl = $scripturl . '?action=post;quote=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'] . ';sesc=' . $context['session_id'];
-			echo '<a href="', $quoteUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Quote</span></div></a>';
+			echo '<a href="', $quoteUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/icons/quote_icon.png" /> <span class="button-text">Quote</span></div></a>';
 		}
 
 		if ($message['can_modify']) {
 			$editUrl  = $scripturl . '?action=post;msg=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';sesc=' . $context['session_id'];
-			echo '<a href="', $editUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/pencil.png" /> <span class="button-text">Edit</span></div></a>';
+			echo '<a href="', $editUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/icons/edit_icon.png" /> <span class="button-text">Edit</span></div></a>';
 		}
 
 		if ($context['can_split']) {
@@ -661,7 +661,7 @@ function template_main()
 		
 		if ($message['can_remove']) {
 			$removeUrl = $scripturl . '?action=deletemsg;topic=' . $context['current_topic'] . '.' . $context['start'] . ';msg=' .$message['id'] . ';sesc=' . $context['session_id'];
-			echo '<a href="', $removeUrl, '" onclick="return confirm(\'', $txt[154], '?\'); "><div class="action-button"><img src="', $settings['images_url'], '/silkicons/cancel.png" /> <span class="button-text">Delete</span></div></a>';
+			echo '<a href="', $removeUrl, '" onclick="return confirm(\'', $txt[154], '?\'); "><div class="action-button"><img src="', $settings['images_url'], '/icons/delete_icon.png" /> <span class="button-text">Delete</span></div></a>';
 		}
 
 		if ($context['can_report_moderator']) {
@@ -671,7 +671,7 @@ function template_main()
 		
 		if ($context['can_reply'] && !empty($options['display_quick_reply'])) {
 			$quickQuoteUrl = $scripturl . '?action=post;quote=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'] . ';sesc=' . $context['session_id'];
-			echo '<a href="', $quickQuoteUrl, '" onclick="doQuote(' . $message['id'] . ', \'' . $context['session_id'] . '\'); return false;" ><div class="action-button" style="width: 90px"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Quick Quote</span></div></a>'; 
+			echo '<a href="', $quickQuoteUrl, '" onclick="doQuote(' . $message['id'] . ', \'' . $context['session_id'] . '\'); return false;" ><div class="action-button" style="width: 90px"><img src="', $settings['images_url'], '/icons/quickquote_icon.png" /> <span class="button-text">Quick Quote</span></div></a>'; 
 		}
 
 		echo '</div>';
@@ -857,7 +857,7 @@ function template_thread_actions() {
 	
 		if ($context['can_reply']) {
 			$replyUrl = $scripturl . '?action=post;topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'];
-			echo '<a href="', $replyUrl, '"><div class="thread-action-button"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Reply</span></div></a>';
+			echo '<a href="', $replyUrl, '"><div class="thread-action-button"><img src="', $settings['images_url'], '/icons/reply_icon.png" /> <span class="button-text">Reply</span></div></a>';
 		}
 		
 		if ($context['can_add_poll']) {
