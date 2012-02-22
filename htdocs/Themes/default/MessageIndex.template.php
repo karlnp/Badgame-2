@@ -235,7 +235,7 @@ function template_main()
 			echo '
 					<tr class="threadrow" thread-id="', $topic['id'], '">';
 					
-					echo '<td class="windowbg2" style="text-align: center"><span class="lastReadButton" style="cursor: pointer; padding: 2px; color: #E6842E; font-weight: bold" id="hidebutton">X</div></td>';
+					echo '<td class="windowbg2" style="text-align: center"><span class="lastReadButton" style="cursor: pointer; padding: 2px; color: #E3B66D; font-weight: bold" id="hidebutton">X</div></td>';
 					/*
 						<td class="windowbg2" valign="middle" align="center" width="5%">
 							<img src="', $settings['images_url'], '/topic/', $topic['class'], '.gif" alt="" />
