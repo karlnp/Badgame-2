@@ -3,6 +3,10 @@
 /* ~fuck grape~ */
 /* dis skin wuz made by (¯`·._) MALTAG (¯`·._) ...relax, he understandz j00 */
 
+.thread-action-button img {
+	float: left;
+}
+
 div#banner-area {	
     border: 1px solid #333 !important;
     background: #FFF !important;
