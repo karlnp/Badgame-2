@@ -72,13 +72,14 @@ function BannerFetch($page = 0, $pageSize = 10){
 	$offset = $page * $pageSize;
 	
 	$request = db_query("
-				SELECT banners.id, banners.id_uploader, banners.upload_time, banners.filename, banners.approved, members.ID_MEMBER, members.memberName
+				SELECT banners.id, banners.id_uploader, banners.upload_time, banners.filename, banners.approved, banners.hidden, members.ID_MEMBER, members.memberName
 				FROM {$db_prefix}bg2_banners AS banners, ${db_prefix}members AS members
 				WHERE banners.approved = true 
 				AND banners.id_uploader = members.ID_MEMBER
+				AND banners.hidden = false
 				ORDER BY banners.upload_time DESC 
 				LIMIT {$pageSize} OFFSET {$offset}", __FILE__, __LINE__);
-
+					
 	$context['banners'] = array();
 		
 	while ($row = mysql_fetch_assoc($request))
@@ -194,13 +195,23 @@ function BannerQueue()
 			WHERE id = $approvedBannerId", __FILE__, __LINE__);
 		
 		$context['banner_mod_message'] = "Banner approved!";
+	} else if (!empty($_GET['reject'])) {
+		$rejectedBannerID = mysql_real_escape_string($_GET['reject']);
+		
+		db_query("
+			UPDATE {$db_prefix}bg2_banners
+			SET hidden = 1
+			WHERE id = $rejectedBannerID", __FILE__, __LINE__);
+		
+		$context['banner_mod_message'] = "Banner rejected.";
 	} else {
 		// If they're not, list all the banners waiting for approval.
 		$request = db_query("
-				SELECT banners.id, banners.id_uploader, banners.upload_time, banners.filename, banners.approved, members.ID_MEMBER, members.memberName
+				SELECT banners.id, banners.id_uploader, banners.upload_time, banners.filename, banners.approved, banners.hidden, members.ID_MEMBER, members.memberName
 				FROM {$db_prefix}bg2_banners AS banners, ${db_prefix}members AS members
 				WHERE banners.approved = false 
-				AND banners.id_uploader = members.ID_MEMBER
+				AND banners.id_uploader = members.ID_MEMBER 
+				AND banners.hidden = false 
 				ORDER BY banners.upload_time DESC", __FILE__, __LINE__);
 					
 		$context['queued_banners'] = array();
