@@ -75,6 +75,7 @@ function template_main_above()
 		<script type="text/javascript" src="/js/excanvas/excanvas.js"></script>
 	<![endif]-->
 	<script language="JavaScript" type="text/javascript" src="js/donation-nag.js"></script>
+	<script language="JavaScript" type="text/javascript" src="js/banner-paging.js">/script>
 	<script language="JavaScript" type="text/javascript" src="js/hidden-tags.js"></script>
 	<script language="JavaScript" type="text/javascript" src="js/tipped/tipped.js"></script>
 	<script language="JavaScript" type="text/javascript" src="js/tipped/skins.js"></script>

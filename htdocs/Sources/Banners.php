@@ -42,16 +42,34 @@ function Banners()
 	// Jump to the sub action.
 	if (isset($subActions[$context['subaction']]))
 		$subActions[$context['subaction']][1]();
+	else if($context['subaction'] == 'list_ajax')
+		BannerListAjax();
 	else
 		$subActions['list'][1]();
 	
 }
 
+// Initial page load, do fetch before responding so user doesn't have to wait on ajax
 function BannerList()
 {
 	global $scripturl, $txt, $modSettings, $context, $settings, $db_prefix;
-	
 	$context['page_title'] = "Banner List";
+	empty($_REQUEST['page']) ? BannerFetch() : BannerFetch(intval($_REQUEST['page']));
+}
+
+// Ajax method, we're just going to render some JSON here for maximum snappiness
+function BannerListAjax()
+{
+	global $context;
+	BannerList();
+	echo json_encode(array('banners' => $context['banners']));
+	obExit(false);
+}
+
+function BannerFetch($page = 0, $pageSize = 10){
+	global $context, $db_prefix;
+	
+	$offset = $page * $pageSize;
 	
 	$request = db_query("
 				SELECT banners.id, banners.id_uploader, banners.upload_time, banners.filename, banners.approved, banners.hidden, members.ID_MEMBER, members.memberName
@@ -59,7 +77,8 @@ function BannerList()
 				WHERE banners.approved = true 
 				AND banners.id_uploader = members.ID_MEMBER
 				AND banners.hidden = false
-				ORDER BY banners.upload_time DESC", __FILE__, __LINE__);
+				ORDER BY banners.upload_time DESC 
+				LIMIT {$pageSize} OFFSET {$offset}", __FILE__, __LINE__);
 					
 	$context['banners'] = array();
 		
@@ -75,7 +94,6 @@ function BannerList()
 		
 		array_push($context['banners'], $banner);
 	}
-	
 	mysql_free_result($request);
 }
 

@@ -38,13 +38,25 @@ function template_main()
 		</tr>
 	</table>';
 	}
-	
-	echo '<div class="tborder" style="padding: 10px">';
+
+	echo '<div id="bannerContent" class="tborder" style="padding: 10px">';
 	
 	foreach ($context['banners'] as $banner) {
 		echo '<img src="', $banner['filename'], '" title="Uploaded by ', $banner['uploader_name'], '" style="margin: 5px" />';
 	}
+	
 	echo '</div>';
+
+	// Basic paging controls for now
+	echo '
+		<br style="clear: both;"/>
+		<center>
+		<p>
+			<a id="previousPageLink" href="#" onclick="getPreviousBanners(); return false;">Previous Page</a>&nbsp;|&nbsp;
+			<a id="nextPageLink" href="#" onclick="getNextBanners(); return false;">Next Page</a>
+		</p>
+		</center>
+	';
 }
 
 function template_upload() 
