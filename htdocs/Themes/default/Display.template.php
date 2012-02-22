@@ -634,7 +634,7 @@ function template_main()
 		
 		if ($context['can_send_pm']) {
 			$privateMessageUrl = $scripturl . '?action=pm;sa=send;u=' . $message['member']['id'];
-			echo '<a href="', $privateMessageUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/silkicons/heart.png" /> <span class="button-text">Private</span></div></a>';
+			echo '<a href="', $privateMessageUrl, '"><div class="action-button" style="padding-top: 0px; padding-left: 0px; height: 17px; width: 70px;"><img src="', $settings['images_url'], '/icons/private_icon.gif" /> <span class="button-text" style="padding-top: 3px">Private</span></div></a>';
 		}
 		
 		$showHistoryUrl = $scripturl . '?action=profile;u=' . $message['member']['id'] . ';sa=showPosts';
