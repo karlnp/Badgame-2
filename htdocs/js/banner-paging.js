@@ -28,6 +28,7 @@ function loadBanners(){
 				});	
 			} else {
 				alert('No more banners.');
+				window.bannerPage--;
 			}
 		},
 		url: '/index.php?action=banners&sa=list_ajax&page=' + window.bannerPage,
