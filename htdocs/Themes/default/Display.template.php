@@ -643,11 +643,6 @@ function template_main()
 		echo '</div>';
 		
 		echo '<div class="post-actions">';
-		
-		if ($context['can_reply'] && !empty($options['display_quick_reply'])) {
-			$quickQuoteUrl = $scripturl . '?action=post;quote=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'] . ';sesc=' . $context['session_id'];
-			echo '<a href="', $quickQuoteUrl, '" onclick="doQuote(' . $message['id'] . ', \'' . $context['session_id'] . '\'); return false;" ><div class="action-button" style="width: 90px"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Quick Quote</span></div></a>'; 
-		}
 
 		if ($context['can_reply']) {
 			$quoteUrl = $scripturl . '?action=post;quote=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'] . ';sesc=' . $context['session_id'];
@@ -672,8 +667,13 @@ function template_main()
 		if ($context['can_report_moderator']) {
 			$reportUrl = $scripturl . '?action=reporttm;topic=' . $context['current_topic'] . '.' . $message['counter'] . ';msg=' . $message['id'];
 			echo '<a href="', $reportUrl, '"><div class="action-button"><img src="', $settings['images_url'], '/icons/report_icon.png" /> <span class="button-text">Report</span></div></a>';
-		
 		}
+		
+		if ($context['can_reply'] && !empty($options['display_quick_reply'])) {
+			$quickQuoteUrl = $scripturl . '?action=post;quote=' . $message['id'] . ';topic=' . $context['current_topic'] . '.' . $context['start'] . ';num_replies=' . $context['num_replies'] . ';sesc=' . $context['session_id'];
+			echo '<a href="', $quickQuoteUrl, '" onclick="doQuote(' . $message['id'] . ', \'' . $context['session_id'] . '\'); return false;" ><div class="action-button" style="width: 90px"><img src="', $settings['images_url'], '/silkicons/award_star_add.png" /> <span class="button-text">Quick Quote</span></div></a>'; 
+		}
+
 		echo '</div>';
 		
 		echo '</td></tr>';
@@ -688,7 +688,7 @@ function template_main()
 	}
 	
 	echo '
-	<tr class="catbg3"><td style="padding-top: 4px; padding-bottom: 4px; padding-right: 9px">';
+	<tr class="catbg3"><td style="padding-top: 4px; padding-bottom: 4px; padding-right: 6px">';
 	
 	echo '<div id="hide-images" class="thread-action-button" style="float: left; margin-left: 0; padding-left: 4px">Hide Images</div>';
 	

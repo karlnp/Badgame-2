@@ -166,6 +166,8 @@ function template_main()
 		if (!empty($context['topics']))
 		{
 			echo '
+						<td class="catbg3" width="2%"></td>
+						
 						<td width="50px" class="catbg3"></td>
 
 						<td class="catbg3" colspan="2"><a href="', $scripturl, '?board=', $context['current_board'], '.', $context['start'], ';sort=subject', $context['sort_by'] == 'subject' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt[70], $context['sort_by'] == 'subject' ? ' <img src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.gif" alt="" />' : '', '</a></td>
@@ -177,8 +179,8 @@ function template_main()
 						<td class="catbg3" width="4%" align="center"><a href="', $scripturl, '?board=', $context['current_board'], '.', $context['start'], ';sort=views', $context['sort_by'] == 'views' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt[301], $context['sort_by'] == 'views' ? ' <img src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.gif" alt="" />' : '', '</a></td>
 
 						<td class="catbg3" width="14%"><a href="', $scripturl, '?board=', $context['current_board'], '.', $context['start'], ';sort=last_post', $context['sort_by'] == 'last_post' && $context['sort_direction'] == 'up' ? ';desc' : '', '">', $txt[111], $context['sort_by'] == 'last_post' ? ' <img src="' . $settings['images_url'] . '/sort_' . $context['sort_direction'] . '.gif" alt="" />' : '', '</a></td>
-
-						<td class="catbg3" width="2%"></td>';
+			';
+						
 			// Show a "select all" box for quick moderation?
 			if (!empty($options['display_quick_mod']) && $options['display_quick_mod'] == 1)
 				echo '
@@ -222,6 +224,8 @@ function template_main()
 			}
 			$index++;
 			
+			
+			
 			// Do we want to seperate the sticky and lock status out?
 			if (!empty($settings['seperate_sticky_lock']) && strpos($topic['class'], 'sticky') !== false)
 				$topic['class'] = substr($topic['class'], 0, strrpos($topic['class'], '_sticky'));
@@ -230,6 +234,8 @@ function template_main()
 	
 			echo '
 					<tr class="threadrow" thread-id="', $topic['id'], '">';
+					
+					echo '<td class="windowbg2" style="text-align: center"><span class="lastReadButton" style="cursor: pointer; padding: 2px; color: #E6842E; font-weight: bold" id="hidebutton">X</div></td>';
 					/*
 						<td class="windowbg2" valign="middle" align="center" width="5%">
 							<img src="', $settings['images_url'], '/topic/', $topic['class'], '.gif" alt="" />
@@ -294,8 +300,6 @@ function template_main()
 								$topic['last_post']['member']['name'], '</a>
 							</span>
 						</td>';
-						
-			echo '<td class="windowbg2"><span class="lastReadButton" style="cursor: pointer; padding: 2px; color: #E6842E; font-weight: bold" id="hidebutton">X</div></td>';
 
 			// Show the quick moderation options?
 			if (!empty($options['display_quick_mod']))
