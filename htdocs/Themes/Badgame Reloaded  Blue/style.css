@@ -1095,10 +1095,6 @@ a img
     border: 1px solid #464D5A !important;
 }
 
-.postrow * {
-    overflow: visible;
-}
-
 .hrcolor
 {
      display: none;
