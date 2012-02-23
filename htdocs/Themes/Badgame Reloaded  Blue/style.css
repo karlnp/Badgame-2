@@ -912,7 +912,6 @@ a img
 .post, .personalmessage
 {
     width: 98% !important;
-    overflow: auto;
     line-height: 1.3em;
     padding: 8px 4px 4px 8px !important;
 }
