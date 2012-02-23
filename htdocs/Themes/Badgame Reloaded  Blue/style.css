@@ -1,21 +1,56 @@
-
 /* BADGAME 2: RELOADED */
 /* ~fuck grape~ */
 /* dis skin wuz made by (¯`·._) MALTAG (¯`·._) ...relax, he understandz j00 */
 
-.thread-action-button img {
-	float: left;
+/* By default (td, body..) use verdana in black. */
+body, td, th , tr
+{
+    font-size: small;
+    font-family: verdana, sans-serif;
 }
 
-div#banner-area {	
-    border: 1px solid #333 !important;
-    background: #FFF !important;
+/* The main body of the entire forum. */
+body
+{
+    background-color: #6C7F8F !important;
+    margin: 0;
+    padding: 0 30px 4px 30px !important;
+}
 
+#bodyarea 
+{
+    padding-top: 20px !important;
+}
+
+/* Default font sizes: small (8pt), normal (10pt), and large (14pt). */
+.smalltext
+{
+    font-size: x-small;
+    font-family: "Lucida Grande", sans-serif !important;
+}
+.middletext
+{
+    font-size: 90%;
+}
+.normaltext
+{
+    font-size: small;
+}
+.largetext
+{
+    font-size: large;
+}
+
+div#banner-area {
+    border: none !important;
+    background: #6C7F8F !important;
     text-align: center;
-    width: 445px !important;
-    height: 115px !important;
     margin: 8px auto 0  auto !important;
-    padding: 8px important;
+    padding: 0 !important;
+}
+
+div#banner-area img {
+    border: 1px solid #333 !important;
 }
 
 div#news-area {
@@ -66,9 +101,9 @@ div.topic-search {
 }
 
 .network-icons {
-	width: 100%;
+    width: 100%;
         height: auto !important;
-	margin: 8px 0 8px 0 !important;
+    margin: 8px 0 8px 0 !important;
 }
 
 .postinfo, .responses {
@@ -92,8 +127,14 @@ div.topic-search {
     color: #222 !important;
 }
 
+
+.action-button {
+    filter: alpha(opacity=50);
+    opacity: 0.5;
+}
+
 .thread-action-button, .action-button, .view-action-button {
-    margin: 2px !important;
+    margin: 0 0 0 2px !important;
     
     height: 16px !important;
     padding: 4px 6px 4px 6px !important;
@@ -116,30 +157,25 @@ div.topic-search {
     border-radius: 2px;
 }
 
-.action-button:hover {
-	color: #EEE !important;
-
-    background: #f2f2f2; /* Old browsers */
-    background: -moz-linear-gradient(top, #dff0f9 0%, #c0d0dc 100%) !important; /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#859bb9), color-stop(100%,#5f728d)) !important; /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #859bb9 0%,#5f728d 100%) !important; /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #dff0f9 0%,#c0d0dc 100%) !important; /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #dff0f9 0%,#c0d0dc 100%) !important; /* IE10+ */
-    background: linear-gradient(top, #dff0f9 0%,#c0d0dc 100%) !important; /* W3C */
-    
+.action-button:hover {    
     border: 1px solid #333;
     border-top: 1px solid #777;
     border-left: 1px solid #777;
+    
+    color: #333 !important;
+    
+    filter: alpha(opacity=100);
+    opacity: 1.0;
 }
 
 .action-button:active {
-    background: #606060; /* Old browsers */
-    background: -moz-linear-gradient(top, #606060 0%, #1e1e1e 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#606060), color-stop(100%,#1e1e1e)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* IE10+ */
-    background: linear-gradient(top, #606060 0%,#1e1e1e 100%); /* W3C */
+    background: #f2f2f2; /* Old browsers */
+    background: -moz-linear-gradient(top, #FFF 0%, #EEE 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(100%,#EEE)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* IE10+ */
+    background: linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* W3C */
     
     color: white;
     
@@ -149,7 +185,7 @@ div.topic-search {
 }
 
 .thread-action-button {
-    color: #EEE !important;
+    color: #333 !important;
     
     margin: 0 2px 0 2px !important;
         
@@ -157,21 +193,25 @@ div.topic-search {
     font-size: 12px;
     min-width: 80px !important;
 
-    background: #f2f2f2; /* Old browsers */
-    background: -moz-linear-gradient(top, #859bb9 0%, #5f728d 100%) !important; /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#859bb9), color-stop(100%,#5f728d)) !important; /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #859bb9 0%,#5f728d 100%) !important; /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #859bb9 0%,#5f728d 100%) !important; /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #859bb9 0%,#5f728d 100%) !important; /* IE10+ */
-    background: linear-gradient(top, #859bb9 0%,#5f728d 100%) !important; /* W3C */
+    background: #606060; /* Old browsers */
+    background: -moz-linear-gradient(top, #606060 0%, #1e1e1e 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#606060), color-stop(100%,#1e1e1e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #606060 0%,#1e1e1e 100%); /* IE10+ */
+    background: linear-gradient(top, #606060 0%,#1e1e1e 100%); /* W3C */
     
     border-radius: 2px;
 }
 
+.thread-action-button img {
+    float: left;
+}
+
 .thread-action-button:hover {
-	color: #333 !important;
-	
-    background: #FFF; /* Old browsers */
+    color: #333 !important;
+    
+    background: #f2f2f2; /* Old browsers */
     background: -moz-linear-gradient(top, #FFF 0%, #EEE 100%) !important; /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(100%,#EEE)) !important; /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Chrome10+,Safari5.1+ */
@@ -211,7 +251,7 @@ div.topic-search {
 .button-text {
     float: right;
     font-size: 0.9em;
-    padding-top: 0.05em !important;
+    padding-top: 1px !important;
 }
 
 .thread-action-hide {
@@ -224,15 +264,6 @@ div.topic-search {
 
 .post-actions {
     float: right;
-}
-
-.thread-list-pages {
-    margin-top: 2px;
-    color: #888 !important;
-}
-
-.thread-list-pages a {
-    color: #888 !important;
 }
 
 #nagbox {
@@ -382,13 +413,13 @@ div.topic-search {
 
 .lastReadButton {
     background: #FFF; /* Old browsers */
-    background: -moz-linear-gradient(top, #FFF 0%, #EEE 100%) !important; /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(100%,#EEE)) !important; /* Chrome,Safari4+ */
+    background: -moz-linear-gradient(top, #FFF 0%, #EEE 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF), color-stop(100%,#EEE)); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* Opera11.10+ */
-    background: -ms-linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* IE10+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF', endColorstr='#EEE',GradientType=0 ) !important; /* IE6-9 */
-    background: linear-gradient(top, #FFF 0%,#EEE 100%) !important; /* W3C */
+    background: -o-linear-gradient(top, #FFF 0%,#EEE 100%); /* Opera11.10+ */
+    background: -ms-linear-gradient(top, #FFF 0%,#EEE 100%); /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFF', endColorstr='#EEE',GradientType=0 ); /* IE6-9 */
+    background: linear-gradient(top, #FFF 0%,#EEE 100%); /* W3C */
     
     border: 1px solid #A5A5A5;
 }
@@ -431,18 +462,18 @@ div.topic-search {
 }
 
 #hidebutton {
-	display: block;
-	text-align: center;
-	margin: auto;
-	padding: 2px 2px 4px 2px !important;
-	font-size: 10px !important;
-	width: 10px !important;
-	height: 10px !important;
-	color: #8fc4ff !important;
+    display: block;
+    text-align: center;
+    margin: auto;
+    padding: 2px 2px 4px 2px !important;
+    font-size: 10px !important;
+    width: 10px !important;
+    height: 10px !important;
+    color: #8fc4ff !important;
 }
 
 .hidden-thread * {
-    background-color: #FFD5D5 !important;
+    background: none !important;
 }
 
 .spoiler {
@@ -481,9 +512,9 @@ ul.smilies li {
 }
 
 ul.smilies li img {
-	max-height: 40px;
-	max-width: 40px;
-	margin: auto;
+    max-height: 40px;
+    max-width: 40px;
+    margin: auto;
 }
 
 ul.smilies li:hover {
@@ -507,7 +538,7 @@ ul.smilies li:hover {
 /* Normal, standard links. */
 a:link
 {
-    color: #333;
+    color: #46505D !important;
     text-decoration: none;
 }
 a:visited
@@ -517,51 +548,14 @@ a:visited
 }
 a:hover
 {
+    color: #6B98D2 !important;
     text-decoration: none !important;
-}
-
-/* Navigation links - for the link tree. */
-.nav, .nav:link, .nav:visited
-{
-    color: #1f4969 !important;
-    text-decoration: none;
-}
-
-a.nav:hover
-{
-    color: #000 !important;
-    text-decoration: none !Important;
-}
-
-.navPages {
-    color: #4b7290 !important;
 }
 
 /* Tables should show empty cells. */
 table
 {
     empty-cells: show;
-}
-
-/* By default (td, body..) use verdana in black. */
-body, td, th , tr
-{
-    color: #000000;
-    font-size: small;
-    font-family: verdana, sans-serif;
-}
-
-/* The main body of the entire forum. */
-body
-{
-    background-color: #dde1e5 !important;
-    margin: 0;
-    padding: 0 30px 4px 30px !important;
-}
-
-#bodyarea 
-{
-    padding-top: 20px !important;
 }
 
 /* Input boxes - just a bit smaller than normal so they align well. */
@@ -618,9 +612,6 @@ a img
     background-color: #EEE !important;
     font-family: "courier new", "times new roman", monospace;
     line-height: 1.3em;
-    /* Put a nice border around it. */
-    border: 1px solid #242424;
-    border-left: 3px solid #242424;
     padding: 1px;
     /* Don't wrap its contents, and show scrollbars. */
     white-space: nowrap;
@@ -637,7 +628,7 @@ a img
     background-repeat: no-repeat;
     background-position: right;
     text-decoration: none;
-    border: 1px solid #5e829e !important;
+    border: 1px solid #46515E !important;
     font-style: normal;
     font-weight: bold;
     font-size: x-small;
@@ -648,13 +639,13 @@ a img
 }
 
 .quoteheader {
-	background-color: #b0becc !important;
-	background-image: url('images/cockhead.png');
+    background-color: #9FB9D6 !important;
+    background-image: url('images/cockhead.png');
 }
 
 .quoteheader, .quoteheader a
 {
-    color: #446a87 !important;
+    color: #111 !important;
 }
 
 .codeheader
@@ -734,8 +725,8 @@ a img
 /* A quote, perhaps from another post. */
 .quote
 {
-    color: #8096a6 !important;
-    background: #e8edf3 !important;
+    color: #46515E !important;
+    background: #F0F3F8 !important;
     padding: 12px;
     font-family: Verdana, sans-serif !important;
     margin-bottom: 8px;
@@ -770,20 +761,28 @@ a img
 /* Alternating backgrounds for posts, and several other sections of the forum. */
 .windowbg, #preview_body
 {
-    color: #111 !important;
-    background-color: #f7f8fa !important;
+    background-color: #FDFEFF !important;
+    color: #232323 !important;
 }
 
 .windowbg2
 {
     color: #111 !important;
-    background-color: #edeef0 !important;
+    background-color: #E7EAEC !important;
 }
 
 .windowbg3
 {
     color: #111 !important;
     background-color: #d9d9d9 !important;
+}
+
+.threadrow:nth-of-type(odd) .windowbg, .threadrow:nth-of-type(odd) .windowbg2 {
+    background: #FDFEFF !important;
+}
+
+.threadrow:nth-of-type(even) .windowbg, .threadrow:nth-of-type(even) .windowbg2 {
+    background: #EFF2F6 !important;
 }
 
 /* the today container in calendar */
@@ -802,8 +801,8 @@ a img
 {
     color: #333 !important;
     font-style: normal;
-    background: #b1c7d8 !important;
-    border: solid 1px #5e829e !important;
+    background: #F0F6FF !important;
+    border: solid 1px #111 !important;
     padding: 10px !important;
 }
 .titlebg, .titlebg a:link, .titlebg a:visited
@@ -835,29 +834,30 @@ a img
 .catbg , tr.catbg td , .catbg3 , tr.catbg3 td
 {
     /* background: url(images/catbg.jpg) #88A6C0 repeat-x; */
-    background: #b0becc !important;
-    color: #b9cedd !important;
-    padding: 8px !important;
+    background: #464D5A !important;
+    color: #F2F9FF !important;
+    padding: 8px 4px 8px 4px !important;
     margin: 8px 0 8px 0 !important;
 }
 
 .catbg, .catbg2 {
-	padding: 10px !important;
+    padding: 10px !important;
+    margin: 8px 0 8px 0 !important;
 }
 
 .catbg2, tr.catbg2 td
 {
-    background: #357392 !important;
+    background: #464D5A !important;
     color: #FFF !important;
 }
 
 .catbg, .catbg2, .catbg td {
-	border: 1px solid rgba(0, 0, 0, 0.2) !important;
-	font-weight: bold;
+    border: 1px solid #111 !important;
+    font-weight: bold;
 }
 
 .catbg .smalltext {
-	color: #333 !important;
+    color: #333 !important;
 }
 
 .catbg3, tr.catbg3 td, .catbg3 a:link, .catbg3 a:visited
@@ -867,6 +867,14 @@ a img
     color: #FFF !important;
     text-decoration: none;
     text-align: center;
+}
+
+.catbg3 td {
+    border: 1px solid #111 !important;
+}
+
+#top_subject {
+    border-left: none !important;
 }
 
 
@@ -890,32 +898,13 @@ a img
 
 /* This is used on tables that should just have a border around them. */
 .tborder {
-	background: none !important;
-	border: none !important;
+    background: none !important;
+    border: none !important;
 }
 
 .tborder .threadrow {
-	border-left: 1px solid #5e829e !important;
-	border-right: 1px solid #5e829e !important;
-}
-
-/* Default font sizes: small (8pt), normal (10pt), and large (14pt). */
-.smalltext
-{
-    font-size: x-small;
-    font-family: "Lucida Grande", sans-serif !important;
-}
-.middletext
-{
-    font-size: 90%;
-}
-.normaltext
-{
-    font-size: small;
-}
-.largetext
-{
-    font-size: large;
+    border-left: 1px solid #5e829e !important;
+    border-right: 1px solid #5e829e !important;
 }
 
 
@@ -954,111 +943,115 @@ a img
 /* definitions for the main tab, active means the tab reflects which page is displayed */
 .maintab_first, .maintab_back, .maintab_last, .maintab_active_first, .maintab_active_back, .maintab_active_last
 {
-	color: white;
-	text-transform: uppercase;
-	vertical-align: top;
+    text-transform: uppercase;
+    vertical-align: top;
 }
 
-.maintab_back, .maintab_active_back
-{
-	color: white;
-	text-decoration: none;
-	font-size:  9px;
-	vertical-align: top;
-	padding: 6px !important;
-	font-family: tahoma, sans-serif;
-	
-	display: block;
-	float: left;
-	min-width: 32px;
-	border-bottom-left-radius: 4px;
-	border-bottom-right-radius: 4px;
-	text-align: center;
-	margin-left: 2px;
+.maintab_back, .maintab_active_back {
+    text-decoration: none;
+    font-size:  9px;
+    vertical-align: top;
+    
+    padding: 6px !important;
+    font-family: tahoma, sans-serif;
+
+    min-width: 32px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left: 1px solid #111 !important;
+    border-right: 1px solid #111 !important;
+    border-bottom: 1px solid #111 !important;
+    text-align: center;
+    
+    display: block;
+    float: left;
+    margin-left: 4px !important;
 }
 
 .maintab_back
 {
-	background: #b1c7d8 !important;
+    color: #111 !important;
+    background: #46505C !important;
 }
 
 .maintab_active_back
 {
-	background: #7cbdef !important;
+    color: #FFF !important;
+    background: #6085AD !important;
 }
 
 .maintab_back:hover, .maintab_active_back:hover, .maintab_back:hover a, .maintab_active_back:hover a
 {
-	background: #639ac4 !important;
-	color: #FFF !important;
+    background: #6085AD !important;
+    color: #FFF !important;
 }
 
 .maintab_first, .maintab_last, .maintab_active_first, .maintab_active_last
 {
-	display: none;
+    display: none;
 }
 
 /* how links behave in main tab. */
 .maintab_back a:link , .maintab_back a:visited, .maintab_active_back a:link , .maintab_active_back a:visited
 {
-	color: white;
-	text-decoration: none;
+    color: white !important;
+    text-decoration: none;
 }
 
 /* definitions for the mirror tab */
 .mirrortab_first, .mirrortab_back, .mirrortab_last, .mirrortab_active_first, .mirrortab_active_back, .mirrortab_active_last
 {
-	color: white;
-	text-transform: uppercase;
-	vertical-align: top;
+    color: white;
+    text-transform: uppercase;
+    vertical-align: top;
 }
 
 .mirrortab_back, .mirrortab_active_back
 {
-	color: #333 !important;
-	text-decoration: none;
-	font-size: 9px;
-	vertical-align: bottom;
-	padding: 6px !important;
-	margin: 0 !important;
-	font-family: tahoma, sans-serif;
-	
-	border-top-left-radius: 4px;
-	border-top-right-radius: 4px;
+    color: #FFF !important;
+    text-decoration: none;
+    font-size: 9px;
+    vertical-align: bottom;
+    padding: 6px !important;
+    margin: 0 !important;
+    font-family: tahoma, sans-serif;
+    
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .mirrortab_back
 {
-	background: none !important;
+    background: none !important;
 }
 
 .mirrortab_active_back
 {
-	background: none !important;
+    background: none !important;
 }
 
 .mirrortab_first, .mirrortab_last, .mirrortab_active_first, .mirrortab_active_last
 {
-	display: none;
+    display: none;
 }
 
 
 /* how links behave in mirror tab. */
 .mirrortab_back a:link , .mirrortab_back a:visited, .mirrortab_active_back a:link , .mirrortab_active_back a:visited
 {
-	color: #333 !important;
-	text-decoration: none;
+    color: #FFF !important;
+    text-decoration: none;
 }
 
 .mirrortab_back a:hover, .mirrortab_active_back a:hover
 {
-	color: #e0e0ff;
-	text-decoration: none;
+    color: #e0e0ff;
+    text-decoration: none;
 }
 
 .windowbg a, .windowbg2 a, .windowbg3 a 
 {
-	color: #454545;
+    color: #111 !important;
 }
 
 /* The AJAX notifier */
@@ -1079,28 +1072,31 @@ a img
 
 .threadrow .windowbg
 {
-	padding: 4px !important;
-	font-size: 12px !important;
+    padding: 4px !important;
+    font-size: 13px !important;
 }
 
 
 .threadrow .windowbg2 {
-	text-align: center !important;
+    text-align: center !important;
 }
 
 .threadrow .windowbg2 a
 {
-	color: #777 !important;
-	font-size: 11px !important;
+    color: #777 !important;
+    font-size: 11px !important;
 }
 
 .postrow
 {
-	display: inline-table !important;
-    margin: 6px 0 6px 0 !important;
-	width: 100% !important;
-	border: 1px solid #8b98a3 !important;
+    display: inline-table !important;
+    margin: 4px 0 4px 0 !important;
+    width: 100% !important;
+    border: 1px solid #464D5A !important;
+}
 
+.postrow * {
+    overflow: visible;
 }
 
 .hrcolor
@@ -1114,64 +1110,119 @@ a img
 }
 
 #footerarea * {
-	color: #888 !important;
+    color: #9CADB5 !important;
 }
 
 td.mirrortab_back form input {
-	border-radius: 1em;
-	border: 1px solid #333 !important;
+    border-radius: 1em;
+    border: 1px solid #333 !important;
 }
 
 #quickReplyOptions {
-	padding: 0 !important;
-	margin: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 #quickReplyOptions .windowbg {
-	display: block !important;
-	width: 100% !important;
-	clear: both;
-	height: auto;
-	color: #d4dbdf !important;
-	padding: 0 !important;
-	background: #d4dbdf !important;
+    display: block !important;
+    width: auto !important;
+    clear: both;
+    height: auto;
+    padding: 10px 10px 0 10px !important;
+    background: #F9F9F9 !important;
 }
 
 #quickReplyOptions .windowbg form#postmodify {
-	padding-bottom: 8px;
+    padding-bottom: 8px;
 }
 
 #quickReplyOptions .windowbg form#postmodify textarea {
-	margin: 0 0 10px 0;
-	border-radius: 2px;
-	border: 1px solid #999;
-	box-shadow: inset 0 2px 4px #CCC;
-	width: 98% !important;
+    margin: 10px 0 10px 0 !important;
+    border-radius: 2px;
+    border: 1px solid #111;
+    box-shadow: inset 0 2px 4px #CCC;
+    width: 98% !important;
 }
 
 #quickReplyOptions .windowbg form#postmodify submit {
-	padding: 8px;
-	border-radius: 1em;
+    padding: 8px;
+    border-radius: 1em;
 }
 
 #quickReplyExpand, #smileysExpand, #postMoreExpand {
-	display: none;
-}
-
-body {
-    text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.1);
+    display: none;
 }
 
 .youtube embed {
-	border: 1px solid #333;
-	box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
-	border-radius: 4px;
+    border: 1px solid #333;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
 }
 
-.catbg3 td {
-	border: 1px solid #8b98a3 !important;
+#bodyarea table tbody tr td.normaltext {
+    padding-left: 1px;
 }
 
-#top_subject {
-	border-left: none !important;
+#bodyarea #quickModForm table tbody tr td.normaltext {
+    padding: 16px 0 0 1px;
+}
+
+#bannerContent {
+    text-align: center;
+}
+
+.thread-list-pages {
+    margin-top: 2px;
+    color: #888 !important;
+}
+
+.thread-list-pages a {
+    color: #888 !important;
+}
+
+#bodyarea table tbody tr td.middletext, #bodyarea table tbody tr td.middletext b, #bodyarea table tbody tr td.normaltext, #bodyarea table tbody tr td.smalltext, #previousPageLink, #nextPageLink {
+    color: #FFF !important;
+}
+
+#bodyarea table tr td span.middletext {
+    color: #000 !important;
+}
+
+#creator .windowbg .smalltext, #creator .windowbg2 .smalltext, #creator .windowbg2 .smalltext i, #bodyarea table tbody tr td table.bordercolor tbody tr.windowbg .smalltext, .threadrow .windowbg, #postMoreOptions *, div.post {
+    color: #111 !important;
+}
+
+/* Navigation links - for the link tree. */
+.nav, .nav:link, .nav:visited
+{
+    color: #FFF !important;
+    text-decoration: none;
+    font-size: 13px !important;
+}
+
+a:hover {
+    color: #6085AD !important;
+}
+
+a.nav, a.navPages {
+    text-shadow: 
+    -1px -1px 0 #6C7F8F,
+    1px -1px 0 #6C7F8F,
+    -1px 1px 0 #6C7F8F,
+     1px 1px 0 #6C7F8F;
+}
+
+a.nav:hover
+{
+    color: #464D5B !important;
+    text-decoration: none !important;
+}
+
+a.navPages, a.navPages:visited {
+    color: #F3F4F6 !important;
+}
+
+a.navPages:hover {
+    color: #464D5B !important;
+    text-decoration: none !important;
 }
