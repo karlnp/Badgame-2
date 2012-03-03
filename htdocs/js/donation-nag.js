@@ -46,7 +46,7 @@ Badgame.DonationNag.NeverRemind = function() {
 
 Badgame.DonationNag.ShowNag = function() {
 	var naggerHtml = "<div id='nagbox'><h1>Did you know?</h1>" +
-			"<p>Badgame isn't free. It costs roughly $80 a month to host this " +
+			"<p>Badgame isn't free. It costs roughly $160 a month to host this " +
 			"forum, and developing/maintaining the software can take a lot of time.</p>" +
 			"<p>Donations help keep the server running and fund future development " +
 			"of the forum software. Anything you can donate is appreciated.</p>" +
