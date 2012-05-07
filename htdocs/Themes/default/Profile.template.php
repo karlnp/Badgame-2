@@ -1394,7 +1394,7 @@ function template_forumProfile()
 	echo '
 							<tr>
 								<td width="40%"><b>', $txt[228], ': </b></td>
-								<td><input type="text" name="personalText" size="50" maxlength="50" value="', $context['member']['blurb'], '" /></td>
+								<td><input type="text" name="personalText" size="40" maxlength="255" value="', $context['member']['blurb'], '" /></td>
 							</tr>
 							<tr>
 								<td colspan="2"><hr width="100%" size="1" class="hrcolor" /></td>
