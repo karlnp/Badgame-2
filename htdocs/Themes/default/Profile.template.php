@@ -100,6 +100,9 @@ function template_summary()
 					<td><b>', $txt[68], ': </b></td>
 					<td>', $context['member']['name'], '</td>
 				</tr>';
+				
+	echo '<tr><td><b>Username: </b></td><td>', $context['member']['username'], '</td></tr>';
+	
 	if (!empty($modSettings['titlesEnable']) && $context['member']['title'] != '')
 	{
 		echo '
