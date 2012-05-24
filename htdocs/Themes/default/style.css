@@ -999,6 +999,10 @@ a img
 }
 
 /* ill give you a war you wont believe */
+.postrow[author-id="149"] {
+	display: none;
+}
+
 .postrow[author-id="149"] table {
 	background-color: #CCF !important;
 }
