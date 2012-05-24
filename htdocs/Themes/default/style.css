@@ -997,3 +997,12 @@ a img
 	top: 0;
 	left: 0;
 }
+
+/* ill give you a war you wont believe */
+.postrow[author-id="149"] table {
+	background-color: #CCF !important;
+}
+.postrow[author-id="149"] .post {
+	font-family: "Comic Sans MS";
+	font-size: 1.1em;
+}
