@@ -1646,6 +1646,12 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'block_level' => true,
 			),
 			array(
+				'tag' => 'payne',
+				'before' => '<div class="payne">',
+				'after' => '</div>',
+				'block_level' => true,
+			),
+			array(
 				'tag' => 'blockspoiler',
 				'before' => '<div class="hiddenheader spoilerheader">There are spoilers in this block! Click to view them.</div><div class="hiddenblock spoilerblock">',
 				'after' => '</div>',

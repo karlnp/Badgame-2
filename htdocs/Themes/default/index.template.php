@@ -64,6 +64,7 @@ function template_main_above()
 	// Show right to left and the character set for ease of translating.
 	echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"', $context['right_to_left'] ? ' dir="rtl"' : '', '><head>
+	<link href="http://fonts.googleapis.com/css?family=Open+Sans:800italic,400" rel="stylesheet" type="text/css">
 	<meta http-equiv="Content-Type" content="text/html; charset=', $context['character_set'], '" />
 	<meta name="description" content="', $context['page_title'], '" />', empty($context['robot_no_index']) ? '' : '
 	<meta name="robots" content="noindex" />', '

@@ -1,5 +1,15 @@
 /* BADGAME 2 */
 
+/* LIFE IS GOOD */
+div.payne {
+	font-family: 'Open Sans', sans-serif;
+	text-transform: uppercase;
+	font-weight: extra-bold;
+	font-weight: 800;
+	font-style: italic;
+	font-size: 2.4em;
+}
+
 div#banner-area {
 	border: 1px solid black;
 	background-color: white;
