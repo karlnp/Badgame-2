@@ -23,7 +23,7 @@ function loadBanners(){
 				$(bannerContent).html('');
 
 				$(banners).each(function(){
-					var bannerHtml = '<img src="' + this['filename'] + '" title="Uploaded by ' + this['uploader_name'] + '" style="margin: 5px" />';
+					var bannerHtml = '<img src="' + this['filename'] + '" title="(' + this['id'] + ') Uploaded by ' + this['uploader_name'] + '" style="margin: 5px" />';
 					$(bannerContent).append(bannerHtml);
 				});	
 			} else {

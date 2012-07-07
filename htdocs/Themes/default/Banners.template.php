@@ -48,7 +48,7 @@ function template_main()
 	echo '<div id="bannerContent" class="tborder" style="padding: 10px">';
 	
 	foreach ($context['banners'] as $banner) {
-		echo '<img src="', $banner['filename'], '" title="Uploaded by ', $banner['uploader_name'], '" style="margin: 5px" />';
+		echo '<img src="', $banner['filename'], '" title="(', $banner['id'], ') Uploaded by ', $banner['uploader_name'], '" style="margin: 5px" />';
 	}
 	
 	echo '</div>';
@@ -195,7 +195,71 @@ function template_queue()
 				'<b>Uploaded on ', date('M d Y H:i', $banner['time']), ' by ', $banner['uploader_name'], '</b><br />',
 				'<img src="', $banner['filename'], '" /><br />',
 				'<a href="', $scripturl, '?action=banners;sa=queue;approve=', $banner['id'], '">Approve this banner</a> |',
-				' <a href="', $scripturl, '?action=banners;sa=queue;reject=', $banner['id'], '">Reject this banner</a>',
+				' <a href="', $scripturl, '?action=banners;sa=queue;reject=', $banner['id'], '">Reject this banner</a> |',
+				' <a href="', $scripturl, '?action=banners;sa=queue;delete=', $banner['id'], '">Delete this banner (!)</a>',
+				'</div>';
+		}
+		
+		echo '</div>';
+	}
+	echo '</div>';
+}
+
+function template_rejected() 
+{
+	global $context, $settings, $options, $scripturl, $txt;
+
+	// Show the link tree.
+	echo '
+	<div style="padding: 3px;">', theme_linktree(), '</div>';
+	
+	// shall we use the tabs?
+	if (!empty($settings['use_tabs']))
+	{
+		// Display links to view all/upload.
+		echo '
+	<table cellpadding="0" cellspacing="0" border="0" style="margin-left: 10px;">
+		<tr>
+			<td class="mirrortab_first">&nbsp;</td>';
+
+		foreach ($context['sort_links'] as $link)
+		{
+			if ($link['selected'])
+				echo '
+				<td class="mirrortab_active_first">&nbsp;</td>
+				<td valign="top" class="mirrortab_active_back">
+					<a href="' . $scripturl . '?action=banners' . (!empty($link['action']) ? ';sa=' . $link['action'] : '') . '">', $link['label'], '</a>
+				</td>
+				<td class="mirrortab_active_last">&nbsp;</td>';
+			else
+				echo '
+				<td valign="top" class="mirrortab_back">
+					<a href="' . $scripturl . '?action=banners' . (!empty($link['action']) ? ';sa=' . $link['action'] : '') . '">', $link['label'], '</a>
+				</td>';
+		}
+
+		echo '
+			<td class="mirrortab_last">&nbsp;</td>
+		</tr>
+	</table>';
+	}
+	
+	echo '<div class="tborder">';
+	
+	if ($context['banner_mod_message']) {
+		echo '<div class="badgame-message">', $context['banner_mod_message'], '</div>';
+	} else {
+		echo '<div class="banner-queue-help">';
+		echo '<p>', count($context['rejected_banners']), " banners have been rejected.</p>";
+		echo '</div>';
+		echo '<div class="banner-collection">';
+		
+		foreach ($context['rejected_banners'] as $banner) {
+			echo '<div class="queued-banner">',
+				'<b>Uploaded on ', date('M d Y H:i', $banner['time']), ' by ', $banner['uploader_name'], '</b><br />',
+				'<img src="', $banner['filename'], '" /><br />',
+				'<a href="', $scripturl, '?action=banners;sa=queue;approve=', $banner['id'], '">Approve this banner</a> | ',
+				' <a href="', $scripturl, '?action=banners;sa=queue;delete=', $banner['id'], '">Delete this banner (!)</a>',
 				'</div>';
 		}
 		

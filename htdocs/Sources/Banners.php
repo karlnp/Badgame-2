@@ -23,6 +23,7 @@ function Banners()
 	}
 	if (allowedTo('approve_banners')) {
 		$subActions['queue'] = array("Mod Queue", 'BannerQueue', $context['subaction'] == 'queue');
+		$subActions['rejected'] = array("Rejected Banners", 'RejectedBanners', $context['subaction'] == 'rejected');
 	}
 	
 	// Set up the sort links.
@@ -188,10 +189,88 @@ function hashExists($candidateHash) {
 
 function BannerQueue()
 {
-	global $scripturl, $txt, $modSettings, $context, $settings, $db_prefix;
+	global $bannerLocationPrefix, $scripturl, $txt, $modSettings, $context, $settings, $db_prefix;
 	
 	$context['page_title'] = "Banner Queue";
 	$context['sub_template'] = 'queue';
+	
+	// Someone could be trying to approve/reject a banner.
+	if (!empty($_GET['approve'])) {
+		$approvedBannerId = mysql_real_escape_string($_GET['approve']);
+		
+		db_query("
+			UPDATE {$db_prefix}bg2_banners
+			SET approved = 1, hidden = 0
+			WHERE id = $approvedBannerId", __FILE__, __LINE__);
+		
+		$context['banner_mod_message'] = "Banner approved!";
+	} else if (!empty($_GET['reject'])) {
+		$rejectedBannerID = mysql_real_escape_string($_GET['reject']);
+		
+		db_query("
+			UPDATE {$db_prefix}bg2_banners
+			SET hidden = 1
+			WHERE id = $rejectedBannerID", __FILE__, __LINE__);
+		
+		$context['banner_mod_message'] = "Banner rejected.";
+	} else if (!empty($_GET['delete'])) {
+		$deletedBannerId = mysql_real_escape_string($_GET['delete']);
+		
+		$request = db_query("
+				SELECT filename, id 
+				FROM {$db_prefix}bg2_banners 
+				WHERE id = $deletedBannerId", __FILE__, __LINE__);
+					
+		if ($row = mysql_fetch_assoc($request))
+		{
+			$filename = $row['filename'];
+			$actualFilename = substr(strrchr($filename, '/'), 1);
+			$fileLoc = $bannerLocationPrefix . $actualFilename;
+			unlink($fileLoc);
+		}
+		
+		mysql_free_result($request);
+		
+		db_query("
+			DELETE FROM {$db_prefix}bg2_banners 
+			WHERE id = $deletedBannerId", __FILE__, __LINE__);
+		
+		$context['banner_mod_message'] = "Banner deleted. The user will be able to re-upload it.";
+	} else {
+		// If they're not, list all the banners waiting for approval.
+		$request = db_query("
+				SELECT banners.id, banners.id_uploader, banners.upload_time, banners.filename, banners.approved, banners.hidden, members.ID_MEMBER, members.memberName
+				FROM {$db_prefix}bg2_banners AS banners, ${db_prefix}members AS members
+				WHERE banners.approved = false 
+				AND banners.id_uploader = members.ID_MEMBER 
+				AND banners.hidden = false 
+				ORDER BY banners.upload_time DESC", __FILE__, __LINE__);
+					
+		$context['queued_banners'] = array();
+		
+		while ($row = mysql_fetch_assoc($request))
+		{
+			$banner = array(
+				"id" => $row['id'],
+				"filename" => $row['filename'],
+				"time" => $row['upload_time'],
+				"uploader_id" => $row['id_uploader'],
+				"uploader_name" => $row['memberName']
+			);
+			
+			array_push($context['queued_banners'], $banner);
+		}
+		
+		mysql_free_result($request);
+	}
+}
+
+function RejectedBanners()
+{
+	global $scripturl, $txt, $modSettings, $context, $settings, $db_prefix;
+	
+	$context['page_title'] = "Rejected Banners";
+	$context['sub_template'] = 'rejected';
 	
 	// Someone could be trying to approve/reject a banner.
 	if (!empty($_GET['approve'])) {
@@ -219,10 +298,10 @@ function BannerQueue()
 				FROM {$db_prefix}bg2_banners AS banners, ${db_prefix}members AS members
 				WHERE banners.approved = false 
 				AND banners.id_uploader = members.ID_MEMBER 
-				AND banners.hidden = false 
+				AND banners.hidden = true 
 				ORDER BY banners.upload_time DESC", __FILE__, __LINE__);
 					
-		$context['queued_banners'] = array();
+		$context['rejected_banners'] = array();
 		
 		while ($row = mysql_fetch_assoc($request))
 		{
@@ -234,7 +313,7 @@ function BannerQueue()
 				"uploader_name" => $row['memberName']
 			);
 			
-			array_push($context['queued_banners'], $banner);
+			array_push($context['rejected_banners'], $banner);
 		}
 		
 		mysql_free_result($request);
