@@ -66,7 +66,7 @@ function BannerListAjax()
 	obExit(false);
 }
 
-function BannerFetch($page = 0, $pageSize = 10){
+function BannerFetch($page = 0, $pageSize = 20){
 	global $context, $db_prefix;
 	
 	$offset = $page * $pageSize;
