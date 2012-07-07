@@ -1816,6 +1816,11 @@ function template_theme()
 											</td>
 										</tr><tr>
 											<td colspan="2">
+												<input type="hidden" name="default_options[dont_auto_youtube]" value="0" />
+												<label for="dont_auto_youtube"><input type="checkbox" name="default_options[dont_auto_youtube]" id="dont_auto_youtube" value="1"', !empty($context['member']['options']['dont_auto_youtube']) ? ' checked="checked"' : '', ' class="check" /> ', $txt['dont_auto_youtube'], '</label>
+											</td>
+										</tr><tr>
+											<td colspan="2">
 												<input type="hidden" name="default_options[show_banner]" value="0" />
 												<label for="show_banner"><input type="checkbox" name="default_options[show_banner]" id="show_banner" value="1"', !empty($context['member']['options']['show_banner']) ? ' checked="checked"' : '', ' class="check" /> ', $txt['show_banner'], '</label>
 											</td>

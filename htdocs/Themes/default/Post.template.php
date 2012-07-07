@@ -10,6 +10,10 @@ function template_main()
 		echo '
 		<script language="JavaScript" type="text/javascript" src="', $settings['default_theme_url'], '/spellcheck.js"></script>';
 
+	if (empty($options['dont_auto_youtube'])) {
+		echo '<script language="JavaScript" type="text/javascript" src="js/auto-yt.js"></script>';
+	}
+	
 	// Start the javascript... and boy is there a lot.
 	echo '
 		<script language="JavaScript" type="text/javascript"><!-- // --><![CDATA[';
@@ -1001,9 +1005,13 @@ function template_postbox(&$message)
 			<tr>
 				<td valign="top" align="right"></td>
 				<td>
-					<textarea class="editor" name="', $context['post_box_name'], '" rows="', $context['post_box_rows'], '" cols="', $context['post_box_columns'], '" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onchange="storeCaret(this);" tabindex="', $context['tabindex']++, '"', isset($context['post_error']['no_message']) || isset($context['post_error']['long_message']) ? ' style="border: 1px solid red;"' : '', '>', $message, '</textarea>
+					<textarea id="editor" class="editor" name="', $context['post_box_name'], '" rows="', $context['post_box_rows'], '" cols="', $context['post_box_columns'], '" onselect="storeCaret(this);" onclick="storeCaret(this);" onkeyup="storeCaret(this);" onchange="storeCaret(this);" tabindex="', $context['tabindex']++, '"', isset($context['post_error']['no_message']) || isset($context['post_error']['long_message']) ? ' style="border: 1px solid red;"' : '', '>', $message, '</textarea>
 				</td>
 			</tr>';
+	
+	if (empty($options['dont_auto_youtube'])) {
+		echo '<tr><td></td><td><input type="text" id="buffer" style="position: fixed; left: -100px; top: -100px;"/></td></tr>';
+	}
 }
 
 // The template for the spellchecker.

@@ -27,6 +27,11 @@ function template_options()
 			'default' => false,
 		),
 		array(
+			'id' => 'dont_auto_youtube',
+			'label' => $txt['dont_auto_youtube'],
+			'default' => false,
+		),
+		array(
 			'id' => 'show_banner',
 			'label' => $txt['show_banner'],
 			'default' => true,
