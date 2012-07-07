@@ -1685,7 +1685,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'),
 				'disabled_content' => '($1)',
 				'block_level' => true,
-			),
+			), 
 			array(
 				'tag' => 'video',
 				'type' => 'unparsed_content',
@@ -1703,7 +1703,43 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'),
 				'disabled_content' => '($1)',
 				'block_level' => true,
-			),
+			), 
+			array(
+				'tag' => 'v',
+				'type' => 'unparsed_content',
+				'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
+					'<param name="movie" value="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1"></param>' .
+					'<embed src="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1" ' .
+					'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
+					'</embed></object></div>',
+				'validate' => create_function('&$tag, &$data, $disabled', '
+					if (strstr($data, "youtube")) {
+						parse_str(parse_url($data, PHP_URL_QUERY), $urlParts);
+						$data = $urlParts["v"];
+					}
+					$data = strip_tags($data);
+				'),
+				'disabled_content' => '($1)',
+				'block_level' => true,
+			), 
+			array(
+				'tag' => 'yt',
+				'type' => 'unparsed_content',
+				'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
+					'<param name="movie" value="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1"></param>' .
+					'<embed src="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1" ' .
+					'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
+					'</embed></object></div>',
+				'validate' => create_function('&$tag, &$data, $disabled', '
+					if (strstr($data, "youtube")) {
+						parse_str(parse_url($data, PHP_URL_QUERY), $urlParts);
+						$data = $urlParts["v"];
+					}
+					$data = strip_tags($data);
+				'),
+				'disabled_content' => '($1)',
+				'block_level' => true,
+			), 
 		);
 
 		// This is mainly for the bbc manager, so it's easy to add tags above.  Custom BBC should be added above this line.
