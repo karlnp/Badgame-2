@@ -53,8 +53,15 @@ function Banners()
 function BannerList()
 {
 	global $scripturl, $txt, $modSettings, $context, $settings, $db_prefix;
+	
+	$uploaderId = NULL;
+	if (!empty($_REQUEST['u'])) {
+		$uploaderId = mysql_real_escape_string($_REQUEST['u']);
+		$context['uploaderId'] = intval($uploaderId);
+	}
+
 	$context['page_title'] = "Banner List";
-	empty($_REQUEST['page']) ? BannerFetch() : BannerFetch(intval($_REQUEST['page']));
+	empty($_REQUEST['page']) ? BannerFetch(0, 20, $context['uploaderId']) : BannerFetch(intval($_REQUEST['page']), 20, $context['uploaderId']);
 }
 
 // Ajax method, we're just going to render some JSON here for maximum snappiness
@@ -66,7 +73,7 @@ function BannerListAjax()
 	obExit(false);
 }
 
-function BannerFetch($page = 0, $pageSize = 20){
+function BannerFetch($page = 0, $pageSize = 20, $uploaderId = 1){
 	global $context, $db_prefix;
 	
 	$offset = $page * $pageSize;
@@ -75,7 +82,8 @@ function BannerFetch($page = 0, $pageSize = 20){
 				SELECT banners.id, banners.id_uploader, banners.upload_time, banners.filename, banners.approved, banners.hidden, members.ID_MEMBER, members.memberName
 				FROM {$db_prefix}bg2_banners AS banners, ${db_prefix}members AS members
 				WHERE banners.approved = true 
-				AND banners.id_uploader = members.ID_MEMBER
+				AND banners.id_uploader = members.ID_MEMBER " .
+				($uploaderId ? "AND banners.id_uploader = {$uploaderId}" : "") . " 
 				AND banners.hidden = false
 				ORDER BY banners.upload_time DESC 
 				LIMIT {$pageSize} OFFSET {$offset}", __FILE__, __LINE__);

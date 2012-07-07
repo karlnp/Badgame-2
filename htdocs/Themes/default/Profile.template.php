@@ -165,6 +165,9 @@ function template_summary()
 				</tr><tr>
 					<td><b>', $txt['lastLoggedIn'], ': </b></td>
 					<td>', $context['member']['last_login'], '</td>
+				</tr><tr>
+					<td><b>Banners</b></td>
+					<td><a href="', $scripturl, '?action=banners;u=', $context['member']['id'], '" target="_blank">View my banners</a></td>
 				</tr>';
 
 	// Is this member requiring activation and/or banned?

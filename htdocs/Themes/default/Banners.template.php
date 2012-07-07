@@ -39,6 +39,12 @@ function template_main()
 	</table>';
 	}
 
+	if ($context['uploaderId']) {
+		echo "<script language='JavaScript' type='text/javascript'>
+			window.uploaderId = " . $context['uploaderId'] . ";
+		</script>";
+	}
+	
 	echo '<div id="bannerContent" class="tborder" style="padding: 10px">';
 	
 	foreach ($context['banners'] as $banner) {

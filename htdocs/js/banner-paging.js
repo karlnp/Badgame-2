@@ -31,6 +31,6 @@ function loadBanners(){
 				window.bannerPage--;
 			}
 		},
-		url: '/index.php?action=banners&sa=list_ajax&page=' + window.bannerPage,
+		url: '/index.php?action=banners&sa=list_ajax&page=' + window.bannerPage + (window.uploaderId ? "&u=" + window.uploaderId : ""),
 	});	
 }
