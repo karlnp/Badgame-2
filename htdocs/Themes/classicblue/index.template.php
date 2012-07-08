@@ -264,7 +264,9 @@ function template_main_below()
 	if ($context['show_load_time'])
 		echo '
 		<div class="smalltext">', $txt['smf301'], $context['load_time'], $txt['smf302'], $context['load_queries'], $txt['smf302b'], '</div>';
-
+	
+	echo '<br /><div class="smalltext"><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X9PGEY6PZR73U">Donate</a> | <a href="#" onclick="Badgame.SkeletonPrank()">Don\'t donate</a></div>';
+	
 	// This is an interesting bug in Internet Explorer AND Safari. Rather annoying, it makes overflows just not tall enough.
 	if (($context['browser']['is_ie'] && !$context['browser']['is_ie4']) || $context['browser']['is_mac_ie'] || $context['browser']['is_safari'] || $context['browser']['is_firefox'])
 	{
