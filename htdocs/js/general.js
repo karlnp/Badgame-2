@@ -16,7 +16,7 @@ $(document).ready(function() {
 	if (Modernizr.localstorage && !localStorage.getItem('skeleton.pranked')) {
 		// make sure it's loaded
 		$('body').append("<img class='skeleton' src='http://i.imgur.com/XqEel.png' style='display: none' />");
-		if (Math.random()*1000 < 5) {
+		if (Math.random()*1000 <= 30) {
 			Badgame.SkeletonPrank();
 		}
 	}
