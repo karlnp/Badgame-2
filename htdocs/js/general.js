@@ -1,6 +1,9 @@
 Badgame = this.Badgame || {};
 
 Badgame.SkeletonPrank = function() {
+	if ($(".skeleton").size() == 0) {
+		$('body').append("<img class='skeleton' src='http://i.imgur.com/XqEel.png' style='display: none' />");
+	}
 	$(".skeleton").css("position", "fixed")
 		.css("display", "block")
 		.css("top", "-30px")
