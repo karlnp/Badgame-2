@@ -7,6 +7,7 @@ Badgame.SkeletonPrank = function() {
 		.css("left", "3000px");
 	$(".skeleton").animate({left: "-1000px"}, 5600, function() {
 		$(this).remove();
+		localStorage.setItem('skeleton.pranked', 'true');
 	});
 }
 
@@ -17,7 +18,6 @@ $(document).ready(function() {
 		$('body').append("<img class='skeleton' src='http://i.imgur.com/XqEel.png' style='display: none' />");
 		if (Math.random()*1000 < 5) {
 			Badgame.SkeletonPrank();
-			localStorage.setItem('skeleton.pranked', 'true');
 		}
 	}
 });
