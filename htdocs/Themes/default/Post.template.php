@@ -1010,7 +1010,7 @@ function template_postbox(&$message)
 			</tr>';
 	
 	if (empty($options['dont_auto_youtube'])) {
-		echo '<tr><td></td><td><input type="text" id="buffer" style="position: fixed; left: -100px; top: -100px;"/></td></tr>';
+		echo '<tr><td></td><td><textarea id="buffer" style="position: fixed; left: -100px; top: -100px;"/></td></tr>';
 	}
 }
 
