@@ -386,7 +386,7 @@ function template_main()
 				$tooltipHtml = "<b>" . $message["member"]["username"] . "</b><br />" . 
 					"Registered on " . $message["member"]["registered"] . "<br />" .
 					"Post count : " . $message["member"]["real_posts"] . "";
-				echo '<div class="avatar-container" title="', $tooltipHtml, '" style="overflow: auto; margin-bottom: 2px; max-width: 150px; max-height: 150px;">', 
+				echo '<div class="avatar-container" title="', $tooltipHtml, '" style="overflow: auto; margin-bottom: 2px;">', 
 					'<img src="', $message['member']['avatar']['href'], (empty($message['member']['last_modified']) ? '' : ('?m=' . $message['member']['last_modified'])), '" />',
 					'</div>';
 			}
