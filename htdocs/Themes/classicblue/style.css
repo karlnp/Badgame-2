@@ -1,5 +1,10 @@
 /* BADGAME 2 */
 
+.avatar-container img {
+	max-width: 150px;
+	max-height: 150px;
+}
+
 /* LIFE IS GOOD */
 div.payne {
 	font-family: 'Open Sans', sans-serif;

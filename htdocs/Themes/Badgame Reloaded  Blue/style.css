@@ -2,6 +2,11 @@
 /* ~fuck grape~ */
 /* dis skin wuz made by (¯`·._) MALTAG (¯`·._) ...relax, he understandz j00 */
 
+.avatar-container img {
+	max-width: 150px;
+	max-height: 150px;
+}
+
 /* LIFE IS GOOD */
 div.payne {
 	font-family: 'Open Sans', sans-serif;
