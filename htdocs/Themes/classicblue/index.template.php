@@ -259,7 +259,7 @@ function template_main_below()
 			</tr>
 		</table>';
 
-	echo '<div class="smalltext">Using the Badgame 2.1 mod suite. <a href="https://github.com/tigerschwert/Badgame-2">Get the source on Github.</a></div>';
+	echo '<div class="smalltext">Using the Badgame 2.1 mod suite. <a href="https://github.com/tinydanbo/Badgame-2">Get the source on Github.</a></div>';
 		// Show the load time?
 	if ($context['show_load_time'])
 		echo '
