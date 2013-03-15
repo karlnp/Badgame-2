@@ -22,11 +22,14 @@ $(window).load(function() {
 		}
 
 		if (scaleFactor) {
+			var scaledWidth = Math.round(imgwidth * scaleFactor);
+			var scaledHeight = Math.round(imgheight * scaleFactor);
+
 			$(this).wrap('<div class="resized-image">');
 			$(this).attr('natural-width', imgwidth);
 			$(this).attr('natural-height', imgheight);
-			$(this).css('width', Math.round(imgwidth * scaleFactor));
-			$(this).css('height', Math.round(imgheight * scaleFactor));
+			$(this).css('width', scaledWidth);
+			$(this).css('height', scaledHeight);
 			$(this).after('<span class="zoomtip">Image resized. Click to show full-size.</span>');
 			$(this).toggle(function() {
 				$(this).animate(
@@ -36,7 +39,7 @@ $(window).load(function() {
 				// Hide my siblings
 				$(this).siblings('.zoomtip').fadeOut();
 			}, function() {
-				$(this).animate({width: maxwidth, height: maxheight}, 500);
+				$(this).animate({width: scaledWidth, height: scaledHeight}, 500);
 				$(this).siblings('.zoomtip').fadeIn();
 			});
 		}
