@@ -1,5 +1,5 @@
 <?php
-// Version: 1.1.15; index
+// Version: 1.1.18; index
 
 global $forum_copyright, $forum_version, $webmaster_email;
 
@@ -411,7 +411,7 @@ $txt['topbottom4'] = 'Go Up';
 $txt['topbottom5'] = 'Go Down';
 
 $forum_copyright = '<a href="http://www.simplemachines.org/" title="Simple Machines Forum" target="_blank">Powered by ' . $forum_version . '</a> |
-<a href="http://www.simplemachines.org/about/copyright.php" title="Free Forum Software" target="_blank">SMF &copy; 2011, Simple Machines</a>';
+<a href="http://www.simplemachines.org/about/copyright.php" title="Free Forum Software" target="_blank">SMF &copy; 2013, Simple Machines</a>';
 
 $txt['calendar3'] = 'Birthdays:';
 $txt['calendar4'] = 'Events:';
