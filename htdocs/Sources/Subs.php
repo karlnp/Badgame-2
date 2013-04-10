@@ -1658,7 +1658,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'content' => '<a href="$1" target="_blank">$1</a>',
 				'validate' => create_function('&$tag, &$data, $disabled', '
 					$data = strtr($data, array(\'<br />\' => \'\'));
-					if (strpos($data, \'http://\') !== 0 && strpos($data, \'https://\') !== 0)
+					if (strpos($data, \'ftp://\') !== 0 && strpos($data, \'http://\') !== 0 && strpos($data, \'https://\') !== 0)
 						$data = \'http://\' . $data;
 				'),
 			),
@@ -1668,7 +1668,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'before' => '<a href="$1" target="_blank">',
 				'after' => '</a>',
 				'validate' => create_function('&$tag, &$data, $disabled', '
-					if (strpos($data, \'http://\') !== 0 && strpos($data, \'https://\') !== 0)
+					if (strpos($data, \'ftp://\') !== 0 && strpos($data, \'http://\') !== 0 && strpos($data, \'https://\') !== 0)
 						$data = \'http://\' . $data;
 				'),
 				'disallow_children' => array('email', 'ftp', 'url', 'iurl'),
