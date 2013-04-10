@@ -82,7 +82,7 @@ if (!defined('SMF'))
 // Clean the request variables - add html entities to GET and slashes if magic_quotes_gpc is Off.
 function cleanRequest()
 {
-	global $board, $topic, $boardurl, $scripturl, $modSettings;
+	global $board, $topic, $filterUserId, $boardurl, $scripturl, $modSettings;
 
 	// Makes it easier to refer to things this way.
 	$scripturl = $boardurl . '/index.php';
@@ -235,6 +235,12 @@ function cleanRequest()
 
 		// Now make sure the online log gets the right number.
 		$_GET['topic'] = $topic;
+
+		// Check for filterUserId
+		if(isset($_REQUEST['filterUserId'])) {
+			$filterUserId = $_REQUEST['filterUserId'];
+			$_GET['filterUserId'] = $filterUserId;
+		}
 	}
 	else
 		$topic = 0;

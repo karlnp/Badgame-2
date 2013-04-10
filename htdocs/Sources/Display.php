@@ -67,7 +67,7 @@ function Display()
 {
 	global $scripturl, $txt, $db_prefix, $modSettings, $context, $settings;
 	global $options, $sourcedir, $user_info, $ID_MEMBER, $board_info, $topic;
-	global $board, $attachments, $messages_request, $language;
+	global $filterUserId, $board, $attachments, $messages_request, $language;
 
 	// What are you gonna display if these are empty?!
 	if (empty($topic))
@@ -162,6 +162,23 @@ function Display()
 		fatal_lang_error(472, false);
 	$topicinfo = mysql_fetch_assoc($request);
 	mysql_free_result($request);
+
+	// Alter numReplies if filtering by a user 
+	if(!empty($filterUserId)) {
+		$request = db_query("
+			SELECT
+				(COUNT(ms.ID_MSG) - 1) as numReplies
+			FROM {$db_prefix}messages as ms
+			WHERE ms.ID_TOPIC = $topic
+			AND ms.ID_MEMBER = $filterUserId
+		", __FILE__, __LINE__);
+		$filtered = mysql_fetch_assoc($request);
+		$topicinfo['numReplies'] = $filtered['numReplies'];
+		mysql_free_result($request);
+
+		// Set a var in context for easy checking of filtered mode
+		$context['filteredOnUser'] = true;
+	}
 
 	// The start isn't a number; it's information about what to do, where to go.
 	if (!is_numeric($_REQUEST['start']))
@@ -415,7 +432,7 @@ function Display()
 		$_REQUEST['start'] = -1;
 
 	// Construct the page index, allowing for the .START method...
-	$context['page_index'] = constructPageIndex($scripturl . '?topic=' . $topic . '.%d', $_REQUEST['start'], $topicinfo['numReplies'] + 1, $modSettings['defaultMaxMessages'], true);
+	$context['page_index'] = constructPageIndex($scripturl . '?topic=' . $topic . '.%d' . (empty($filterUserId) ? '' : "&filterUserId=$filterUserId"), $_REQUEST['start'], $topicinfo['numReplies'] + 1, $modSettings['defaultMaxMessages'], true);
 	$context['start'] = $_REQUEST['start'];
 
 	// This is information about which page is current, and which page we're on - in case you don't like the constructed page index. (again, wireles..)
@@ -665,6 +682,7 @@ function Display()
 	$start = $_REQUEST['start'];
 	$limit = $modSettings['defaultMaxMessages'];
 	$firstIndex = 0;
+
 	if ($start > $topicinfo['numReplies'] / 2 && $modSettings['defaultMaxMessages'] != -1)
 	{
 		$ascending = !$ascending;
@@ -677,8 +695,9 @@ function Display()
 	$request = db_query("
 		SELECT ID_MSG, ID_MEMBER
 		FROM {$db_prefix}messages
-		WHERE ID_TOPIC = $topic
-		ORDER BY ID_MSG " . ($ascending ? '' : 'DESC') . ($modSettings['defaultMaxMessages'] == -1 ? '' : "
+		WHERE ID_TOPIC = $topic " .
+		(empty($filterUserId) ? '' : "AND {$db_prefix}messages.ID_MEMBER=$filterUserId")
+		. " ORDER BY ID_MSG " . ($ascending ? '' : 'DESC') . ($modSettings['defaultMaxMessages'] == -1 ? '' : "
 		LIMIT $start, $limit"), __FILE__, __LINE__);
 
 	$messages = array();
