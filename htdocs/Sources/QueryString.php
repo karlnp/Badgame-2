@@ -239,6 +239,7 @@ function cleanRequest()
 		// Check for filterUserId
 		if(isset($_REQUEST['filterUserId'])) {
 			$filterUserId = $_REQUEST['filterUserId'];
+			if(!is_numeric($filterUserId)) $filterUserId = 0;
 			$_GET['filterUserId'] = $filterUserId;
 		}
 	}
