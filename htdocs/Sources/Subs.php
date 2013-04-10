@@ -1672,15 +1672,42 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'tag' => 'youtube',
 				'type' => 'unparsed_content',
 				'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
-					'<param name="movie" value="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1"></param>' .
-					'<embed src="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1" ' .
+					'<param name="movie" value="http://www.youtube.com/v/$1&version=3&autohide=1&showinfo=1"></param>' .
+					'<embed src="http://www.youtube.com/v/$1&version=3&autohide=1&showinfo=1" ' .
 					'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
 					'</embed></object></div>',
 				'validate' => create_function('&$tag, &$data, $disabled', '
 					if (strstr($data, "youtube")) {
+						// Is there a time tag?
+						$start = 0;
+						$timePattern = "@((#)|(\&))t=(\d+m)?(\d+s)?@";
+						if(preg_match($timePattern, $data, $matches)) {
+							$numStripPattern = "/[^0-9]/";
+
+							// Grab minutes
+							$start = empty($matches[4]) ? 0 : (preg_replace($numStripPattern, "", $matches[4]) * 60); 
+
+							// Grab seconds
+							$start += empty($matches[5]) ? 0 : preg_replace($numStripPattern, "", $matches[5]);
+						}
+
+						// Run through entity decode to avoid issues with ampersands
+						$data = html_entity_decode($data);
 						parse_str(parse_url($data, PHP_URL_QUERY), $urlParts);
-						$data = $urlParts["v"];
+
+						// Make all arguments lowercase
+						array_map("strtolower", $urlParts);
+
+						// Extract video ID
+						$v = $urlParts["v"];
+
+						// Reconstruct query
+						$data = $v . "?";
+
+						// Append start tag if specified
+						if($start) $data .= "start=" . $start;
 					}
+
 					$data = strip_tags($data);
 				'),
 				'disabled_content' => '($1)',
