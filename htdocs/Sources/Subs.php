@@ -3487,7 +3487,7 @@ function db_debug_junk()
 	global $db_cache, $db_count, $db_show_debug, $cache_count, $cache_hits;
 
 	// Add to Settings.php if you want to show the debugging information.
-	if (!isset($db_show_debug) || $db_show_debug !== true || (isset($_GET['action']) && $_GET['action'] == 'viewquery') || WIRELESS)
+	if (!isset($db_show_debug) || $db_show_debug !== true || (isset($_GET['action']) && $_GET['action'] == 'viewquery') || JSON || WIRELESS)
 		return;
 
 	if (empty($_SESSION['view_queries']))

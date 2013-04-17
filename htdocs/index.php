@@ -99,6 +99,9 @@ elseif (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'text/
 if (!defined('WIRELESS'))
 	define('WIRELESS', isset($_REQUEST['wap']) || isset($_REQUEST['wap2']) || isset($_REQUEST['imode']));
 
+if (!defined('JSON'))
+	define('JSON', isset($_REQUEST['json']));
+
 // Some settings and headers are different for wireless protocols.
 if (WIRELESS)
 {

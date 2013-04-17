@@ -48,8 +48,11 @@ function BoardIndex()
 	global $txt, $scripturl, $db_prefix, $ID_MEMBER, $user_info, $sourcedir;
 	global $modSettings, $context, $settings;
 
+	// Use JSON template if requesting JSON
+	if(JSON)
+		$context['sub_template'] = 'json_boardindex';
 	// For wireless, we use the Wireless template...
-	if (WIRELESS)
+	else if (WIRELESS)
 		$context['sub_template'] = WIRELESS_PROTOCOL . '_boardindex';
 	else
 		loadTemplate('BoardIndex');
