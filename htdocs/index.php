@@ -97,15 +97,12 @@ elseif (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'text/
 }
 
 if (!defined('WIRELESS'))
-	define('WIRELESS', isset($_REQUEST['wap']) || isset($_REQUEST['wap2']) || isset($_REQUEST['imode']));
-
-if (!defined('JSON'))
-	define('JSON', isset($_REQUEST['json']));
+	define('WIRELESS', isset($_REQUEST['wap']) || isset($_REQUEST['wap2']) || isset($_REQUEST['imode']) || isset($_REQUEST['json']));
 
 // Some settings and headers are different for wireless protocols.
 if (WIRELESS)
 {
-	define('WIRELESS_PROTOCOL', isset($_REQUEST['wap']) ? 'wap' : (isset($_REQUEST['wap2']) ? 'wap2' : (isset($_REQUEST['imode']) ? 'imode' : '')));
+	define('WIRELESS_PROTOCOL', isset($_REQUEST['wap']) ? 'wap' : (isset($_REQUEST['wap2']) ? 'wap2' : (isset($_REQUEST['imode']) ? 'imode' : (isset($_REQUEST['json']) ? 'json' : ''))));
 
 	// Some cellphones can't handle output compression...
 	$modSettings['enableCompressedOutput'] = '0';

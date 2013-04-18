@@ -74,9 +74,7 @@ function Display()
 		fatal_lang_error('smf232', false);
 
 	// Load the proper template and/or sub template.
-	if (JSON)
-		$context['sub_template'] = 'json_display';
-	else if (WIRELESS)
+	if (WIRELESS)
 		$context['sub_template'] = WIRELESS_PROTOCOL . '_display';
 	else
 		loadTemplate('Display');

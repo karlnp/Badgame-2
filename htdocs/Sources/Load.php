@@ -1406,17 +1406,10 @@ function loadTheme($ID_THEME = 0, $initialize = true)
 		'spellcheck',
 	);
 
-	// JSON mode?
-	if (JSON)
-	{
-		loadLanguage('index');
-		loadTemplate('Json');
-		$context['template_layers'] = array(); 
-	}
 	// Wireless mode?  Load up the wireless stuff.
-	else if (WIRELESS)
+	if (WIRELESS)
 	{
-		$context['template_layers'] = array(WIRELESS_PROTOCOL);
+		$context['template_layers'] = WIRELESS_PROTOCOL == 'json' ? array() : array(WIRELESS_PROTOCOL);
 		loadTemplate('Wireless');
 		loadLanguage('Wireless');
 		loadLanguage('index');

@@ -1,6 +1,74 @@
 <?php
 // Version: 1.1; Wireless
 
+// Get board listing
+function template_json_boardindex()
+{
+	global $context, $settings, $options, $scripturl;
+	$categories = array();
+
+	foreach($context['categories'] as $category) {
+		$boards = array();
+		foreach($category['boards'] as $board){
+			array_push($boards, array(
+				'name' => $board['name'],
+				'url' => $scripturl . '?board=' . $board['id'] . '.0;json',
+			));
+		}
+		if(!empty($boards)) {
+			$categories[$category['name']] = $boards;
+		}
+	}
+
+	echo json_encode(array('categories' => $categories));
+}
+
+function template_json_login()
+{
+	global $context, $settings, $options, $scripturl, $txt;
+
+	/*
+		Hacky way of telling client they're still on login page
+
+		In other words, if you login and see login still set to true,
+		the login was invalid.
+	*/
+	echo json_encode(array('login' => true));
+}
+
+
+// Get listing of threads
+function template_json_messageindex()
+{
+	global $context, $settings, $options, $scripturl, $txt;
+	$topics = array();
+	foreach($context['topics'] as $topic) {
+		array_push($topics, array(
+			'subject' => $topic['first_post']['subject'],
+			'poster' => $topic['first_post']['member']['name'],
+			'url' => $scripturl . '?topic=' . $topic['id'] . '.0;json'
+		));
+	}
+	echo json_encode(array('topics' => $topics));
+}
+
+// Get messages for a thread
+function template_json_display()
+{
+	global $context, $settings, $options, $txt;
+	$messages = array();
+
+
+	while($message = $context['get_message']()) {
+		array_push($messages, array(
+			'author' => $message['member']['name'],
+			'body' => strip_tags(str_replace(array('<div class="quote">', '<div class="code">', '</div>'), array('', '', ''), $message['body']), '<br>'),
+		));
+	}
+
+	echo json_encode(array('messages' => $messages));
+}
+
 // This is the header for WAP 1.1 output. You can view it with ?wap in the URL.
 function template_wap_above()
 {

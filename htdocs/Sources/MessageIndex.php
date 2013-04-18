@@ -38,9 +38,7 @@ function MessageIndex()
 	global $modSettings, $ID_MEMBER;
 	global $context, $options, $settings, $board_info, $user_info, $func;
 
-	if (JSON) 
-		$context['sub_template'] = 'json_messageindex';
-	else if (WIRELESS)
+	if (WIRELESS)
 		$context['sub_template'] = WIRELESS_PROTOCOL . '_messageindex';
 	else
 		loadTemplate('MessageIndex');
