@@ -12,11 +12,15 @@ function template_json_boardindex()
 		foreach($category['boards'] as $board){
 			array_push($boards, array(
 				'name' => $board['name'],
+				'desc' => $board['description'],
 				'url' => $scripturl . '?board=' . $board['id'] . '.0;json',
 			));
 		}
 		if(!empty($boards)) {
-			$categories[$category['name']] = $boards;
+			array_push($categories, array(
+				'categoryName' => $category['name'],
+				'boards' => $boards
+			));
 		}
 	}
 
@@ -62,7 +66,7 @@ function template_json_display()
 	while($message = $context['get_message']()) {
 		array_push($messages, array(
 			'author' => $message['member']['name'],
-			'body' => strip_tags(str_replace(array('<div class="quote">', '<div class="code">', '</div>'), array('', '', ''), $message['body']), '<br>'),
+			'body' => $message['body'] 
 		));
 	}
 
