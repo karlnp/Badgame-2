@@ -113,6 +113,8 @@ if (WIRELESS)
 	// Wireless protocol header.
 	if (WIRELESS_PROTOCOL == 'wap')
 		header('Content-Type: text/vnd.wap.wml');
+	else if (WIRELESS_PROTOCOL == 'json')
+		header('Content-type: application/json');
 }
 
 // Check if compressed output is enabled, supported, and not already being done.
