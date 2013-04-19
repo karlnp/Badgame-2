@@ -44,13 +44,25 @@ function template_json_login()
 // Get listing of threads
 function template_json_messageindex()
 {
-	global $context, $settings, $options, $scripturl, $txt;
+	global $context, $modSettings, $settings, $options, $scripturl, $txt;
 	$topics = array();
 	foreach($context['topics'] as $topic) {
+		$topicUrl = $scripturl . '?topic=' . $topic['id'] . '.0;json';
+		$lastReadUrl = $topicUrl;
+
+		// Taken from Danbo's last read
+		if ($topic['posts_read'] % $modSettings['defaultMaxMessages'] == 0) {
+			$lastReadUrl = $scripturl . '?json&topic=' . $topic['id'] . '.' . ($topic['posts_read']);
+		} else {
+			$lastReadUrl = $scripturl . '?json&topic=' . $topic['id'] . '.msg' . $topic['last_post_id'] . '#msg' . $topic['last_post_id'];
+		}
+
 		array_push($topics, array(
 			'subject' => $topic['first_post']['subject'],
 			'poster' => $topic['first_post']['member']['name'],
-			'url' => $scripturl . '?topic=' . $topic['id'] . '.0;json'
+			'lastReadUrl' => $lastReadUrl,
+			'url' => $topicUrl, 
+			'unreadPosts' => $topic['replies'] + 1 - $topic['posts_read']
 		));
 	}
 
