@@ -83,7 +83,7 @@ function template_json_display()
 	while($message = $context['get_message']()) {
 		array_push($messages, array(
 			'author' => $message['member']['name'],
-			'body' => base64_encode($message['body'])
+			'body' => $message['body'], 
 		));
 	}
 
