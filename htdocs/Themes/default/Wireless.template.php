@@ -53,7 +53,12 @@ function template_json_messageindex()
 			'url' => $scripturl . '?topic=' . $topic['id'] . '.0;json'
 		));
 	}
-	echo json_encode(array('topics' => $topics));
+
+	echo json_encode(array(
+			'links' => $context['links'],
+			'page_info' => $context['page_info'],
+			'topics' => $topics
+	));
 }
 
 // Get messages for a thread
@@ -70,7 +75,11 @@ function template_json_display()
 		));
 	}
 
-	echo json_encode(array('messages' => $messages));
+	echo json_encode(array(
+		'links' => $context['links'],
+		'messages' => $messages,
+		'page_info' => $context['page_info']
+	));
 }
 
 // This is the header for WAP 1.1 output. You can view it with ?wap in the URL.
