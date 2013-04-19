@@ -1409,7 +1409,7 @@ function loadTheme($ID_THEME = 0, $initialize = true)
 	// Wireless mode?  Load up the wireless stuff.
 	if (WIRELESS)
 	{
-		$context['template_layers'] = array(WIRELESS_PROTOCOL);
+		$context['template_layers'] = WIRELESS_PROTOCOL == 'json' ? array() : array(WIRELESS_PROTOCOL);
 		loadTemplate('Wireless');
 		loadLanguage('Wireless');
 		loadLanguage('index');

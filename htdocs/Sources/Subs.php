@@ -1090,6 +1090,51 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 			  parsed inside the tag.
 		*/
 
+		$youtubeCode = array(
+			'type' => 'unparsed_content',
+			'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
+				'<param name="movie" value="http://www.youtube.com/v/$1&version=3&autohide=1&showinfo=1"></param>' .
+				'<embed src="http://www.youtube.com/v/$1&version=3&autohide=1&showinfo=1" ' .
+				'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
+				'</embed></object></div>',
+			'validate' => create_function('&$tag, &$data, $disabled', '
+				if (strstr($data, "youtube")) {
+					// Is there a time tag?
+					$start = 0;
+					$timePattern = "@((#)|(\&))t=(\d+m)?(\d+s)?@";
+					if(preg_match($timePattern, $data, $matches)) {
+						$numStripPattern = "/[^0-9]/";
+
+						// Grab minutes
+						$start = empty($matches[4]) ? 0 : (preg_replace($numStripPattern, "", $matches[4]) * 60); 
+
+						// Grab seconds
+						$start += empty($matches[5]) ? 0 : preg_replace($numStripPattern, "", $matches[5]);
+					}
+
+					// Run through entity decode to avoid issues with ampersands
+					$data = html_entity_decode($data);
+					parse_str(parse_url($data, PHP_URL_QUERY), $urlParts);
+
+					// Make all arguments lowercase
+					array_map("strtolower", $urlParts);
+
+					// Extract video ID
+					$v = $urlParts["v"];
+
+					// Reconstruct query
+					$data = $v . "?";
+
+					// Append start tag if specified
+					if($start) $data .= "start=" . $start;
+				}
+
+				$data = strip_tags($data);
+			'),
+			'disabled_content' => '($1)',
+			'block_level' => true,
+		);
+
 		$codes = array(
 			array(
 				'tag' => 'abbr',
@@ -1613,7 +1658,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'content' => '<a href="$1" target="_blank">$1</a>',
 				'validate' => create_function('&$tag, &$data, $disabled', '
 					$data = strtr($data, array(\'<br />\' => \'\'));
-					if (strpos($data, \'http://\') !== 0 && strpos($data, \'https://\') !== 0)
+					if (strpos($data, \'ftp://\') !== 0 && strpos($data, \'http://\') !== 0 && strpos($data, \'https://\') !== 0)
 						$data = \'http://\' . $data;
 				'),
 			),
@@ -1623,7 +1668,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'before' => '<a href="$1" target="_blank">',
 				'after' => '</a>',
 				'validate' => create_function('&$tag, &$data, $disabled', '
-					if (strpos($data, \'http://\') !== 0 && strpos($data, \'https://\') !== 0)
+					if (strpos($data, \'ftp://\') !== 0 && strpos($data, \'http://\') !== 0 && strpos($data, \'https://\') !== 0)
 						$data = \'http://\' . $data;
 				'),
 				'disallow_children' => array('email', 'ftp', 'url', 'iurl'),
@@ -1668,78 +1713,10 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'before' => '<span class="spoiler">',
 				'after' => '</span>'
 			),
-			array(
-				'tag' => 'youtube',
-				'type' => 'unparsed_content',
-				'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
-					'<param name="movie" value="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1"></param>' .
-					'<embed src="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1" ' .
-					'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
-					'</embed></object></div>',
-				'validate' => create_function('&$tag, &$data, $disabled', '
-					if (strstr($data, "youtube")) {
-						parse_str(parse_url($data, PHP_URL_QUERY), $urlParts);
-						$data = $urlParts["v"];
-					}
-					$data = strip_tags($data);
-				'),
-				'disabled_content' => '($1)',
-				'block_level' => true,
-			), 
-			array(
-				'tag' => 'video',
-				'type' => 'unparsed_content',
-				'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
-					'<param name="movie" value="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1"></param>' .
-					'<embed src="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1" ' .
-					'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
-					'</embed></object></div>',
-				'validate' => create_function('&$tag, &$data, $disabled', '
-					if (strstr($data, "youtube")) {
-						parse_str(parse_url($data, PHP_URL_QUERY), $urlParts);
-						$data = $urlParts["v"];
-					}
-					$data = strip_tags($data);
-				'),
-				'disabled_content' => '($1)',
-				'block_level' => true,
-			), 
-			array(
-				'tag' => 'v',
-				'type' => 'unparsed_content',
-				'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
-					'<param name="movie" value="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1"></param>' .
-					'<embed src="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1" ' .
-					'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
-					'</embed></object></div>',
-				'validate' => create_function('&$tag, &$data, $disabled', '
-					if (strstr($data, "youtube")) {
-						parse_str(parse_url($data, PHP_URL_QUERY), $urlParts);
-						$data = $urlParts["v"];
-					}
-					$data = strip_tags($data);
-				'),
-				'disabled_content' => '($1)',
-				'block_level' => true,
-			), 
-			array(
-				'tag' => 'yt',
-				'type' => 'unparsed_content',
-				'content' => '<div class="youtube"><div class="youtube-url" style="display: none">http://www.youtube.com/watch?v=$1</div><object width="600" height="475">' .
-					'<param name="movie" value="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1"></param>' .
-					'<embed src="http://www.youtube.com/v/$1?version=3&autohide=1&showinfo=1" ' .
-					'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
-					'</embed></object></div>',
-				'validate' => create_function('&$tag, &$data, $disabled', '
-					if (strstr($data, "youtube")) {
-						parse_str(parse_url($data, PHP_URL_QUERY), $urlParts);
-						$data = $urlParts["v"];
-					}
-					$data = strip_tags($data);
-				'),
-				'disabled_content' => '($1)',
-				'block_level' => true,
-			), 
+			array_merge(array('tag' => 'v'), $youtubeCode),
+			array_merge(array('tag' => 'video'), $youtubeCode),
+			array_merge(array('tag' => 'youtube'), $youtubeCode),
+			array_merge(array('tag' => 'yt'), $youtubeCode),
 		);
 
 		// This is mainly for the bbc manager, so it's easy to add tags above.  Custom BBC should be added above this line.

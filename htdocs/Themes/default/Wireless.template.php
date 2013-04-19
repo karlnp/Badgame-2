@@ -1,6 +1,99 @@
 <?php
 // Version: 1.1; Wireless
 
+// Get board listing
+function template_json_boardindex()
+{
+	global $context, $settings, $options, $scripturl;
+	$categories = array();
+
+	foreach($context['categories'] as $category) {
+		$boards = array();
+		foreach($category['boards'] as $board){
+			array_push($boards, array(
+				'name' => $board['name'],
+				'desc' => $board['description'],
+				'url' => $scripturl . '?board=' . $board['id'] . '.0;json',
+			));
+		}
+		if(!empty($boards)) {
+			array_push($categories, array(
+				'categoryName' => $category['name'],
+				'boards' => $boards
+			));
+		}
+	}
+
+	echo json_encode(array('categories' => $categories));
+}
+
+function template_json_login()
+{
+	global $context, $settings, $options, $scripturl, $txt;
+
+	/*
+		Hacky way of telling client they're still on login page
+
+		In other words, if you login and see login still set to true,
+		the login was invalid.
+	*/
+	echo json_encode(array('login' => true));
+}
+
+
+// Get listing of threads
+function template_json_messageindex()
+{
+	global $context, $modSettings, $settings, $options, $scripturl, $txt;
+	$topics = array();
+	foreach($context['topics'] as $topic) {
+		$topicUrl = $scripturl . '?topic=' . $topic['id'] . '.0;json';
+		$lastReadUrl = $topicUrl;
+
+		// Taken from Danbo's last read
+		if ($topic['posts_read'] % $modSettings['defaultMaxMessages'] == 0) {
+			$lastReadUrl = $scripturl . '?json&topic=' . $topic['id'] . '.' . ($topic['posts_read']);
+		} else {
+			$lastReadUrl = $scripturl . '?json&topic=' . $topic['id'] . '.msg' . $topic['last_post_id'] . '#msg' . $topic['last_post_id'];
+		}
+
+		array_push($topics, array(
+			'subject' => $topic['first_post']['subject'],
+			'poster' => $topic['first_post']['member']['name'],
+			'lastReadUrl' => $lastReadUrl,
+			'url' => $topicUrl, 
+			'unreadPosts' => $topic['replies'] + 1 - $topic['posts_read']
+		));
+	}
+
+	echo json_encode(array(
+			'links' => $context['links'],
+			'page_info' => $context['page_info'],
+			'topics' => $topics
+	));
+}
+
+// Get messages for a thread
+function template_json_display()
+{
+	global $context, $settings, $options, $txt;
+	$messages = array();
+
+
+	while($message = $context['get_message']()) {
+		array_push($messages, array(
+			'author' => $message['member']['name'],
+			'body' => $message['body'], 
+		));
+	}
+
+	echo json_encode(array(
+		'links' => $context['links'],
+		'messages' => $messages,
+		'page_info' => $context['page_info']
+	));
+}
+
 // This is the header for WAP 1.1 output. You can view it with ?wap in the URL.
 function template_wap_above()
 {

@@ -622,7 +622,14 @@ function template_main()
 
 		$timestr = date("M d Y, H:i", $message['timestamp']);
 		echo $timestr;
-		
+		echo '&nbsp;';
+
+		// Show filter link
+		if(empty($context['filteredOnUser'])){
+			echo '<a title="Show posts by this user" href="', $scripturl, '?topic=', $context['current_topic'], '&filterUserId=' . $message['member']['id'], '">?</a>';
+		} else {
+			echo '<a title="Remove user filter and jump to post" href="', $message['href'], '">&iquest;</a>';
+		}
 		echo '</span></td>';
 		
 		

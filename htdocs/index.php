@@ -5,7 +5,7 @@
 * SMF: Simple Machines Forum                                                      *
 * Open-Source Project Inspired by Zef Hemel (zef@zefhemel.com)                    *
 * =============================================================================== *
-* Software Version:           SMF 1.1.16                                          *
+* Software Version:           SMF 1.1.18                                          *
 * Software by:                Simple Machines (http://www.simplemachines.org)     *
 * Copyright 2006-2009 by:     Simple Machines LLC (http://www.simplemachines.org) *
 *           2001-2006 by:     Lewis Media (http://www.lewismedia.com)             *
@@ -34,7 +34,7 @@
 	with the URL index.php?action=action-in-url.  Relatively simple, no?
 */
 
-$forum_version = 'SMF 1.1.16';
+$forum_version = 'SMF 1.1.18';
 
 // Get everything started up...
 define('SMF', 1);
@@ -97,12 +97,12 @@ elseif (isset($_SERVER['HTTP_ACCEPT']) && strpos($_SERVER['HTTP_ACCEPT'], 'text/
 }
 
 if (!defined('WIRELESS'))
-	define('WIRELESS', isset($_REQUEST['wap']) || isset($_REQUEST['wap2']) || isset($_REQUEST['imode']));
+	define('WIRELESS', isset($_REQUEST['wap']) || isset($_REQUEST['wap2']) || isset($_REQUEST['imode']) || isset($_REQUEST['json']));
 
 // Some settings and headers are different for wireless protocols.
 if (WIRELESS)
 {
-	define('WIRELESS_PROTOCOL', isset($_REQUEST['wap']) ? 'wap' : (isset($_REQUEST['wap2']) ? 'wap2' : (isset($_REQUEST['imode']) ? 'imode' : '')));
+	define('WIRELESS_PROTOCOL', isset($_REQUEST['wap']) ? 'wap' : (isset($_REQUEST['wap2']) ? 'wap2' : (isset($_REQUEST['imode']) ? 'imode' : (isset($_REQUEST['json']) ? 'json' : ''))));
 
 	// Some cellphones can't handle output compression...
 	$modSettings['enableCompressedOutput'] = '0';
@@ -113,6 +113,8 @@ if (WIRELESS)
 	// Wireless protocol header.
 	if (WIRELESS_PROTOCOL == 'wap')
 		header('Content-Type: text/vnd.wap.wml');
+	else if (WIRELESS_PROTOCOL == 'json')
+		header('Content-type: application/json');
 }
 
 // Check if compressed output is enabled, supported, and not already being done.
