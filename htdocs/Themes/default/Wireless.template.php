@@ -58,6 +58,7 @@ function template_json_messageindex()
 		}
 
 		array_push($topics, array(
+			'postsRead' => $topic['posts_read'],
 			'subject' => utf8_encode($topic['first_post']['subject']),
 			'poster' => utf8_encode($topic['first_post']['member']['name']),
 			'lastReadUrl' => $lastReadUrl,
