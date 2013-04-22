@@ -83,6 +83,7 @@ function template_json_display()
 
 	while($message = $context['get_message']()) {
 		array_push($messages, array(
+			'id' => $message['id'],
 			'author' => utf8_encode($message['member']['name']),
 			'body' => utf8_encode($message['body']), 
 		));
