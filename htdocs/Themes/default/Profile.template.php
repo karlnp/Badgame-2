@@ -226,17 +226,33 @@ function template_summary()
 				</tr><tr>
 					<td><b>', $txt[604], ': </b></td>
 					<td>', $context['member']['yim']['link_text'], '</td>
-				</tr><tr>
-					<td><b>Steam Community:</b></td>
-					<td>', $context['member']['options']['profile_steam_id'], '<td>
-				</tr><tr>
-					<td><b>Xbox Live:</b></td>
-					<td>', $context['member']['options']['profile_xbox_live_id'], '<td>
-				</tr><tr>
-					<td><b>PSN:</b></td>
-					<td>', $context['member']['options']['profile_psn_id'], '<td>
-				</tr>
-				<tr>
+				</tr>';
+
+	if ($context['member']['options']['profile_steam_id']) {
+		echo '
+			<tr>
+				<td><b>Steam Community:</b></td>
+				<td>', $context['member']['options']['profile_steam_id'], '<td>
+			</tr>';
+	}
+
+	if ($context['member']['options']['profile_xbox_live_id']) {
+		echo '
+			<tr>
+				<td><b>Xbox Live:</b></td>
+				<td>', $context['member']['options']['profile_xbox_live_id'], '<td>
+			</tr>';
+	}
+
+	if ($context['member']['options']['profile_psn_id']) {
+		echo '
+			<tr>
+				<td><b>PSN:</b></td>
+				<td>', $context['member']['options']['profile_psn_id'], '<td>
+			</tr>';
+	}
+
+	echo '	<tr>
 					<td><b>', $txt[69], ': </b></td>
 					<td>';
 
