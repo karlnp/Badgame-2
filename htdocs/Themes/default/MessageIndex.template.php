@@ -221,8 +221,13 @@ function template_main()
 		}
 
 		$index = 0;
+
 		foreach ($context['topics'] as $topic)
 		{
+			if(!$topic['subject']) {
+				continue;
+			}
+			
 			if ($index % 2 == 0) {
 				$alternate = TRUE;
 			} else {
