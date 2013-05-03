@@ -71,6 +71,8 @@ Badgame.DonationNag.ShowNag = function() {
 		$('#nag-neverremind').click(Badgame.DonationNag.NeverRemind);
 }
 
+// Donation nag removed for now.
+/*
 $(document).ready(function() {
 	if (Modernizr.localstorage) {
 		var hideReminder = localStorage.getItem('nag.neverRemind');
@@ -87,3 +89,4 @@ $(document).ready(function() {
 		}
 	}
 });
+*/
