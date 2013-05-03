@@ -11,14 +11,14 @@ function template_json_boardindex()
 		$boards = array();
 		foreach($category['boards'] as $board){
 			array_push($boards, array(
-				'name' => $board['name'],
-				'desc' => $board['description'],
+				'name' => utf8_encode($board['name']),
+				'desc' => utf8_encode($board['description']),
 				'url' => $scripturl . '?board=' . $board['id'] . '.0;json',
 			));
 		}
 		if(!empty($boards)) {
 			array_push($categories, array(
-				'categoryName' => $category['name'],
+				'categoryName' => utf8_encode($category['name']),
 				'boards' => $boards
 			));
 		}
@@ -58,8 +58,9 @@ function template_json_messageindex()
 		}
 
 		array_push($topics, array(
-			'subject' => $topic['first_post']['subject'],
-			'poster' => $topic['first_post']['member']['name'],
+			'postsRead' => $topic['posts_read'],
+			'subject' => utf8_encode($topic['first_post']['subject']),
+			'poster' => utf8_encode($topic['first_post']['member']['name']),
 			'lastReadUrl' => $lastReadUrl,
 			'url' => $topicUrl, 
 			'unreadPosts' => $topic['replies'] + 1 - $topic['posts_read']
@@ -82,8 +83,9 @@ function template_json_display()
 
 	while($message = $context['get_message']()) {
 		array_push($messages, array(
-			'author' => $message['member']['name'],
-			'body' => $message['body'], 
+			'id' => $message['id'],
+			'author' => utf8_encode($message['member']['name']),
+			'body' => utf8_encode($message['body']), 
 		));
 	}
 

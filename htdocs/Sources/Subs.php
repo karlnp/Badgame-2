@@ -1098,6 +1098,12 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'type="application/x-shockwave-flash" allowfullscreen="true" width="600" height="475">' .
 				'</embed></object></div>',
 			'validate' => create_function('&$tag, &$data, $disabled', '
+				// Handle youtu.be links (Just convert to normal link)
+				if(strstr($data, "youtu.be/")) {
+					$data = str_replace("?t", "&t", $data);
+					$data = "http://www.youtube.com/watch?v=" . substr($data, strrpos($data, "/") + 1);
+				}
+
 				if (strstr($data, "youtube")) {
 					// Is there a time tag?
 					$start = 0;
@@ -1123,10 +1129,10 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 					$v = $urlParts["v"];
 
 					// Reconstruct query
-					$data = $v . "?";
+					$data = $v;
 
 					// Append start tag if specified
-					if($start) $data .= "start=" . $start;
+					if($start) $data .= "&start=" . $start;
 				}
 
 				$data = strip_tags($data);
