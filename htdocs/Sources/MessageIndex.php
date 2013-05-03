@@ -415,6 +415,20 @@ function MessageIndex()
 	$topic_ids = array();
 	$context['topics'] = array();
 
+	// hidden threads
+
+	$hidden_topic_request = db_query("SELECT id_member, id_thread
+		FROM {$db_prefix}bg2_hiddenthreads AS ht
+		WHERE ht.id_member = $ID_MEMBER", __FILE__, __LINE__);
+
+	$hidden_topic_ids = array();
+	
+	while ($row = mysql_fetch_assoc($hidden_topic_request)) {
+		$hidden_topic_ids[] = $row['id_thread'];
+	}
+
+	mysql_free_result($hidden_topic_request);
+
 	// Sequential pages are often not optimized, so we add an additional query.
 	$pre_query = $start > 0;
 	if ($pre_query)
@@ -426,24 +440,13 @@ function MessageIndex()
 				LEFT JOIN {$db_prefix}members AS meml ON (meml.ID_MEMBER = ml.ID_MEMBER)" : '') . "
 			WHERE t.ID_BOARD = $board" . ($context['sort_by'] === 'last_poster' ? "
 				AND ml.ID_MSG = t.ID_LAST_MSG" : (in_array($context['sort_by'], array('starter', 'subject')) ? "
-				AND mf.ID_MSG = t.ID_FIRST_MSG" : '')) . "
+				AND mf.ID_MSG = t.ID_FIRST_MSG" : '')) .
+			(!empty($hidden_topic_ids) ? " AND t.ID_TOPIC NOT IN (" . implode(', ', $hidden_topic_ids) . ")" : "") . "
 			ORDER BY " . (!empty($modSettings['enableStickyTopics']) ? 'isSticky' . ($fake_ascending ? '' : ' DESC') . ', ' : '') . $_REQUEST['sort'] . ($ascending ? '' : ' DESC') . "
 			LIMIT $start, $maxindex", __FILE__, __LINE__);
 		$topic_ids = array();
 		while ($row = mysql_fetch_assoc($request))
 			$topic_ids[] = $row['ID_TOPIC'];
-	}
-
-	// hidden threads
-
-	$hidden_topic_request = db_query("SELECT id_member, id_thread
-		FROM {$db_prefix}bg2_hiddenthreads AS ht
-		WHERE ht.id_member = $ID_MEMBER", __FILE__, __LINE__);
-
-	$hidden_topic_ids = array();
-	
-	while ($row = mysql_fetch_assoc($hidden_topic_request)) {
-		$hidden_topic_ids[] = $row['id_thread'];
 	}
 
 	// Grab the appropriate topic information...
@@ -474,7 +477,7 @@ function MessageIndex()
 			WHERE " . ($pre_query ? 't.ID_TOPIC IN (' . implode(', ', $topic_ids) . ')' : "t.ID_BOARD = $board") . "
 				AND ml.ID_MSG = t.ID_LAST_MSG
 				AND mf.ID_MSG = t.ID_FIRST_MSG
-				" . (!empty($hidden_topic_ids) ? "AND t.ID_TOPIC NOT IN (" . implode(', ', $hidden_topic_ids) . ")" : "") . "
+				" . (!$pre_query && !empty($hidden_topic_ids) ? "AND t.ID_TOPIC NOT IN (" . implode(', ', $hidden_topic_ids) . ")" : "") . "
 			ORDER BY " . ($pre_query ? "FIND_IN_SET(t.ID_TOPIC, '" . implode(',', $topic_ids) . "')" : (!empty($modSettings['enableStickyTopics']) ? 'isSticky' . ($fake_ascending ? '' : ' DESC') . ', ' : '') . $_REQUEST['sort'] . ($ascending ? '' : ' DESC')) . "
 			LIMIT " . ($pre_query ? '' : "$start, ") . "$maxindex", __FILE__, __LINE__);
 
