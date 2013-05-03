@@ -104,11 +104,13 @@ if (WIRELESS)
 {
 	define('WIRELESS_PROTOCOL', isset($_REQUEST['wap']) ? 'wap' : (isset($_REQUEST['wap2']) ? 'wap2' : (isset($_REQUEST['imode']) ? 'imode' : (isset($_REQUEST['json']) ? 'json' : ''))));
 
-	// Some cellphones can't handle output compression...
-	$modSettings['enableCompressedOutput'] = '0';
-	// !!! Do we want these hard coded?
-	$modSettings['defaultMaxMessages'] = 5;
-	$modSettings['defaultMaxTopics'] = 9;
+	if(WIRELESS_PROTOCOL != 'json') {
+		// Some cellphones can't handle output compression...
+		$modSettings['enableCompressedOutput'] = '0';
+		// !!! Do we want these hard coded?
+		$modSettings['defaultMaxMessages'] = 5;
+		$modSettings['defaultMaxTopics'] = 9;
+	}
 
 	// Wireless protocol header.
 	if (WIRELESS_PROTOCOL == 'wap')
