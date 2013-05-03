@@ -7,6 +7,14 @@
 	max-height: 150px;
 }
 
+.genericPanel {
+    width: 680px;
+    margin: 0 auto;
+    border: 1px solid #888;
+    background-color: #EEE;
+    padding: 12px;
+}
+
 /* LIFE IS GOOD */
 div.payne {
 	font-family: 'Open Sans', sans-serif;

@@ -149,8 +149,8 @@ function template_main()
 				<td align="right" style="padding-right: 1ex;">
 					<table cellpadding="0" cellspacing="0">
 						<tr>
-							<span class="middletext" style="color: #656565"><input id="show-hidden-threads" type="checkbox" />
-							Show hidden threads?
+							<span class="middletext">
+							<a href="', $scripturl, '?action=hiddenthreads">Hidden Threads</a>
 							</span>
 						</tr>
 					</table>
