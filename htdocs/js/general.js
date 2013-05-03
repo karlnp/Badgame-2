@@ -16,4 +16,5 @@ Badgame.SkeletonPrank = function() {
 
 $(document).ready(function() {
 	$(".postrow[author-id='92']").find(".post").append("<div class='smalltext'>(This post may have been written by a retard.)</div>");
+	$(".postrow[author-id='1170']").find(".post").append("<div class='smalltext'>(This post was definitely written by a retard.)</div>");
 });
