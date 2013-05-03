@@ -29,3 +29,12 @@ create table if not exists smf_bg2_lastread (
 
 -- add hidden column to banners
 ALTER TABLE smf_bg2_banners ADD hidden bit default 0;
+
+-- may 03 2013
+
+-- add hidden threads table
+create table if not exists smf_bg2_hiddenthreads (
+  id_member mediumint not null references smf_members(id_member),
+  id_thread mediumint not null references smf_topics(ID_TOPIC),
+  primary key (id_member, id_thread)
+);

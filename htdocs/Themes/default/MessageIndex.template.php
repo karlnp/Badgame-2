@@ -5,7 +5,6 @@ function template_main()
 {
 	global $context, $settings, $options, $scripturl, $modSettings, $txt;
 
-	echo '<script language="JavaScript" type="text/javascript" src="js/hide-threads.js"></script>';
 	echo '<script language="JavaScript" type="text/javascript" >
 	$(document).ready(function() {
 		$(".lastReadClearButton").click(function() {
@@ -15,6 +14,13 @@ function template_main()
 			});
 			$(this).fadeOut();
 			$(this).siblings().fadeOut();
+		});
+		$(".threadHideButton").click(function() {
+			var hideUrl = "index.php?action=hidethread&topic=" + $(this).attr("topic-id");
+			$.ajax({
+				url: hideUrl
+			});
+			$(this).closest(".threadrow").hide();
 		});
 	});
 	</script>';
@@ -235,7 +241,7 @@ function template_main()
 			echo '
 					<tr class="threadrow" thread-id="', $topic['id'], '">';
 					
-					echo '<td class="windowbg2" style="text-align: center"><span class="lastReadButton" style="cursor: pointer; padding: 2px; color: #E3B66D; font-weight: bold" id="hidebutton">X</div></td>';
+					echo '<td class="windowbg2" style="text-align: center"><span class="lastReadButton threadHideButton" style="cursor: pointer; padding: 2px; color: #E3764D; font-weight: bold" topic-id="', $topic['id'], '">X</span></td>';
 					/*
 						<td class="windowbg2" valign="middle" align="center" width="5%">
 							<img src="', $settings['images_url'], '/topic/', $topic['class'], '.gif" alt="" />

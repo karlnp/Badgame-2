@@ -104,13 +104,11 @@ if (WIRELESS)
 {
 	define('WIRELESS_PROTOCOL', isset($_REQUEST['wap']) ? 'wap' : (isset($_REQUEST['wap2']) ? 'wap2' : (isset($_REQUEST['imode']) ? 'imode' : (isset($_REQUEST['json']) ? 'json' : ''))));
 
-	if(WIRELESS_PROTOCOL != 'json') {
-		// Some cellphones can't handle output compression...
-		$modSettings['enableCompressedOutput'] = '0';
-		// !!! Do we want these hard coded?
-		$modSettings['defaultMaxMessages'] = 5;
-		$modSettings['defaultMaxTopics'] = 9;
-	}
+	// Some cellphones can't handle output compression...
+	$modSettings['enableCompressedOutput'] = '0';
+	// !!! Do we want these hard coded?
+	$modSettings['defaultMaxMessages'] = 5;
+	$modSettings['defaultMaxTopics'] = 9;
 
 	// Wireless protocol header.
 	if (WIRELESS_PROTOCOL == 'wap')
@@ -254,6 +252,8 @@ function smf_main()
 		'findmember' => array('Subs-Auth.php', 'JSMembers'),
 		'help' => array('Help.php', 'ShowHelp'),
 		'helpadmin' => array('Help.php', 'ShowAdminHelp'),
+		'hidethread' => array('HideThread.php', 'HideThread'),
+		'hiddenthreads' => array('HideThread.php', 'ShowHiddenThreads'),
 		'im' => array('PersonalMessage.php', 'MessageMain'),
 		'jsoption' => array('Themes.php', 'SetJavaScript'),
 		'jsmodify' => array('Post.php', 'JavaScriptModify'),
