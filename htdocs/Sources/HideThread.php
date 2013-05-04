@@ -60,3 +60,5 @@ function ShowHiddenThreads() {
 
 	loadTemplate('HiddenThreads');
 }
+
+?>
