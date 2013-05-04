@@ -16,7 +16,8 @@ function HideThread() {
 		AND id_thread = $topicId", __FILE__, __LINE__);
 		
 	$numRows = mysql_num_rows($query);
-	
+	mysql_free_result($query);
+
 	if ($unhide && $unhide == '1' && $numRows > 0) {
 		db_query("DELETE FROM {$db_prefix}bg2_hiddenthreads
 			WHERE id_member = $ID_MEMBER AND id_thread = $topicId", __FILE__, __LINE__);
@@ -55,6 +56,8 @@ function ShowHiddenThreads() {
 		$hidden_threads[] = $row;
 	}
 
+	mysql_free_result($query);
+	
 	$context['page_title'] = 'Hidden Threads';
 	$context['hidden_threads'] = $hidden_threads;
 

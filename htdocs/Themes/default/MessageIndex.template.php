@@ -297,7 +297,7 @@ function template_main()
 							', $topic['first_post']['member']['link'], '
 						</td>
 						<td class="windowbg" valign="middle" width="4%" align="center">
-							', $topic['replies'], '
+							<a href="', $scripturl, '?action=threadstats&topic=', $topic['id'], '">', $topic['replies'], '</a>
 						</td>
 						<td class="windowbg2" valign="middle" width="4%" align="center">
 							', $topic['views'], '

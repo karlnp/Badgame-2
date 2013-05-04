@@ -318,6 +318,7 @@ function smf_main()
 		'stats' => array('Stats.php', 'DisplayStats'),
 		'sticky' => array('LockTopic.php', 'Sticky'),
 		'theme' => array('Themes.php', 'ThemesMain'),
+		'threadstats' => array('ThreadStats.php', 'ThreadStats'),
 		'trackip' => array('Profile.php', 'trackIP'),
 		'about:mozilla' => array('Karma.php', 'BookOfUnknown'),
 		'about:unknown' => array('Karma.php', 'BookOfUnknown'),
