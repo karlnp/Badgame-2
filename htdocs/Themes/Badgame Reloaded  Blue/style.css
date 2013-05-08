@@ -15,6 +15,21 @@
     padding: 12px;
 }
 
+/* fucken bangers m8 */
+div.douj {
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    line-height: 1em;
+    background-color: white;
+    border: 3px solid #242424;
+    padding: 16px;
+    max-width: 160px;
+    text-align: center;
+
+    -webkit-box-shadow:  3px 3px 4px 1px rgba(0, 0, 0, 0.3);
+    box-shadow:  3px 3px 4px 1px rgba(0, 0, 0, 0.3);
+}
+
 /* thanks gigs */
 .threadHideButton {
     transition: opacity .1s ease-in-out;

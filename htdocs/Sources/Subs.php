@@ -1703,6 +1703,13 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'block_level' => true,
 			),
 			array(
+				'tag' => 'douj',
+				'before' => '<div class="douj">',
+				'after' => '</div>',
+				'block_level' => true,
+				'disallow_children' => array('douj', 'payne', 'nws', 'tldr', 'spoiler', 'blockspoiler'),
+			),
+			array(
 				'tag' => 'blockspoiler',
 				'before' => '<div class="hiddenheader spoilerheader">There are spoilers in this block! Click to view them.</div><div class="hiddenblock spoilerblock">',
 				'after' => '</div>',
