@@ -78,6 +78,7 @@ function template_main_above()
 	<script language="JavaScript" type="text/javascript" src="js/donation-nag.js"></script>
 	<script language="JavaScript" type="text/javascript" src="js/general.js?fin13"></script>
 	<script language="JavaScript" type="text/javascript" src="js/banner-paging.js"></script>
+	<script language="JavaScript" type="text/javascript" src="js/happy-birthday-2013.js"></script>
 	<script language="JavaScript" type="text/javascript" src="js/hidden-tags.js"></script>
 	<script language="JavaScript" type="text/javascript" src="js/tipped/tipped.js"></script>
 	<script language="JavaScript" type="text/javascript" src="js/tipped/skins.js"></script>
@@ -94,6 +95,7 @@ function template_main_above()
 	// The ?fin11 part of this link is just here to make sure browsers don't cache it wrongly.
 	echo '
 	<link rel="stylesheet" type="text/css" href="css/tipped.css" />
+	<link rel="stylesheet" type="text/css" href="css/birthday.css" />
 	<link rel="stylesheet" type="text/css" href="', $settings['default_theme_url'], '/style.css?fin13" />
 	<link rel="stylesheet" type="text/css" href="', $settings['theme_url'], '/style.css?fin13" />
 	<link rel="stylesheet" type="text/css" href="', $settings['default_theme_url'], '/print.css?fin11" media="print" />';
