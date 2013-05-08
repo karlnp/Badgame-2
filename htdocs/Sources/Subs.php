@@ -1707,7 +1707,7 @@ function parse_bbc($message, $smileys = true, $cache_id = '')
 				'before' => '<div class="douj">',
 				'after' => '</div>',
 				'block_level' => true,
-				'disallow_children' => array('douj', 'payne', 'nws', 'tldr', 'spoiler', 'blockspoiler'),
+				'disallow_children' => array('douj', 'payne', 'nws', 'tldr', 'spoiler', 'blockspoiler', 'quote'),
 			),
 			array(
 				'tag' => 'blockspoiler',
